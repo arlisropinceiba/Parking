@@ -7,9 +7,43 @@
 
 import Foundation
 
-protocol PaymentCalculation {
+class Payment {
     
-    func calculateParkingShiftPrice(withPriceDay priceDay: Int, andPriceHour priceHour: Int, from addmissionDate: Date, to departureDate: Date)
-    func calculateParkingShiftWithExtraPrice(withPriceDay priceDay: Int, andPriceHour priceHour: Int, from addmissionDate: Date, to departureDate: Date, cylinderCapacity: Int)
+    var parkingShift: ParkingShift
+    var priceDay: Int
+    var priceHour: Int
+    
+    init(
+        parkingShift: ParkingShift,
+        priceDay: Int,
+        priceHour: Int
+    ) {
+        self.parkingShift = parkingShift
+        self.priceDay = priceDay
+        self.priceHour = priceHour
+    }
+        
+    public func calculateParkingShiftPrice() throws -> Int {
+        var days: Int = 0
+        var hours: Int = 0
+        let endDate = try parkingShift.getDepartureDate()
+        (days, hours) = getTheShiftDaysAndHours(between: parkingShift.getAdmissionDate(), and: endDate)
+        var value = days * priceDay
+        value += hours * priceHour
+        return value
+    }
+    
+    private func getTheShiftDaysAndHours(between beginDate: Date, and endDate: Date) -> (days: Int, hours: Int){
+        let minimumHoursToChargeAsADay = 9
+        let diffComponents = Calendar.current.dateComponents([.hour], from: beginDate, to: endDate)
+        let hours = diffComponents.hour ?? 0
+        var daysInt = Int(hours / 24)
+        var restHours = Int(round((Double(hours) / 24 - Double(daysInt)) * 24.0))
+        if restHours >= minimumHoursToChargeAsADay {
+            daysInt += 1
+            restHours = 0
+        }
+        return (daysInt, restHours)
+    }
     
 }
