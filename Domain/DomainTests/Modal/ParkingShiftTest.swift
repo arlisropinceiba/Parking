@@ -37,7 +37,7 @@ class ParkingShiftTest: XCTestCase {
         let plate = "CDE234"
         let car = try! Car(plate: plate)
         let shift = ParkingShift(admissionDate: Date(), vehicle: car)
-        let date = advanceDateOneHour
+        let date = Date().advanceDate(thisHours: 1)
         //Act
         //Assert
         XCTAssertNoThrow(try shift.setDepartureDate(date))
@@ -48,7 +48,7 @@ class ParkingShiftTest: XCTestCase {
         let plate = "CDE234"
         let car = try! Car(plate: plate)
         let shift = ParkingShift(admissionDate: Date(), vehicle: car)
-        let date = lateDateOneHour
+        let date = Date().lateDate(thisHours: 1)
         //Assert
         XCTAssertThrowsError(try shift.setDepartureDate(date))
     }
@@ -58,7 +58,7 @@ class ParkingShiftTest: XCTestCase {
         let plate = "CDE234"
         let car = try! Car(plate: plate)
         let shift = ParkingShift(admissionDate: Date(), vehicle: car)
-        let expectedDate = advanceDateOneHour
+        let expectedDate = Date().advanceDate(thisHours: 1)
         try! shift.setDepartureDate(expectedDate)
         //Act
         let date = try! shift.getDepartureDate()
@@ -76,14 +76,4 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertTrue(vehicle.getPlate() == expectedVehicle.getPlate())
     }
-
-    
-    var advanceDateOneHour: Date {
-        return Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
-    }
-    
-    var lateDateOneHour: Date {
-        return Calendar.current.date(byAdding: .hour, value: -1, to: Date()) ?? Date()
-    }
-
 }

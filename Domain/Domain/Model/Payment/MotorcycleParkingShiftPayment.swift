@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MotorcycleParkingShiftPayment: Payment {
+class MotorcycleParkingShiftPayment: ParkingShiftPayment {
     
     init(parkingShift: ParkingShift){
         super.init(parkingShift: parkingShift, priceDay: 4000, priceHour: 500)

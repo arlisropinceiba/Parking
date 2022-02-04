@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Payment {
+class ParkingShiftPayment {
     
     var parkingShift: ParkingShift
     var priceDay: Int
