@@ -32,6 +32,10 @@ public class ParkingShift {
         self.vehicle = vehicle
     }
     
+    public func getId() -> UUID {
+        return id
+    }
+    
     public func getAdmissionDate() -> Date {
         return admissionDate
     }

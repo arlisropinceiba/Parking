@@ -9,9 +9,11 @@ import Foundation
 
 class ParkingShiftPayment {
     
+    var id: UUID = UUID()
     var parkingShift: ParkingShift
     var priceDay: Int
     var priceHour: Int
+    var value: Int = 0
     
     init(
         parkingShift: ParkingShift,

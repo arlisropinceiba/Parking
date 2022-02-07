@@ -34,7 +34,7 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         
     }
     
-    func test_calculateParkingShiftPriceAl27HAndHighCapacity_calculateParkingValue_success(){
+    func test_calculateParkingShiftPriceAt27HAndHighCapacity_calculateParkingValue_success(){
         // Arrange
         let motorcycle = try! Motorcycle(plate: "DSA123", cylinderCapacity: 650)
         let shift = ParkingShift(admissionDate: Date(), departureDate: Date().advanceDate(thisHours: 27), vehicle: motorcycle)
