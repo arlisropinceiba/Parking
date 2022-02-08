@@ -5,8 +5,6 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 4/02/22.
 //
 
-import Foundation
-
 public class ParkingShift {
    
     private var id: UUID = UUID()
@@ -50,12 +48,12 @@ public class ParkingShift {
     
     public func getDepartureDate() throws -> Date {
         guard let date = departureDate else {
-            throw DomainErrors.noExistDepartureDate()
+            throw DomainErrors.noExistDepartureDate() 
         }
         return date
     }
     
-    public func getVehicle() -> Vehicle {
+    func getVehicle() -> Vehicle {
         return vehicle
     }
     

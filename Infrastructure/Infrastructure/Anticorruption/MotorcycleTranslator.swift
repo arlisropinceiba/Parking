@@ -20,9 +20,9 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
             motorcycle.cylinderCapacity = Int16((parkingDomain.getVehicle() as! Motorcycle).getCylinderCapacity())
         }
         parking.id = parkingDomain.getId()
-        parking.admissionDate = parkingDomain.getAdmissionDate()
+        parking.admissionDate = parkingDomain.getAdmission
         do {
-            parking.departureDate = try parkingDomain.getDepartureDate()
+            parking.departureDate = try parkingDomain.getDeparture
         } catch {
             parking.departureDate = nil
         }

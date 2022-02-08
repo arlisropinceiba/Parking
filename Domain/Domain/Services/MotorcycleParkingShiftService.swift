@@ -5,8 +5,6 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 4/02/22.
 //
 
-import Foundation
-
 public class MotorcycleParkingShiftService: ParkingShiftService {
     
     public func saveThis(shift: ParkingShift) throws {

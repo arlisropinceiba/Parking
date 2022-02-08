@@ -9,11 +9,11 @@ import Foundation
 
 class ParkingShiftPayment {
     
-    var id: UUID = UUID()
-    var parkingShift: ParkingShift
-    var priceDay: Int
-    var priceHour: Int
-    var value: Int = 0
+    private var id: UUID = UUID()
+    private var parkingShift: ParkingShift
+    private var priceDay: Int
+    private var priceHour: Int
+    private var value: Int = 0
     
     init(
         parkingShift: ParkingShift,
@@ -23,6 +23,10 @@ class ParkingShiftPayment {
         self.parkingShift = parkingShift
         self.priceDay = priceDay
         self.priceHour = priceHour
+    }
+    
+    public func getParkingShift() -> ParkingShift {
+        return parkingShift
     }
         
     public func calculateParkingShiftPrice() throws -> Int {

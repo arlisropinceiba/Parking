@@ -17,9 +17,9 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
     
         car.plate = parkingDomain.getVehicle().getPlate()
         parking.id = parkingDomain.getId()
-        parking.admissionDate = parkingDomain.getAdmissionDate()
+        parking.admissionDate = parkingDomain.getAdmission
         do {
-            parking.departureDate = try parkingDomain.getDepartureDate()
+            parking.departureDate = try parkingDomain.getDeparture
         } catch {
             parking.departureDate = nil
         }
