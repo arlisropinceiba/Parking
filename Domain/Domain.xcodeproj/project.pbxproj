@@ -117,8 +117,8 @@
 		1C2CF1A927AD5C62002C37C4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				1C4E690127B1EFC900C19DF8 /* Enum */,
 				1C2CF1AA27AD5C62002C37C4 /* Domain.h */,
+				1C4E690127B1EFC900C19DF8 /* Enum */,
 				1C2CF1BF27AD5C91002C37C4 /* Exception */,
 				1C2CF1C027AD5CA5002C37C4 /* Model */,
 				1C2CF1C127AD5CAE002C37C4 /* Repository */,
@@ -130,7 +130,6 @@
 		1C2CF1B327AD5C63002C37C4 /* DomainTests */ = {
 			isa = PBXGroup;
 			children = (
-				1C2CF1C427AD5CF9002C37C4 /* Services */,
 				1C2CF1C327AD5CDE002C37C4 /* Modal */,
 				1C2CF1F327ADC518002C37C4 /* Extension */,
 			);
@@ -181,13 +180,6 @@
 				1C4E68F827B1B50500C19DF8 /* Payment */,
 			);
 			path = Modal;
-			sourceTree = "<group>";
-		};
-		1C2CF1C427AD5CF9002C37C4 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		1C2CF1CD27AD5F1E002C37C4 /* Vehicle */ = {

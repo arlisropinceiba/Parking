@@ -1,5 +1,5 @@
 //
-//  VehicleTranslator.swift
+//  VehicleParkingShiftTranslator.swift
 //  Infrastructure
 //
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 7/02/22.

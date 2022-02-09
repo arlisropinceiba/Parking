@@ -10,16 +10,16 @@ import Domain
 
 class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
     
-    public override func fromDomainToCoreEntity(_ parkingDomain: ParkingShift) throws -> NSManagedObject {
+    public func fromDomainToCoreEntity(_ parkingDomain: CarParkingShift) throws -> NSManagedObject {
         let context = persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
         let car = NSEntityDescription.insertNewObject(forEntityName: "CarCoreEntity", into: context) as! CarCoreEntity
     
-        car.plate = parkingDomain.getVehicle().getPlate()
+        car.plate = parkingDomain.getCar()?.getPlate()
         parking.id = parkingDomain.getId()
-        parking.admissionDate = parkingDomain.getAdmission
+        parking.admissionDate = parkingDomain.getAdmissionDate()
         do {
-            parking.departureDate = try parkingDomain.getDeparture
+            parking.departureDate = try parkingDomain.getDepartureDate()
         } catch {
             parking.departureDate = nil
         }
@@ -27,16 +27,16 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
         return parking
     }
     
-    public override func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> ParkingShift? {
+    public override func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> CarParkingShift? {
         guard let plate = parkingCoreEntity.vehicle?.plate,
               let admissionDate = parkingCoreEntity.admissionDate else {
             return nil
         }
         let car = try Car(plate: plate)
         if let departureDate = parkingCoreEntity.departureDate {
-            return ParkingShift(admissionDate: admissionDate, departureDate: departureDate, vehicle: car)
+            return try CarParkingShift(admissionDate: admissionDate, departureDate: departureDate, car: car)
         } else {
-            return ParkingShift(admissionDate: admissionDate, vehicle: car)
+            return try CarParkingShift(admissionDate: admissionDate, car: car)
         }
     }
 }

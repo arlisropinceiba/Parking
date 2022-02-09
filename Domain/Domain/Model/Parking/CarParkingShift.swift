@@ -5,7 +5,7 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 7/02/22.
 //
 
-class CarParkingShift: ParkingShift {
+public class CarParkingShift: ParkingShift {
     
     public init(admissionDate: Date, car: Car) throws {
         super.init(admissionDate: admissionDate, vehicle: car)

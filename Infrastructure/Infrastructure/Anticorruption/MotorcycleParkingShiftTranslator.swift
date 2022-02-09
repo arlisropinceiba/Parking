@@ -10,19 +10,18 @@ import Domain
 
 class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     
-    public override func fromDomainToCoreEntity(_ parkingDomain: ParkingShift) throws -> NSManagedObject {
+    public func fromDomainToCoreEntity(_ parkingDomain: MotorcycleParkingShift) throws -> NSManagedObject {
         let context = persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingCoreEntity", into: context) as! ParkingShiftCoreEntity
         let motorcycle = NSEntityDescription.insertNewObject(forEntityName: "MotorcycleCoreEntity", into: context) as! MotorcycleCoreEntity
     
-        motorcycle.plate = parkingDomain.getVehicle().getPlate()
-        if parkingDomain.getVehicle() is Motorcycle {
-            motorcycle.cylinderCapacity = Int16((parkingDomain.getVehicle() as! Motorcycle).getCylinderCapacity())
-        }
+        motorcycle.plate = parkingDomain.getMotorcycle()?.getPlate()
+        motorcycle.cylinderCapacity = Int16(parkingDomain.getMotorcycle()?.getCylinderCapacity() ?? 0)
+        
         parking.id = parkingDomain.getId()
-        parking.admissionDate = parkingDomain.getAdmission
+        parking.admissionDate = parkingDomain.getAdmissionDate()
         do {
-            parking.departureDate = try parkingDomain.getDeparture
+            parking.departureDate = try parkingDomain.getDepartureDate()
         } catch {
             parking.departureDate = nil
         }
@@ -30,21 +29,19 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         return parking
     }
     
-    public override func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> ParkingShift? {
+    public override func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> MotorcycleParkingShift? {
         guard let plate = parkingCoreEntity.vehicle?.plate,
                 let admissionDate = parkingCoreEntity.admissionDate
         else {
             return nil
         }
-        var capacity = 0
-        if parkingCoreEntity.vehicle is MotorcycleCoreEntity {
-            capacity = Int((parkingCoreEntity.vehicle as! MotorcycleCoreEntity).cylinderCapacity)
-        }
+        let capacity = Int((parkingCoreEntity.vehicle as? MotorcycleCoreEntity)?.cylinderCapacity ?? 0)
+        
         let motorcycle = try Motorcycle(plate: plate, cylinderCapacity: capacity)
         if let departureDate = parkingCoreEntity.departureDate {
-            return ParkingShift(admissionDate: admissionDate, departureDate: departureDate, vehicle: motorcycle)
+            return try MotorcycleParkingShift(admissionDate: admissionDate, departureDate: departureDate, motorcycle: motorcycle)
         } else {
-            return ParkingShift(admissionDate: admissionDate, vehicle: motorcycle)
+            return try MotorcycleParkingShift(admissionDate: admissionDate, motorcycle: motorcycle)
         }
     }
 }
