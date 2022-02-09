@@ -17,7 +17,6 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     
         motorcycle.plate = parkingDomain.getMotorcycle()?.getPlate()
         motorcycle.cylinderCapacity = Int16(parkingDomain.getMotorcycle()?.getCylinderCapacity() ?? 0)
-        
         parking.id = parkingDomain.getId()
         parking.admissionDate = parkingDomain.getAdmissionDate()
         do {
@@ -29,7 +28,7 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         return parking
     }
     
-    public override func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> MotorcycleParkingShift? {
+    public override func fromCoreToDomainEntity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> MotorcycleParkingShift? {
         guard let plate = parkingCoreEntity.vehicle?.plate,
                 let admissionDate = parkingCoreEntity.admissionDate
         else {
@@ -43,6 +42,15 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         } else {
             return try MotorcycleParkingShift(admissionDate: admissionDate, motorcycle: motorcycle)
         }
+    }
+    
+    public func fromCoreToDomainEntity(_ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [MotorcycleParkingShift] {
+        var motorcycleParkingShiftArray: [MotorcycleParkingShift] = []
+        for itemCore in parkingCoreEntityArray {
+            guard let itemDomain = try fromCoreToDomainEntity(itemCore) else { return [] }
+            motorcycleParkingShiftArray.append(itemDomain)
+        }
+        return motorcycleParkingShiftArray
     }
 }
 

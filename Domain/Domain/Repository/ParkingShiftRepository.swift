@@ -11,6 +11,6 @@ public protocol ParkingShiftRepository{
     func getParkingShift() throws -> [ParkingShift]
     func finishParkingShift(shift: ParkingShift) throws
     func searchVehicle(withPlate plate: String) throws -> [ParkingShift]
-    func isThereAVehicleWithActiveParkingShift() throws -> Bool
+    func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool
     
 }

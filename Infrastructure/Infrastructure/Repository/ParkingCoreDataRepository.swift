@@ -8,23 +8,33 @@
 import Foundation
 import Domain
 
-public class ParkingCoreDataRepository: CoreDataManager {
+public class ParkingCoreDataRepository: CoreDataManager, ParkingShiftRepository {
+    
+    public func saveParkingShift(shift: ParkingShift) throws {
         
-    public func saveParkingShift(shift: ParkingShift) {
         
     }
     
-    public func getParkingShift() -> [ParkingShift] {
-        return []
+    public func getParkingShift() throws -> [ParkingShift] { return [] }
+    
+    public func finishParkingShift(shift: ParkingShift) throws { }
+    
+    public func searchVehicle(withPlate plate: String) throws -> [ParkingShift] { return [] }
+    
+    public func searchParkingShift(withPlate plate: String) throws -> [ParkingShiftCoreEntity] {
+        let parkingsSaved = try getFetch(withPredicate: "departureDate == nil")
+        let parkingSavedWithSamePlate = parkingsSaved.filter({$0.vehicle?.plate == plate})
+        return parkingSavedWithSamePlate
     }
     
-    public func finishParkingShift(shift: ParkingShift) { }
-    
-    public func searchVehicle(withPlate plate: String) -> [ParkingShift] {
-        return []
+    public func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool {
+        let parkingsSaved = try getFetch(withPredicate: "departureDate == nil")
+        let carParkingSaved = parkingsSaved.filter({$0.vehicle is CarCoreEntity})
+        if let _ = carParkingSaved.first(where: {$0.vehicle?.plate == plate}) {
+            return true
+        } else {
+            return false
+        }
     }
     
-    public func isThereAVehicleWithActiveParkingShift() -> Bool {
-        return false
-    }
 }

@@ -26,11 +26,14 @@ public class MotorcycleParkingCoreDataRepository: ParkingCoreDataRepository, Mot
     
     public override func finishParkingShift(shift: ParkingShift) { }
     
-    public override func searchVehicle(withPlate plate: String) -> [ParkingShift] {
-        return []
+    public func searchVehicle(withPlate plate: String) throws -> [MotorcycleParkingShift] {
+        let parkingShiftSaved = try searchParkingShift(withPlate: plate)
+        let traslator = MotorcycleParkingShiftTranslator()
+        let motorcycleParkingShiftDomainArray: [MotorcycleParkingShift] = try traslator.fromCoreToDomainEntity(parkingShiftSaved)
+        return motorcycleParkingShiftDomainArray
     }
     
-    public override func isThereAVehicleWithActiveParkingShift() -> Bool {
+    public override func isThereAVehicleWithActiveParkingShift(plate: String) -> Bool {
         return false
     }
 }

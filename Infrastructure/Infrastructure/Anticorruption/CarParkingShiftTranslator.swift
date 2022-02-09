@@ -26,8 +26,8 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
         parking.vehicle = car
         return parking
     }
-    
-    public override func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> CarParkingShift? {
+
+    public override func fromCoreToDomainEntity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> CarParkingShift? {
         guard let plate = parkingCoreEntity.vehicle?.plate,
               let admissionDate = parkingCoreEntity.admissionDate else {
             return nil
@@ -38,5 +38,14 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
         } else {
             return try CarParkingShift(admissionDate: admissionDate, car: car)
         }
+    }
+    
+    public func fromCoreToDomainEntity(_ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [CarParkingShift] {
+        var carParkingShiftArray: [CarParkingShift] = []
+        for itemCore in parkingCoreEntityArray {
+            guard let itemDomain = try fromCoreToDomainEntity(itemCore) else { return [] }
+            carParkingShiftArray.append(itemDomain)
+        }
+        return carParkingShiftArray
     }
 }

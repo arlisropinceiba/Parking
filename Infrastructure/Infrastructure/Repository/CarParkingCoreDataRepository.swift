@@ -12,7 +12,9 @@ public class CarParkingCoreDataRepository: ParkingCoreDataRepository, CarParking
  
     public static let shared = CarParkingCoreDataRepository()
     
-    public override func saveParkingShift(shift: ParkingShift) { }
+    public func saveParkingShift(shift: CarParkingShift) throws {
+        try super.saveParkingShift(shift: shift)
+    }
     
     public override func getParkingShift() -> [ParkingShift] {
         return []
@@ -26,12 +28,10 @@ public class CarParkingCoreDataRepository: ParkingCoreDataRepository, CarParking
     
     public override func finishParkingShift(shift: ParkingShift) { }
     
-    public override func searchVehicle(withPlate plate: String) -> [ParkingShift] {
-        return []
+    public func searchVehicle(withPlate plate: String) throws -> [CarParkingShift] {
+        let parkingShiftSaved = try searchParkingShift(withPlate: plate)
+        let traslator = CarParkingShiftTranslator()
+        let carParkingShiftDomainArray: [CarParkingShift] = try traslator.fromCoreToDomainEntity(parkingShiftSaved)
+        return carParkingShiftDomainArray
     }
-    
-    public override func isThereAVehicleWithActiveParkingShift() -> Bool {
-        return false
-    }
-    
 }

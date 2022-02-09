@@ -15,7 +15,7 @@ class VehicleParkingShiftTranslator : CoreDataManager {
         return parking
     }
     
-    public func fromCoreToDomainEnitity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> ParkingShift? {
+    public func fromCoreToDomainEntity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> ParkingShift? {
         return nil
     }
     
