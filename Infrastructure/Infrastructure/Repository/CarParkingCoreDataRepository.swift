@@ -17,8 +17,8 @@ public class CarParkingCoreDataRepository: ParkingCoreDataRepository, CarParking
     }
     
     public func getCountOfCars () throws -> Int {
-        let parkingsSaved = try getFetchActiveParkingShift()
-        let carParkingsSaved = parkingsSaved.filter({$0.vehicle is CarCoreEntity})
+        let parkingShiftsSaved = try getFetchActiveParkingShifts()
+        let carParkingsSaved = parkingShiftsSaved.filter({$0.vehicle is CarCoreEntity})
         return carParkingsSaved.count
     }
 }

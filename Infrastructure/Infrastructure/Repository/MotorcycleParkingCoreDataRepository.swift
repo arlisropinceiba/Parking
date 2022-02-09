@@ -17,8 +17,8 @@ public class MotorcycleParkingCoreDataRepository: ParkingCoreDataRepository, Mot
     }
 
     public func getCountOfMotorcycles () throws -> Int {
-        let parkingsSaved = try getFetchActiveParkingShift()
-        let motorcycleParkingsSaved = parkingsSaved.filter({$0.vehicle is MotorcycleCoreEntity})
+        let parkingShiftsSaved = try getFetchActiveParkingShifts()
+        let motorcycleParkingsSaved = parkingShiftsSaved.filter({$0.vehicle is MotorcycleCoreEntity})
         return motorcycleParkingsSaved.count
     }
 
