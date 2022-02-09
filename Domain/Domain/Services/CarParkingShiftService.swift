@@ -6,6 +6,10 @@
 //
 
 public class CarParkingShiftService: ParkingShiftService {
+        
+    public init(carParkingShiftRepository: CarParkingShiftRepository) {
+        super.init(parkingShitRepository: carParkingShiftRepository)
+    }
     
     public func saveThis(shift: ParkingShift) throws {
         try areThereParkingSpaces()
@@ -14,7 +18,8 @@ public class CarParkingShiftService: ParkingShiftService {
     
     private func areThereParkingSpaces() throws {
         let minimumNumberOfCarsAllowed = 20
-        guard parkingShitRepository.getCountOfVehicles() < minimumNumberOfCarsAllowed else {
+        let carsCount  = try (parkingShitRepository as? CarParkingShiftRepository)?.getCountOfCars() ?? minimumNumberOfCarsAllowed
+        guard carsCount < minimumNumberOfCarsAllowed else {
             throw DomainErrors.carLimitReached()
         }
     }

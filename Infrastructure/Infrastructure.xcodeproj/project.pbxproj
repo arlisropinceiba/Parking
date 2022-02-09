@@ -12,7 +12,6 @@
 		1C2CF20D27ADCAEA002C37C4 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2CF20B27ADCAEA002C37C4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C2CF21127ADCB36002C37C4 /* ParkingCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CF20F27ADCB36002C37C4 /* ParkingCoreData.xcdatamodeld */; };
 		1C2CF22827ADCF00002C37C4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CF22727ADCF00002C37C4 /* CoreDataManager.swift */; };
-		1C4E68BF27B1665700C19DF8 /* ParkingRepositorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68BE27B1665700C19DF8 /* ParkingRepositorty.swift */; };
 		1C4E68C327B1683300C19DF8 /* VehicleParkingShiftTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68C227B1683300C19DF8 /* VehicleParkingShiftTranslator.swift */; };
 		1C4E68C527B1687900C19DF8 /* CarParkingShiftTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68C427B1687900C19DF8 /* CarParkingShiftTranslator.swift */; };
 		1C4E68C727B1688600C19DF8 /* MotorcycleParkingShiftTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68C627B1688600C19DF8 /* MotorcycleParkingShiftTranslator.swift */; };
@@ -27,6 +26,9 @@
 		1C4E68F027B171D000C19DF8 /* MotorcycleCoreEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68E627B171D000C19DF8 /* MotorcycleCoreEntity+CoreDataProperties.swift */; };
 		1C4E68F127B171D000C19DF8 /* PaymentCoreEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68E727B171D000C19DF8 /* PaymentCoreEntity+CoreDataClass.swift */; };
 		1C4E68F227B171D000C19DF8 /* PaymentCoreEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68E827B171D000C19DF8 /* PaymentCoreEntity+CoreDataProperties.swift */; };
+		1C50198D27B421CF00554DF4 /* CarParkingCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50198C27B421CF00554DF4 /* CarParkingCoreDataRepository.swift */; };
+		1C50198F27B4220B00554DF4 /* MotorcycleParkingCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50198E27B4220B00554DF4 /* MotorcycleParkingCoreDataRepository.swift */; };
+		1C50199127B4238800554DF4 /* ParkingCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50199027B4238800554DF4 /* ParkingCoreDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,7 +51,6 @@
 		1C2CF20B27ADCAEA002C37C4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2CF21027ADCB36002C37C4 /* ParkingCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ParkingCoreData.xcdatamodel; sourceTree = "<group>"; };
 		1C2CF22727ADCF00002C37C4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		1C4E68BE27B1665700C19DF8 /* ParkingRepositorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingRepositorty.swift; sourceTree = "<group>"; };
 		1C4E68C227B1683300C19DF8 /* VehicleParkingShiftTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleParkingShiftTranslator.swift; sourceTree = "<group>"; };
 		1C4E68C427B1687900C19DF8 /* CarParkingShiftTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkingShiftTranslator.swift; sourceTree = "<group>"; };
 		1C4E68C627B1688600C19DF8 /* MotorcycleParkingShiftTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleParkingShiftTranslator.swift; sourceTree = "<group>"; };
@@ -64,6 +65,9 @@
 		1C4E68E627B171D000C19DF8 /* MotorcycleCoreEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MotorcycleCoreEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1C4E68E727B171D000C19DF8 /* PaymentCoreEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentCoreEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1C4E68E827B171D000C19DF8 /* PaymentCoreEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentCoreEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1C50198C27B421CF00554DF4 /* CarParkingCoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkingCoreDataRepository.swift; sourceTree = "<group>"; };
+		1C50198E27B4220B00554DF4 /* MotorcycleParkingCoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleParkingCoreDataRepository.swift; sourceTree = "<group>"; };
+		1C50199027B4238800554DF4 /* ParkingCoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingCoreDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +141,9 @@
 		1C4E68C027B1673300C19DF8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1C4E68BE27B1665700C19DF8 /* ParkingRepositorty.swift */,
+				1C50199027B4238800554DF4 /* ParkingCoreDataRepository.swift */,
+				1C50198C27B421CF00554DF4 /* CarParkingCoreDataRepository.swift */,
+				1C50198E27B4220B00554DF4 /* MotorcycleParkingCoreDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -243,19 +249,21 @@
 			files = (
 				1C4E68EE27B171D000C19DF8 /* CarCoreEntity+CoreDataProperties.swift in Sources */,
 				1C4E68C727B1688600C19DF8 /* MotorcycleParkingShiftTranslator.swift in Sources */,
-				1C4E68BF27B1665700C19DF8 /* ParkingRepositorty.swift in Sources */,
 				1C4E68F227B171D000C19DF8 /* PaymentCoreEntity+CoreDataProperties.swift in Sources */,
 				1C4E68E927B171D000C19DF8 /* VehicleCoreEntity+CoreDataClass.swift in Sources */,
 				1C4E68EA27B171D000C19DF8 /* VehicleCoreEntity+CoreDataProperties.swift in Sources */,
 				1C4E68F027B171D000C19DF8 /* MotorcycleCoreEntity+CoreDataProperties.swift in Sources */,
 				1C4E68ED27B171D000C19DF8 /* CarCoreEntity+CoreDataClass.swift in Sources */,
 				1C4E68C327B1683300C19DF8 /* VehicleParkingShiftTranslator.swift in Sources */,
+				1C50198F27B4220B00554DF4 /* MotorcycleParkingCoreDataRepository.swift in Sources */,
 				1C4E68F127B171D000C19DF8 /* PaymentCoreEntity+CoreDataClass.swift in Sources */,
 				1C4E68EB27B171D000C19DF8 /* ParkingShiftCoreEntity+CoreDataClass.swift in Sources */,
 				1C2CF22827ADCF00002C37C4 /* CoreDataManager.swift in Sources */,
 				1C4E68EC27B171D000C19DF8 /* ParkingShiftCoreEntity+CoreDataProperties.swift in Sources */,
 				1C4E68DD27B16D1200C19DF8 /* InfrastructureErrors.swift in Sources */,
+				1C50199127B4238800554DF4 /* ParkingCoreDataRepository.swift in Sources */,
 				1C4E68C527B1687900C19DF8 /* CarParkingShiftTranslator.swift in Sources */,
+				1C50198D27B421CF00554DF4 /* CarParkingCoreDataRepository.swift in Sources */,
 				1C4E68EF27B171D000C19DF8 /* MotorcycleCoreEntity+CoreDataClass.swift in Sources */,
 				1C2CF21127ADCB36002C37C4 /* ParkingCoreData.xcdatamodeld in Sources */,
 			);

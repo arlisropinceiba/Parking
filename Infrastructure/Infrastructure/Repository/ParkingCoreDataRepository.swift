@@ -1,24 +1,21 @@
 //
-//  ParkingRepositorty.swift
+//  ParkingCoreDataRepository.swift
 //  Infrastructure
 //
-//  Created by Arlin Lisette Ropero Infante - Ceiba Software on 7/02/22.
+//  Created by Arlin Lisette Ropero Infante - Ceiba Software on 9/02/22.
 //
 
+import Foundation
 import Domain
 
-public class ParkingCoreDataRepositorty: ParkingShiftRepository {
-    
-    public static let shared = ParkingCoreDataRepositorty()
-    
-    public func saveParkingShift(shift: ParkingShift) { }
+public class ParkingCoreDataRepository: CoreDataManager {
+        
+    public func saveParkingShift(shift: ParkingShift) {
+        
+    }
     
     public func getParkingShift() -> [ParkingShift] {
         return []
-    }
-    
-    public func getCountOfVehicles () -> Int {
-        return 0
     }
     
     public func finishParkingShift(shift: ParkingShift) { }
@@ -30,5 +27,4 @@ public class ParkingCoreDataRepositorty: ParkingShiftRepository {
     public func isThereAVehicleWithActiveParkingShift() -> Bool {
         return false
     }
-    
 }

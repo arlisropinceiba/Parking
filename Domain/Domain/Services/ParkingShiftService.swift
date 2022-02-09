@@ -7,33 +7,29 @@
 
 public class ParkingShiftService {
     
-    let parkingShitRepository: ParkingShiftRepository
+    public let parkingShitRepository: ParkingShiftRepository
     
     public init(parkingShitRepository: ParkingShiftRepository) {
         self.parkingShitRepository = parkingShitRepository
     }
     
     public func saveParkingShift(shift: ParkingShift) throws {
-        if parkingShitRepository.isThereAVehicleWithActiveParkingShift() {
-            parkingShitRepository.saveParkingShift(shift: shift)
+        if try parkingShitRepository.isThereAVehicleWithActiveParkingShift() {
+            try parkingShitRepository.saveParkingShift(shift: shift)
         } else {
             throw DomainErrors.existingPlate()
         }
     }
     
-    public func getParkingShift() -> [ParkingShift] {
-        return parkingShitRepository.getParkingShift()
+    public func getParkingShift() throws -> [ParkingShift] {
+        return try parkingShitRepository.getParkingShift()
     }
     
-    public func getCountOfVehicles () -> Int {
-        return parkingShitRepository.getCountOfVehicles()
+    public func finishParkingShift(shift: ParkingShift) throws {
+        try parkingShitRepository.finishParkingShift(shift: shift)
     }
     
-    public func finishParkingShift(shift: ParkingShift){
-        parkingShitRepository.finishParkingShift(shift: shift)
-    }
-    
-    public func searchVehicle(withPlate plate: String) -> [ParkingShift] {
-        parkingShitRepository.searchVehicle(withPlate: plate)
+    public func searchVehicle(withPlate plate: String) throws -> [ParkingShift] {
+        try parkingShitRepository.searchVehicle(withPlate: plate)
     }
 }
