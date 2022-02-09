@@ -19,4 +19,7 @@ class VehicleParkingShiftTranslator : CoreDataManager {
         return nil
     }
     
+    public func fromCoreToDomainEntity(_ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShift]{
+        return []
+    }
 }

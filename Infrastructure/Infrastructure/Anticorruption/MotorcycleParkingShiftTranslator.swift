@@ -47,8 +47,9 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     public func fromCoreToDomainEntity(_ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [MotorcycleParkingShift] {
         var motorcycleParkingShiftArray: [MotorcycleParkingShift] = []
         for itemCore in parkingCoreEntityArray {
-            guard let itemDomain = try fromCoreToDomainEntity(itemCore) else { return [] }
-            motorcycleParkingShiftArray.append(itemDomain)
+            if let itemDomain = try fromCoreToDomainEntity(itemCore) {
+                motorcycleParkingShiftArray.append(itemDomain)
+            }
         }
         return motorcycleParkingShiftArray
     }

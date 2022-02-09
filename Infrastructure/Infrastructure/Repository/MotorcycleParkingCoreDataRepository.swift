@@ -12,28 +12,14 @@ public class MotorcycleParkingCoreDataRepository: ParkingCoreDataRepository, Mot
     
     public static let shared = MotorcycleParkingCoreDataRepository()
     
-    public override func saveParkingShift(shift: ParkingShift) { }
-    
-    public override func getParkingShift() -> [ParkingShift] {
-        return []
+    init(){
+        super.init(translator: MotorcycleParkingShiftTranslator())
     }
-    
+
     public func getCountOfMotorcycles () throws -> Int {
-        let parkingsSaved = try getFetch(withPredicate: "departureDate == nil")
-        let carParkingsSaved = parkingsSaved.filter({$0.vehicle is MotorcycleCoreEntity})
-        return carParkingsSaved.count
+        let parkingsSaved = try getFetchActiveParkingShift()
+        let motorcycleParkingsSaved = parkingsSaved.filter({$0.vehicle is MotorcycleCoreEntity})
+        return motorcycleParkingsSaved.count
     }
-    
-    public override func finishParkingShift(shift: ParkingShift) { }
-    
-    public func searchVehicle(withPlate plate: String) throws -> [MotorcycleParkingShift] {
-        let parkingShiftSaved = try searchParkingShift(withPlate: plate)
-        let traslator = MotorcycleParkingShiftTranslator()
-        let motorcycleParkingShiftDomainArray: [MotorcycleParkingShift] = try traslator.fromCoreToDomainEntity(parkingShiftSaved)
-        return motorcycleParkingShiftDomainArray
-    }
-    
-    public override func isThereAVehicleWithActiveParkingShift(plate: String) -> Bool {
-        return false
-    }
+
 }

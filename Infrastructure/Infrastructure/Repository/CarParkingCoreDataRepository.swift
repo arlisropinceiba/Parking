@@ -12,26 +12,13 @@ public class CarParkingCoreDataRepository: ParkingCoreDataRepository, CarParking
  
     public static let shared = CarParkingCoreDataRepository()
     
-    public func saveParkingShift(shift: CarParkingShift) throws {
-        try super.saveParkingShift(shift: shift)
-    }
-    
-    public override func getParkingShift() -> [ParkingShift] {
-        return []
+    init(){
+        super.init(translator: CarParkingShiftTranslator())
     }
     
     public func getCountOfCars () throws -> Int {
-        let parkingsSaved = try getFetch(withPredicate: "departureDate == nil")
+        let parkingsSaved = try getFetchActiveParkingShift()
         let carParkingsSaved = parkingsSaved.filter({$0.vehicle is CarCoreEntity})
         return carParkingsSaved.count
-    }
-    
-    public override func finishParkingShift(shift: ParkingShift) { }
-    
-    public func searchVehicle(withPlate plate: String) throws -> [CarParkingShift] {
-        let parkingShiftSaved = try searchParkingShift(withPlate: plate)
-        let traslator = CarParkingShiftTranslator()
-        let carParkingShiftDomainArray: [CarParkingShift] = try traslator.fromCoreToDomainEntity(parkingShiftSaved)
-        return carParkingShiftDomainArray
     }
 }
