@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AB6F027B6F91500D8B8BD /* Clock.swift */; };
 		1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199A27B4662400865244 /* AppDelegate.swift */; };
 		1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199C27B4662400865244 /* SceneDelegate.swift */; };
 		1CEA199F27B4662400865244 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199E27B4662400865244 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C0AB6F027B6F91500D8B8BD /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		1CEA199727B4662400865244 /* Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEA199A27B4662400865244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CEA199C27B4662400865244 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				1CEA199A27B4662400865244 /* AppDelegate.swift */,
 				1CEA199C27B4662400865244 /* SceneDelegate.swift */,
 				1CEA199E27B4662400865244 /* ViewController.swift */,
+				1C0AB6F027B6F91500D8B8BD /* Clock.swift */,
 				1CEA19A027B4662400865244 /* Main.storyboard */,
 				1CEA19A327B4662700865244 /* Assets.xcassets */,
 				1CEA19A527B4662700865244 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				1CEA199F27B4662400865244 /* ViewController.swift in Sources */,
 				1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */,
+				1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */,
 				1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
