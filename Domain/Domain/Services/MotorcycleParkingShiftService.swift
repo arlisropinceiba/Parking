@@ -11,13 +11,13 @@ public class MotorcycleParkingShiftService: ParkingShiftService {
         super.init(parkingShitRepository: motorcycleParkingShiftRepository)
     }
     
-    public func saveThis(shift: ParkingShift) throws {
+    public override func saveThis(shift: ParkingShift) throws {
         try areThereParkingSpaces()
-        try saveParkingShift(shift: shift)
+        try super.saveThis(shift: shift)
     }
     
     private func areThereParkingSpaces() throws {
-        let minimumNumberOfMotorcyclesAllowed = 20
+        let minimumNumberOfMotorcyclesAllowed = 10
         let motorcyclesCount  = try (parkingShitRepository as? MotorcycleParkingShiftRepository)?.getCountOfMotorcycles() ?? minimumNumberOfMotorcyclesAllowed
         guard motorcyclesCount < minimumNumberOfMotorcyclesAllowed else {
             throw DomainErrors.motorcycleLimitReached()

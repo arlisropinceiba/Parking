@@ -104,10 +104,10 @@
 			children = (
 				1C2CF20327ADCAD2002C37C4 /* Infrastructure.h */,
 				1C2CF22727ADCF00002C37C4 /* CoreDataManager.swift */,
+				1C2CF20F27ADCB36002C37C4 /* ParkingCoreData.xcdatamodeld */,
 				1C4E68C127B167FE00C19DF8 /* Anticorruption */,
 				1C2CF21227ADCE30002C37C4 /* Entity */,
 				1C4E68DE27B16D3300C19DF8 /* Exception */,
-				1C2CF20F27ADCB36002C37C4 /* ParkingCoreData.xcdatamodeld */,
 				1C4E68C027B1673300C19DF8 /* Repository */,
 			);
 			path = Infrastructure;

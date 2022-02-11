@@ -13,7 +13,7 @@ public class ParkingShiftService {
         self.parkingShitRepository = parkingShitRepository
     }
     
-    public func saveParkingShift(shift: ParkingShift) throws {
+    public func saveThis(shift: ParkingShift) throws {
         if try parkingShitRepository.isThereAVehicleWithActiveParkingShift(plate: shift.getVehicle().getPlate()) {
             try parkingShitRepository.saveParkingShift(shift: shift)
         } else {

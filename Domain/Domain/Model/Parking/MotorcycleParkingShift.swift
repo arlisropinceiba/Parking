@@ -8,11 +8,11 @@
 public class MotorcycleParkingShift: ParkingShift{
     
     public init(admissionDate: Date, motorcycle: Motorcycle) throws {
-        super.init(admissionDate: admissionDate, vehicle: motorcycle)
+        try super.init(admissionDate: admissionDate, vehicle: motorcycle)
     }
-    
-    public init(admissionDate: Date, departureDate: Date, motorcycle: Motorcycle) throws {
-        super.init(admissionDate: admissionDate, departureDate: departureDate, vehicle: motorcycle)
+
+    public init(admissionDate: Date, departureDate: Date?, motorcycle: Motorcycle) throws {
+        try super.init(admissionDate: admissionDate, departureDate: departureDate, vehicle: motorcycle)
     }
     
     public func getMotorcycle() -> Motorcycle? {

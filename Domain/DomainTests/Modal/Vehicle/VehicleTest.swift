@@ -18,6 +18,14 @@ class VehicleTest: XCTestCase {
         XCTAssertNoThrow(try Vehicle(plate: plate))
     }
     
+    func test_init_emptyPlate_error() {
+        //Arrange
+        let plate = ""
+        //Act
+        //Assert
+        XCTAssertThrowsError(try Vehicle(plate: plate))
+    }
+    
     func test_init_plateWithOnlyNumbers_error() {
         //Arrange
         let plate = "124234"

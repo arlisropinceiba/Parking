@@ -11,9 +11,9 @@ public class CarParkingShiftService: ParkingShiftService {
         super.init(parkingShitRepository: carParkingShiftRepository)
     }
     
-    public func saveThis(shift: ParkingShift) throws {
+    public override func saveThis(shift: ParkingShift) throws {
         try areThereParkingSpaces()
-        try saveParkingShift(shift: shift)
+        try super.saveThis(shift: shift)
     }
     
     private func areThereParkingSpaces() throws {
