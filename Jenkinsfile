@@ -23,7 +23,7 @@ pipeline {
     stage('Unit Tests') {
         steps{
             echo "------------>Unit Tests<------------"
-            sh "xcodebuild test -scheme Domain -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=15.2'"
+            sh "xcodebuild test -scheme Domain -destination 'platform=iOS Simulator,name=iPhone X,OS=13.3'"
             sh 'run-sonar-swift.sh'
         }
     }
