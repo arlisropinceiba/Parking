@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AB6F027B6F91500D8B8BD /* Clock.swift */; };
+		1C1732C527BBF34B00B3350F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732C427BBF34B00B3350F /* Date.swift */; };
 		1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E027BAF43C0033D15C /* HomeWireFrame.swift */; };
 		1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E227BAF4690033D15C /* HomePresenter.swift */; };
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		1C0AB6F027B6F91500D8B8BD /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		1C1732C427BBF34B00B3350F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1C6EE0E027BAF43C0033D15C /* HomeWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireFrame.swift; sourceTree = "<group>"; };
 		1C6EE0E227BAF4690033D15C /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1732C327BBF33F00B3350F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1C1732C427BBF34B00B3350F /* Date.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1C6EE0D527BAAEAF0033D15C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		1CEA199927B4662400865244 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1C1732C327BBF33F00B3350F /* Extension */,
 				1C6EE0D527BAAEAF0033D15C /* Home */,
 				1CEA199A27B4662400865244 /* AppDelegate.swift */,
 				1CEA199C27B4662400865244 /* SceneDelegate.swift */,
@@ -288,6 +299,7 @@
 				1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */,
 				1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */,
 				1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */,
+				1C1732C527BBF34B00B3350F /* Date.swift in Sources */,
 				1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,7 +487,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,7 +516,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -11,6 +11,7 @@ class HomeView: UIViewController {
     
     // MARK: Properties
     var presenter: HomePresenterProtocol?
+    var date: Date = Date()
     
     var clockLabel: UILabel {
         let label = UILabel()
@@ -33,8 +34,16 @@ class HomeView: UIViewController {
         return view
     }
     
-    var containerView: UIView {
-        return UIView()
+//    var containerView: UIView {
+//        let view = UIView()
+//        view.setTranslatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }
+    
+    var increaseHourButton: UIButton {
+        let button = UIButton()
+        button.setTitle("+1H", for: .normal)
+        return button
     }
     
     // MARK: Lifecycle
@@ -42,6 +51,23 @@ class HomeView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let clockView = containerView
+//        view.addSubview(clockView)
+//        
+//        let viewsDictionary = ["view": clockView]
+//        
+//        clockView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "H:|-[view]-|", options: [], metrics: nil, views: viewsDictionary))
+//        clockView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|-[view]-|", options: [], metrics: nil, views: viewsDictionary))
+        
+//        clockView.addSubview(clockLabel)
+//        clockView.addSubview(increaseHourButton)
+//        
+//        let clockViewsDictionary = ["label": clockLabel, "button": increaseHourButton]
+//        clockView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]-15-[button(40)]|", options: [], metrics: nil, views: clockViewsDictionary))
+//        clockView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: clockViewsDictionary))
+//        clockView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: "V:|[button(40)]|", options: [], metrics: nil, views: clockViewsDictionary))
+
         
     }
     
