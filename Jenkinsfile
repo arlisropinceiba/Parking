@@ -25,19 +25,19 @@ pipeline {
       steps{
         echo "------------>Unit Tests<------------"
         sh 'xcodebuild -scheme Domain -configuration "Debug" -destination platform="iOS Simulator",name="iPhone 12",OS=15.2'
-        sh 'run-sonar-swift.sh -h'
+        //sh 'run-sonar-swift.sh -h'
       }
     }
 
 
-    stage('Static Code Analysis') {
-      steps{
-        echo '------------>Análisis de código estático<------------'
-        sh 'swiftlint lint > swiftlint.txt || true'
-        withSonarQubeEnv('Sonar') {
-            sh "${tool name: 'SonarScanner-Mac', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-        }
-      }
-    }
+    //stage('Static Code Analysis') {
+      //steps{
+        //echo '------------>Análisis de código estático<------------'
+        //sh 'swiftlint lint > swiftlint.txt || true'
+        //withSonarQubeEnv('Sonar') {
+            //sh "${tool name: 'SonarScanner-Mac', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
+        //}
+      //}
+    //}
   }
 }
