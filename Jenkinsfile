@@ -6,8 +6,8 @@ pipeline {
 
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
-    	buildDiscarder(logRotator(numToKeepStr: '3'))
- 	disableConcurrentBuilds()
+    buildDiscarder(logRotator(numToKeepStr: '3'))
+ 	  disableConcurrentBuilds()
   }
 
   //Aquí comienzan los “items” del Pipeline
@@ -26,8 +26,8 @@ pipeline {
         echo "------------>Unit Tests<------------"
         sh 'xcodebuild test -scheme Domain -configuration "Debug"  -destination "platform=iOS Simulator,name=iPhone 8,OS=13.3"'
         sh 'run-sonar-swift.sh -h'
-  }
-}
+      }
+    }
 
 
     stage('Static Code Analysis') {
@@ -39,6 +39,5 @@ pipeline {
         }
       }
     }
-
-
+  }
 }
