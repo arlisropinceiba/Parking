@@ -10,17 +10,18 @@ import Domain
 
 class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     
-    public func fromDomainToCoreEntity(_ parkingDomain: MotorcycleParkingShift) throws -> NSManagedObject {
+    public override func fromDomainToCoreEntity(_ parkingDomain: ParkingShift) throws -> NSManagedObject {
         let context = persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingCoreEntity", into: context) as! ParkingShiftCoreEntity
         let motorcycle = NSEntityDescription.insertNewObject(forEntityName: "MotorcycleCoreEntity", into: context) as! MotorcycleCoreEntity
     
-        motorcycle.plate = parkingDomain.getMotorcycle()?.getPlate()
-        motorcycle.cylinderCapacity = Int16(parkingDomain.getMotorcycle()?.getCylinderCapacity() ?? 0)
-        parking.id = parkingDomain.getId()
-        parking.admissionDate = parkingDomain.getAdmissionDate()
+        guard let motorcycleParkingDomain = parkingDomain as? MotorcycleParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
+        motorcycle.plate = motorcycleParkingDomain.getMotorcycle()?.getPlate()
+        motorcycle.cylinderCapacity = Int32(motorcycleParkingDomain.getMotorcycle()?.getCylinderCapacity() ?? 0)
+        parking.id = motorcycleParkingDomain.getId()
+        parking.admissionDate = motorcycleParkingDomain.getAdmissionDate()
         do {
-            parking.departureDate = try parkingDomain.getDepartureDate()
+            parking.departureDate = try motorcycleParkingDomain.getDepartureDate()
         } catch {
             parking.departureDate = nil
         }
@@ -29,12 +30,13 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     }
     
     public override func fromCoreToDomainEntity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> MotorcycleParkingShift? {
-        guard let plate = parkingCoreEntity.vehicle?.plate,
+        guard let motorcycleCoreEntity = parkingCoreEntity.vehicle as? MotorcycleCoreEntity else { throw InfrastructureErrors.ErrorFetchParkings()}
+        guard let plate = motorcycleCoreEntity.plate,
                 let admissionDate = parkingCoreEntity.admissionDate
         else {
             return nil
         }
-        let capacity = Int((parkingCoreEntity.vehicle as? MotorcycleCoreEntity)?.cylinderCapacity ?? 0)
+        let capacity = Int(motorcycleCoreEntity.cylinderCapacity)
         
         let motorcycle = try Motorcycle(plate: plate, cylinderCapacity: capacity)
         if let departureDate = parkingCoreEntity.departureDate {

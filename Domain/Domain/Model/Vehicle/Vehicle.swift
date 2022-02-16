@@ -22,7 +22,7 @@ public class Vehicle {
         if isThePlateValid(plate) {
             self.plate = plate
         } else {
-            throw DomainErrors.invalidPlate()
+            throw DomainErrors.InvalidPlate()
         }
     }
     

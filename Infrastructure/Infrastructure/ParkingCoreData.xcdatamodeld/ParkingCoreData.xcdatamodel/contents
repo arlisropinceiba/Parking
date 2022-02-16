@@ -2,29 +2,23 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CarCoreEntity" representedClassName="CarCoreEntity" parentEntity="VehicleCoreEntity" syncable="YES"/>
     <entity name="MotorcycleCoreEntity" representedClassName="MotorcycleCoreEntity" parentEntity="VehicleCoreEntity" syncable="YES">
-        <attribute name="cylinderCapacity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cylinderCapacity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="ParkingShiftCoreEntity" representedClassName="ParkingShiftCoreEntity" syncable="YES">
         <attribute name="admissionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="departureDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentCoreEntity" inverseName="parkingShift" inverseEntity="PaymentCoreEntity"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
         <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VehicleCoreEntity" inverseName="parkingShift" inverseEntity="VehicleCoreEntity"/>
-    </entity>
-    <entity name="PaymentCoreEntity" representedClassName="PaymentCoreEntity" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="parkingShift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ParkingShiftCoreEntity" inverseName="payment" inverseEntity="ParkingShiftCoreEntity"/>
     </entity>
     <entity name="VehicleCoreEntity" representedClassName="VehicleCoreEntity" isAbstract="YES" syncable="YES">
         <attribute name="plate" optional="YES" attributeType="String"/>
         <relationship name="parkingShift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ParkingShiftCoreEntity" inverseName="vehicle" inverseEntity="ParkingShiftCoreEntity"/>
     </entity>
     <elements>
-        <element name="CarCoreEntity" positionX="-54" positionY="9" width="128" height="29"/>
-        <element name="MotorcycleCoreEntity" positionX="231.3588256835938" positionY="-7.86529541015625" width="133.5307006835938" height="44"/>
         <element name="ParkingShiftCoreEntity" positionX="117" positionY="27" width="128" height="104"/>
-        <element name="PaymentCoreEntity" positionX="126" positionY="45" width="128" height="74"/>
-        <element name="VehicleCoreEntity" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="VehicleCoreEntity" positionX="126" positionY="81" width="128" height="59"/>
+        <element name="CarCoreEntity" positionX="144" positionY="90" width="128" height="29"/>
+        <element name="MotorcycleCoreEntity" positionX="162" positionY="99" width="128" height="44"/>
     </elements>
 </model>

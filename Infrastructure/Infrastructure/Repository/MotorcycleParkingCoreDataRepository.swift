@@ -12,7 +12,7 @@ public class MotorcycleParkingCoreDataRepository: ParkingCoreDataRepository, Mot
     
     public static let shared = MotorcycleParkingCoreDataRepository()
     
-    init(){
+    public init(){
         super.init(translator: MotorcycleParkingShiftTranslator())
     }
 

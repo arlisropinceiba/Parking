@@ -2,7 +2,7 @@
 //  MotorcycleCoreEntity+CoreDataProperties.swift
 //  Infrastructure
 //
-//  Created by Arlin Lisette Ropero Infante - Ceiba Software on 7/02/22.
+//  Created by Arlin Lisette Ropero Infante - Ceiba Software on 15/02/22.
 //
 //
 
@@ -16,6 +16,6 @@ extension MotorcycleCoreEntity {
         return NSFetchRequest<MotorcycleCoreEntity>(entityName: "MotorcycleCoreEntity")
     }
 
-    @NSManaged public var cylinderCapacity: Int16
+    @NSManaged public var cylinderCapacity: Int32
 
 }

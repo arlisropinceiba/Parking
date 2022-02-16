@@ -14,10 +14,10 @@ public class CoreDataManager {
     let xcdatamodeld: String = "ParkingCoreData"
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let messageKitBundle = Bundle(identifier: self.bundleIdentifier)
-        let modelURL = messageKitBundle!.url(forResource: self.xcdatamodeld, withExtension: "xcdatamodeld")!
+        let messageKitBundle = Bundle(identifier: bundleIdentifier)
+        let modelURL = messageKitBundle!.url(forResource: xcdatamodeld, withExtension: "momd")!
         let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
-        let container = NSPersistentContainer(name: self.xcdatamodeld, managedObjectModel: managedObjectModel!)
+        let container = NSPersistentContainer(name: xcdatamodeld, managedObjectModel: managedObjectModel!)
         container.loadPersistentStores { (storeDescription, error) in
             if let err = error{
                 fatalError("Loading of store failed:\(err)")
@@ -26,20 +26,20 @@ public class CoreDataManager {
         return container
     }()
     
-    public func getFetch(withPredicate predicate: String) throws -> [ParkingShiftCoreEntity]  { // example predicate = "departureDate != nil"
+    func getFetch(withPredicate predicate: String) throws -> [ParkingShiftCoreEntity]  {
         let context = persistentContainer.viewContext
 
-        let fetchRequest = NSFetchRequest<ParkingShiftCoreEntity>(entityName: "ParkingCoreEntity")
+        let fetchRequest = NSFetchRequest<ParkingShiftCoreEntity>(entityName: "ParkingShiftCoreEntity")
         fetchRequest.predicate = NSPredicate(format: predicate)
 
         do{
             let parkings = try context.fetch(fetchRequest)
             for (index, parking) in parkings.enumerated() {
-                print("Parking \(index) - Admission date: \(parking.admissionDate?.description ?? "N/A") - Departure date:  \(parking.departureDate?.description ?? "N/A") - Plate:\(parking.vehicle?.plate ?? "N/A")")
+                print("Parking \(index) - Admission date: \(parking.admissionDate?.description ?? "N/A") - Departure date:  \(parking.departureDate?.description ?? "N/A") - Plate car:\(parking.vehicle?.plate ?? "N/A")")
             }
             return parkings
         } catch {
-            throw InfrastructureErrors.errorFetchParkings()
+            throw InfrastructureErrors.ErrorFetchParkings()
         }
     }
 }

@@ -12,7 +12,7 @@ public class CarParkingCoreDataRepository: ParkingCoreDataRepository, CarParking
  
     public static let shared = CarParkingCoreDataRepository()
     
-    init(){
+    public init(){
         super.init(translator: CarParkingShiftTranslator())
     }
     

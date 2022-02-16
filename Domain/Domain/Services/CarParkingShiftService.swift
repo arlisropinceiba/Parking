@@ -11,16 +11,16 @@ public class CarParkingShiftService: ParkingShiftService {
         super.init(parkingShitRepository: carParkingShiftRepository)
     }
     
-    public override func saveThis(shift: ParkingShift) throws {
+    public override func saveThis(shift: ParkingShift) async throws {
         try areThereParkingSpaces()
-        try super.saveThis(shift: shift)
+        try await super.saveThis(shift: shift)
     }
     
     private func areThereParkingSpaces() throws {
         let minimumNumberOfCarsAllowed = 20
         let carsCount  = try (parkingShitRepository as? CarParkingShiftRepository)?.getCountOfCars() ?? minimumNumberOfCarsAllowed
         guard carsCount < minimumNumberOfCarsAllowed else {
-            throw DomainErrors.carLimitReached()
+            throw DomainErrors.CarLimitReached()
         }
     }
 }

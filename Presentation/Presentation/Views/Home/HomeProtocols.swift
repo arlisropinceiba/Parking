@@ -11,6 +11,10 @@ protocol HomeViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: HomePresenterProtocol? { get set }
     
+    func setTimeLabelText(text: String)
+    func setCounterLabelText(text: String)
+    func refreshCollection(with data: [VehicleVisible])
+    func showAlert(message: String)
 }
 
 protocol HomeWireFrameProtocol: AnyObject {
@@ -24,13 +28,20 @@ protocol HomePresenterProtocol: AnyObject {
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeWireFrameProtocol? { get set }
     
+    func loadData(_ date: String, withThisType type: VehicleType)
+    func refreshData(in date: String, with data: [VehicleVisible])
+    func createShift(vehicle: VehicleVisible)
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {
-// INTERACTOR -> PRESENTER
+    // INTERACTOR -> PRESENTER
+    func refreshData(with data: [VehicleVisible])
 }
 
 protocol HomeInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: HomeInteractorOutputProtocol? { get set }
+    
+    func createCarPakingShift(car: CarVisible) async throws
+    func loadData(withThisType type: VehicleType) throws 
 }

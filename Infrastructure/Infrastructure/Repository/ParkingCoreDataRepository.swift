@@ -9,23 +9,27 @@ import Foundation
 import Domain
 
 public class ParkingCoreDataRepository: ParkingShiftRepository {
-     
-    var coreDataManager: CoreDataManager = CoreDataManager()
+    
+    var coreDataManager = CoreDataManager()
     var translator: VehicleParkingShiftTranslator = VehicleParkingShiftTranslator()
     
     init (translator: VehicleParkingShiftTranslator) {
         self.translator = translator
     }
     
-    public func saveParkingShift(shift: ParkingShift) throws {
+    public func saveParkingShift(shift: ParkingShift) async throws {
         let context = coreDataManager.persistentContainer.viewContext
-        _ = try translator.fromDomainToCoreEntity(shift)
-    
-        do {
-            try context.save()
-            print("Parking saved succesfuly")
-        } catch _ {
-            throw InfrastructureErrors.errorSavingParking()
+        context.automaticallyMergesChangesFromParent = true
+        let parkingShiftCore = try translator.fromDomainToCoreEntity(shift)
+        print(parkingShiftCore)
+        try await context.perform {
+            do {
+                try context.save()
+                print("Parking saved succesfuly")
+            } catch let error {
+                print("\nError saving context: \(error.localizedDescription)\n")
+                throw InfrastructureErrors.ErrorSavingParking()
+            }
         }
     }
     
@@ -46,23 +50,21 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
     }
 
     
-    public func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool { // Corregir
-        let parkingShiftsSaved = try getFetchActiveParkingShifts()
-        let carParkingSaved = parkingShiftsSaved.filter({$0.vehicle is CarCoreEntity})
-        if let _ = carParkingSaved.first(where: {$0.vehicle?.plate == plate}) {
+    public func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool {
+        if (try coreDataManager.getFetch(withPredicate: "departureDate == nil && plate == \(plate)")) != [] {
             return true
         } else {
             return false
         }
     }
     
-    private func getFetchActiveParkingShifts() throws -> [ParkingShiftCoreEntity] {
+    public func getFetchActiveParkingShifts() throws -> [ParkingShiftCoreEntity] {
         let parkingShiftsSaved = try coreDataManager.getFetch(withPredicate: "departureDate == nil")
         return parkingShiftsSaved
     }
     
     private func searchParkingShift(withPlate plate: String) throws -> [ParkingShiftCoreEntity] {
-        let parkingShiftsSaved = try getFetchActiveParkingShifts()
+        let parkingShiftsSaved = try coreDataManager.getFetch(withPredicate: "plate != nil")
         let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.vehicle?.plate == plate})
         return parkingSavedWithSamePlate
     }

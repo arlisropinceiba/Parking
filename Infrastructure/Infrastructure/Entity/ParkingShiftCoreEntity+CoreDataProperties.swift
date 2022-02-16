@@ -2,7 +2,7 @@
 //  ParkingShiftCoreEntity+CoreDataProperties.swift
 //  Infrastructure
 //
-//  Created by Arlin Lisette Ropero Infante - Ceiba Software on 7/02/22.
+//  Created by Arlin Lisette Ropero Infante - Ceiba Software on 15/02/22.
 //
 //
 
@@ -19,8 +19,8 @@ extension ParkingShiftCoreEntity {
     @NSManaged public var admissionDate: Date?
     @NSManaged public var departureDate: Date?
     @NSManaged public var id: UUID?
+    @NSManaged public var value: String?
     @NSManaged public var vehicle: VehicleCoreEntity?
-    @NSManaged public var payment: PaymentCoreEntity?
 
 }
 
