@@ -12,6 +12,8 @@ import UIKit
 protocol LogHistoryViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: LogHistoryPresenterProtocol? { get set }
+    func refreshTable(with data: [VehicleVisible])
+    func showAlert(message: String)
 }
 
 protocol LogHistoryWireFrameProtocol: AnyObject {
@@ -26,13 +28,16 @@ protocol LogHistoryPresenterProtocol: AnyObject {
     var wireFrame: LogHistoryWireFrameProtocol? { get set }
     
     func viewDidLoad()
+    func loadData(withThisType type: VehicleType)
 }
 
 protocol LogHistoryInteractorOutputProtocol: AnyObject {
 // INTERACTOR -> PRESENTER
+    func refreshData(with data: [VehicleVisible])
 }
 
 protocol LogHistoryInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: LogHistoryInteractorOutputProtocol? { get set }
+    func loadData(withThisType type: VehicleType) throws
 }

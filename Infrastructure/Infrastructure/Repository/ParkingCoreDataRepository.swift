@@ -45,6 +45,12 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
         return parkingShiftDomainArray
     }
     
+    public func getFinalizedParkingShifts() throws -> [ParkingShift] {
+        let parkingShiftsSaved = try coreDataManager.getFetchHistoricalParking()
+        let parkingShiftDomainArray: [ParkingShift] = try translator.fromCoreToDomainEntity(parkingShiftsSaved)
+        return parkingShiftDomainArray
+    }
+    
     public func searchVehicle(withPlate plate: String) throws -> [ParkingShift] {
         let parkingShiftSaved = try searchParkingShift(withPlate: plate)
         let carParkingShiftDomainArray: [ParkingShift] = try translator.fromCoreToDomainEntity(parkingShiftSaved)

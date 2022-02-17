@@ -12,10 +12,8 @@ class HomeInteractor: HomeInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: HomeInteractorOutputProtocol?
-    let carRepository = CarParkingCoreDataRepository()
-    let motorcycleRepository = MotorcycleParkingCoreDataRepository()
-    
-    var parkingsProvisional: [ParkingShift] = []
+    let carRepository = CarParkingCoreDataRepository.shared
+    let motorcycleRepository = MotorcycleParkingCoreDataRepository.shared
 
     func createCarPakingShift(car: CarVisible) async throws {
         try await createParkingShift(vehicle: car, translator: CarVisibleTranslator(), service: CarParkingShiftService(carParkingShiftRepository: carRepository), withThisType: .car)
@@ -26,12 +24,10 @@ class HomeInteractor: HomeInteractorInputProtocol {
     }
     
     func createParkingShift(vehicle: VehicleVisible, translator: VehicleVisibleTranslator, service: ParkingShiftService, withThisType type: VehicleType) async throws{
-        
         guard let parkingShift: ParkingShift = try translator.fromVisibleToDomainEntity(vehicle) else {
             throw PresentationErrors.ErrorSavingParking()}
         
         try await service.saveThis(shift: parkingShift)
-        parkingsProvisional.append(parkingShift)
         try loadData(withThisType: type)
     }
     
@@ -47,19 +43,34 @@ class HomeInteractor: HomeInteractorInputProtocol {
     func fetchCarsData() throws -> [VehicleVisible] {
         let translator = CarVisibleTranslator()
         let service = CarParkingShiftService(carParkingShiftRepository: carRepository)
-        let parkingShifts = try service.getParkingShift() // parkingsProvisional
+        let parkingShifts = try service.getParkingShift()
         return try translator.fromDomainToVisibleEntity(parkingShifts)
     }
     
     func fetchMotorcyclesData() throws -> [VehicleVisible] {
         let translator = MotorcycleVisibleTranslator()
         let service = MotorcycleParkingShiftService(motorcycleParkingShiftRepository: motorcycleRepository)
-        let parkingShifts = try service.getParkingShift() // parkingsProvisional
+        let parkingShifts = try service.getParkingShift()
         return try translator.fromDomainToVisibleEntity(parkingShifts)
     }
     
-    func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
-
+    func finishCarPakingShift(car: CarVisible) async throws -> VehicleVisible {
+        return try await finishShift(vehicle: car, translator: CarVisibleTranslator(), service: CarParkingShiftService(carParkingShiftRepository: carRepository), withThisType: .car)
     }
     
+    func finishMotorcyclePakingShift(motorcycle: MotorcycleVisible) async throws -> VehicleVisible {
+        return try await finishShift(vehicle: motorcycle, translator: MotorcycleVisibleTranslator(), service: MotorcycleParkingShiftService(motorcycleParkingShiftRepository: motorcycleRepository), withThisType: .motorcycle)
+    }
+    
+    func finishShift(vehicle: VehicleVisible, translator: VehicleVisibleTranslator, service: ParkingShiftService, withThisType type: VehicleType) async throws -> VehicleVisible {
+        guard let parkingShiftPayment: ParkingShiftPayment = try translator.fromVisibleToDomainEntity(vehicle) else {
+            throw PresentationErrors.ErrorSavingParking()}
+        
+        try await service.finishParkingShift(shift: parkingShiftPayment)
+        try loadData(withThisType: type)
+        
+        guard let vehicleVisible: VehicleVisible = try translator.fromDomainToVisibleEntity(parkingShiftPayment) else {
+            return vehicle}
+        return vehicleVisible
+    }
 }

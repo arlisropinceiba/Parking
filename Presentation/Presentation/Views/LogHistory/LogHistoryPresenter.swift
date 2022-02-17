@@ -15,6 +15,17 @@ class LogHistoryPresenter  {
     var interactor: LogHistoryInteractorInputProtocol?
     var wireFrame: LogHistoryWireFrameProtocol?
     
+    func refreshData(with data: [VehicleVisible]){
+        view?.refreshTable(with: data)
+    }
+    
+    func loadData(withThisType type: VehicleType) {
+        do {
+            try interactor?.loadData(withThisType: type)
+        } catch let error {
+            view?.showAlert(message: error.messageDescription())
+        }
+    }
 }
 
 extension LogHistoryPresenter: LogHistoryPresenterProtocol {

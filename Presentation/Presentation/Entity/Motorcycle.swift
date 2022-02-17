@@ -16,6 +16,11 @@ class MotorcycleVisible: VehicleVisible {
         super.init(id: id, plate: plate, image: UIImage(named: "motorcycle"), admissionDate: admissionDate, departureDate: nil, valor: "")
     }
     
+    public init(id: UUID, plate: String, admissionDate: Date, cylinderCapacity: Int, departureDate: Date?, valor: String) {
+        self.cylinderCapacity = cylinderCapacity
+        super.init(id: id, plate: plate, image: UIImage(named: "motorcycle"), admissionDate: admissionDate, departureDate: departureDate, valor: valor)
+    }
+    
     convenience public init(id: UUID, plate: String, admissionDate: Date){
         self.init(id: id, plate: plate, admissionDate: admissionDate, cylinderCapacity: 0)
     }

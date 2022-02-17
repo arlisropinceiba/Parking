@@ -25,6 +25,10 @@ public class ParkingShiftService {
         return try parkingShitRepository.getParkingShift()
     }
     
+    public func getFinalizedParkingShifts() throws -> [ParkingShift]{
+        return try parkingShitRepository.getFinalizedParkingShifts()
+    }
+    
     public func finishParkingShift(shift: ParkingShiftPayment) async throws {
         try await parkingShitRepository.finishParkingShift(shift: shift)
     }

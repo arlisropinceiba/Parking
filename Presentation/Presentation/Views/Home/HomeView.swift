@@ -46,7 +46,9 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         let vehicle = vehicles[indexPath.row]
         let modal = FinishShiftModel(nibName: "FinishShiftModel", bundle: nil)
         modal.vehicle = vehicle
-        modal.completion = {}
+        modal.completion = { [self] in
+            presenter?.finishShift(vehicle: vehicle, withThisType: currentType)
+        }
         self.present(modal, animated: true)
     }
     
@@ -67,7 +69,6 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // MARK: Refresh
-    
     func refreshCollection(with data: [VehicleVisible]){
         vehicles = data
         collection.reloadData()
@@ -75,7 +76,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // MARK: Set
     func setTimeLabelText(text: String) {
-        timeLabel.text = "Home\n" + text
+        timeLabel.text = text
     }
     
     func setCounterLabelText(text: String) {
@@ -83,7 +84,6 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // MARK: Alert
-    
     func showAlert(message: String){
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
             let alert = UIAlertController(title: "¡Lo sentimos!", message: message, preferredStyle:  UIAlertController.Style.alert)
@@ -115,6 +115,16 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
         presenter?.loadData(date.inHourDateFormat(), withThisType: currentType)
+    }
+    
+    // MARK: PaymentModal
+    
+    func showPayment(vehicle: VehicleVisible){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+            let modal = PaymentModal(nibName: "PaymentModal", bundle: nil)
+            modal.vehicle = vehicle
+            self.present(modal, animated: true)
+        }
     }
 }
 

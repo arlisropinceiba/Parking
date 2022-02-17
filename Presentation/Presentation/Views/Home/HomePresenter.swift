@@ -28,6 +28,23 @@ class HomePresenter  {
         }
     }
     
+    func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
+        Task {
+            do {
+                switch type {
+                case .car:
+                    let newVehicle = try await interactor?.finishCarPakingShift(car: vehicle as! CarVisible)
+                    view?.showPayment(vehicle: newVehicle!)
+                case .motorcycle:
+                    let newVehicle = try await interactor?.finishMotorcyclePakingShift(motorcycle: vehicle as! MotorcycleVisible)
+                    view?.showPayment(vehicle: newVehicle!)
+                }
+            } catch let error {
+                view?.showAlert(message: error.messageDescription())
+            }
+        }
+    }
+    
     func loadData(_ date: String, withThisType type: VehicleType) {
         view?.setTimeLabelText(text: date)
         do {

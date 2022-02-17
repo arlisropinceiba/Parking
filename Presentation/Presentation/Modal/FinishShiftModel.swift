@@ -28,6 +28,7 @@ class FinishShiftModel: UIViewController {
     }
     
     @IBAction func completionProcess(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
         completion()
     }
         

@@ -24,6 +24,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         configureListButton()
         table.register(UINib(nibName: "LogItemTableViewCell", bundle: Bundle.main),forCellReuseIdentifier: "LogItemTableViewCell")
+        presenter?.loadData(withThisType: currentType)
     }
     
     @IBAction func comeBack(_ sender: UIButton) {
@@ -44,6 +45,13 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
+    // MARK: Refresh
+    
+    func refreshTable(with data: [VehicleVisible]){
+        vehicles = data
+        table.reloadData()
+    }
+    
     // MARK: Vehicle menu
     
     func configureListButton() {
@@ -51,8 +59,18 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     }
     
     func actionItemVehicleType(with vehicleType: VehicleType){
+        vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
-//        presenter?.loadData(withThisType: currentType)
+        presenter?.loadData(withThisType: currentType)
+    }
+    
+    // MARK: Alert
+    func showAlert(message: String){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+            let alert = UIAlertController(title: "¡Lo sentimos!", message: message, preferredStyle:  UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 

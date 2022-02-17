@@ -27,7 +27,7 @@ public class CoreDataManager {
     }()
     
     func getFetchCurrentParking() throws -> [ParkingShiftCoreEntity] {
-        return try getFetch(withPredicate: "")
+        return try getFetch(withPredicate: "departureDate == nil")
     }
     
     func getFetchHistoricalParking() throws -> [ParkingShiftCoreEntity] {

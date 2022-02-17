@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AB6F027B6F91500D8B8BD /* Clock.swift */; };
+		1C0C69D427BE6FC200CF288E /* PaymentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0C69D227BE6FC200CF288E /* PaymentModal.swift */; };
+		1C0C69D527BE6FC200CF288E /* PaymentModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0C69D327BE6FC200CF288E /* PaymentModal.xib */; };
 		1C1732C527BBF34B00B3350F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732C427BBF34B00B3350F /* Date.swift */; };
 		1C1732C727BC447D00B3350F /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732C627BC447D00B3350F /* BaseController.swift */; };
 		1C1732CA27BC4C9D00B3350F /* VehicleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732C827BC4C9D00B3350F /* VehicleCollectionViewCell.swift */; };
@@ -88,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		1C0AB6F027B6F91500D8B8BD /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		1C0C69D227BE6FC200CF288E /* PaymentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModal.swift; sourceTree = "<group>"; };
+		1C0C69D327BE6FC200CF288E /* PaymentModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentModal.xib; sourceTree = "<group>"; };
 		1C1732C427BBF34B00B3350F /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1C1732C627BC447D00B3350F /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		1C1732C827BC4C9D00B3350F /* VehicleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 				1C2E212A27BD805600BCBBFE /* AddVehicleModal.xib */,
 				1C2E214127BDD6E500BCBBFE /* FinishShiftModel.swift */,
 				1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */,
+				1C0C69D227BE6FC200CF288E /* PaymentModal.swift */,
+				1C0C69D327BE6FC200CF288E /* PaymentModal.xib */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				1C2E212C27BD805600BCBBFE /* AddVehicleModal.xib in Resources */,
 				1C1732CB27BC4C9D00B3350F /* VehicleCollectionViewCell.xib in Resources */,
 				1C2E214027BDC8AC00BCBBFE /* LogItemTableViewCell.xib in Resources */,
+				1C0C69D527BE6FC200CF288E /* PaymentModal.xib in Resources */,
 				1CEA19A427B4662700865244 /* Assets.xcassets in Resources */,
 				1CEA19A227B4662400865244 /* Main.storyboard in Resources */,
 				1C2E214427BDD6E500BCBBFE /* FinishShiftModel.xib in Resources */,
@@ -504,6 +511,7 @@
 				1C2E213927BDAB1400BCBBFE /* LogHistoryView.swift in Sources */,
 				1C2E213827BDAB1400BCBBFE /* LogHistoryInteractor.swift in Sources */,
 				1C1732E627BC831C00B3350F /* Car.swift in Sources */,
+				1C0C69D427BE6FC200CF288E /* PaymentModal.swift in Sources */,
 				1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */,
 				1C2E213A27BDAB1400BCBBFE /* LogHistoryWireFrame.swift in Sources */,
 				1C1732CA27BC4C9D00B3350F /* VehicleCollectionViewCell.swift in Sources */,

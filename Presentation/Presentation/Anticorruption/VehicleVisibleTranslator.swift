@@ -17,6 +17,10 @@ class VehicleVisibleTranslator {
         return nil
     }
     
+    func fromDomainToVisibleEntity(_ parkingShiftPayment: ParkingShiftPayment) throws -> VehicleVisible? {
+        return nil
+    }
+    
     func fromDomainToVisibleEntity(_ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {
         return nil
     }

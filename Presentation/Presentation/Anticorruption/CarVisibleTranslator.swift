@@ -13,8 +13,12 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
         guard let carVisible = vehicleVisible as? CarVisible else {
             return nil
         }
-        let car = try Car(plate: carVisible.getPlate())
-        let shift = try CarParkingShift(admissionDate: vehicleVisible.getAdmissionDate(), departureDate: vehicleVisible.getDepartureDate(), car: car)
+        let car = try Car(
+            plate: carVisible.getPlate())
+        let shift = try CarParkingShift(
+            admissionDate: vehicleVisible.getAdmissionDate(),
+            departureDate: vehicleVisible.getDepartureDate(),
+            car: car)
         let payment = CarParkingShiftPayment(parkingShift: shift)
         return payment
     }
@@ -24,12 +28,29 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
             return nil
         }
         let car = try Car(plate: carVisible.getPlate())
-        return try CarParkingShift(admissionDate: Date(), car: car)
+        return try CarParkingShift(
+            admissionDate: Date(),
+            car: car)
+    }
+    
+    public override func fromDomainToVisibleEntity(_ parkingShiftPayment: ParkingShiftPayment) throws -> VehicleVisible? {
+        if let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment, let carParkingShift = carParkingShiftPayment.getParkingShift() as? CarParkingShift {
+            return CarVisible(
+                id: carParkingShift.getId(),
+                plate: carParkingShift.getCar()?.getPlate() ?? "...",
+                admissionDate: carParkingShift.getAdmissionDate(),
+                departureDate: try carParkingShift.getDepartureDate(),
+                valor: "\(try carParkingShiftPayment.calculateParkingShiftPrice())")
+        }
+        return nil
     }
     
     public override func fromDomainToVisibleEntity(_ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {
         if let carParkingShift = parkingDomainEntity as? CarParkingShift {
-            return CarVisible(id: carParkingShift.getId(), plate: carParkingShift.getCar()?.getPlate() ?? "", admissionDate: carParkingShift.getAdmissionDate())}
+            return CarVisible(
+                id: carParkingShift.getId(),
+                plate: carParkingShift.getCar()?.getPlate() ?? "",
+                admissionDate: carParkingShift.getAdmissionDate())}
         return nil
     }
 
