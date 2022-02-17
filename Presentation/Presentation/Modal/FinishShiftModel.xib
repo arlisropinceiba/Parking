@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfF-zK-b3g">
-                    <rect key="frame" x="103.5" y="312.5" width="207" height="271"/>
+                    <rect key="frame" x="83" y="312.5" width="248" height="271"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="de1-c1-0wh">
-                            <rect key="frame" x="30" y="169" width="147" height="31"/>
+                            <rect key="frame" x="30" y="169" width="188" height="31"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Finalizar turno"/>
                             <connections>
@@ -34,26 +34,26 @@
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Guu-Lo-3ec">
-                            <rect key="frame" x="68.5" y="30" width="70" height="70"/>
+                            <rect key="frame" x="89" y="30" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="70" id="GVG-T3-scc"/>
                                 <constraint firstAttribute="width" secondItem="Guu-Lo-3ec" secondAttribute="height" multiplier="1:1" id="ue2-5K-mfi"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZZ-X4-6cr">
-                            <rect key="frame" x="30" y="110" width="147" height="19.5"/>
+                            <rect key="frame" x="30" y="110" width="188" height="19.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAz-9H-XBh">
-                            <rect key="frame" x="30" y="134.5" width="147" height="19.5"/>
+                            <rect key="frame" x="30" y="134.5" width="188" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su8-vc-35E">
-                            <rect key="frame" x="30" y="210" width="147" height="31"/>
+                            <rect key="frame" x="30" y="210" width="188" height="31"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Cancelar"/>
                             <connections>
@@ -85,7 +85,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yfF-zK-b3g" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="D6r-R8-9k8"/>
-                <constraint firstItem="yfF-zK-b3g" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="fuz-RW-Dz5"/>
+                <constraint firstItem="yfF-zK-b3g" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="fuz-RW-Dz5"/>
                 <constraint firstItem="yfF-zK-b3g" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="lyn-cR-cBZ"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="108.48214285714285"/>

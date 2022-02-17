@@ -25,4 +25,8 @@ class PaymentModal: UIViewController {
         descrptionLabel.text = vehicle is MotorcycleVisible ? "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC": ""
         valueLabel.text = vehicle?.getValor()
     }
+    
+    @IBAction func confirmProcess(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -17,7 +17,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
             plate: carVisible.getPlate())
         let shift = try CarParkingShift(
             admissionDate: vehicleVisible.getAdmissionDate(),
-            departureDate: vehicleVisible.getDepartureDate(),
+            departureDate: Date(),
             car: car)
         let payment = CarParkingShiftPayment(parkingShift: shift)
         return payment

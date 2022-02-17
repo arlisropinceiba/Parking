@@ -68,6 +68,10 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         presenter?.showLogHistory()
     }
     
+    @IBAction func searchByPlate(_ sender: UIButton) {
+        
+    }
+    
     // MARK: Refresh
     func refreshCollection(with data: [VehicleVisible]){
         vehicles = data

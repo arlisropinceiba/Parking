@@ -45,10 +45,10 @@ protocol HomeInteractorOutputProtocol: AnyObject {
 protocol HomeInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: HomeInteractorOutputProtocol? { get set }
-    func finishCarPakingShift(car: CarVisible) async throws -> VehicleVisible
-    func finishMotorcyclePakingShift(motorcycle: MotorcycleVisible) async throws -> VehicleVisible
+    func finishCarParkingShift(car: CarVisible) async throws -> VehicleVisible
+    func finishMotorcycleParkingShift(motorcycle: MotorcycleVisible) async throws -> VehicleVisible
     
-    func createCarPakingShift(car: CarVisible) async throws
-    func createMotorcyclePakingShift(motorcycle: MotorcycleVisible) async throws
+    func createCarParkingShift(car: CarVisible) async throws
+    func createMotorcycleParkingShift(motorcycle: MotorcycleVisible) async throws
     func loadData(withThisType type: VehicleType) throws 
 }

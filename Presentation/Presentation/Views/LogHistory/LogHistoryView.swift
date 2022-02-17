@@ -13,6 +13,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var vehiclesListButton: UIButton!
+    @IBOutlet weak var searchTextField: UITextField!
     
     // MARK: Properties
     var presenter: LogHistoryPresenterProtocol?
@@ -43,6 +44,11 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         cell.initWithData(vehicle: vehicle)
         cell.selectionStyle = .none
         return cell
+    }
+    
+    //MARK: Action button
+    @IBAction func searchByPlate(_ sender: UIButton) {
+        
     }
     
     // MARK: Refresh

@@ -18,9 +18,9 @@ class HomePresenter  {
             do {
                 switch type {
                 case .car:
-                    try await interactor?.createCarPakingShift(car: vehicle as! CarVisible)
+                    try await interactor?.createCarParkingShift(car: vehicle as! CarVisible)
                 case .motorcycle:
-                    try await interactor?.createMotorcyclePakingShift(motorcycle: vehicle as! MotorcycleVisible)
+                    try await interactor?.createMotorcycleParkingShift(motorcycle: vehicle as! MotorcycleVisible)
                 }
             } catch let error {
                 view?.showAlert(message: error.messageDescription())
@@ -33,10 +33,10 @@ class HomePresenter  {
             do {
                 switch type {
                 case .car:
-                    let newVehicle = try await interactor?.finishCarPakingShift(car: vehicle as! CarVisible)
+                    let newVehicle = try await interactor?.finishCarParkingShift(car: vehicle as! CarVisible)
                     view?.showPayment(vehicle: newVehicle!)
                 case .motorcycle:
-                    let newVehicle = try await interactor?.finishMotorcyclePakingShift(motorcycle: vehicle as! MotorcycleVisible)
+                    let newVehicle = try await interactor?.finishMotorcycleParkingShift(motorcycle: vehicle as! MotorcycleVisible)
                     view?.showPayment(vehicle: newVehicle!)
                 }
             } catch let error {

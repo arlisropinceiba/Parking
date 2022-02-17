@@ -24,15 +24,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYd-Lb-qk5">
-                    <rect key="frame" x="83" y="343" width="248" height="210.5"/>
+                    <rect key="frame" x="83" y="346" width="248" height="204.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7RM-ee-5Dk">
-                            <rect key="frame" x="87" y="159.5" width="74.5" height="31"/>
+                            <rect key="frame" x="87" y="143.5" width="74.5" height="31"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Aceptar"/>
+                            <connections>
+                                <action selector="confirmProcess:" destination="-1" eventType="touchUpInside" id="0JF-x8-z0a"/>
+                            </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="D1p-Hf-VOn">
-                            <rect key="frame" x="20" y="46" width="208" height="98.5"/>
+                            <rect key="frame" x="20" y="30" width="208" height="98.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D3a-aq-bbw">
                                     <rect key="frame" x="40.5" y="0.0" width="127" height="50"/>
@@ -85,9 +88,9 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="7RM-ee-5Dk" secondAttribute="bottom" constant="20" id="7pZ-JC-b49"/>
+                        <constraint firstAttribute="bottom" secondItem="7RM-ee-5Dk" secondAttribute="bottom" constant="30" id="7pZ-JC-b49"/>
+                        <constraint firstItem="D1p-Hf-VOn" firstAttribute="top" secondItem="rYd-Lb-qk5" secondAttribute="top" constant="30" id="8M7-ZT-2Fr"/>
                         <constraint firstItem="D1p-Hf-VOn" firstAttribute="centerX" secondItem="rYd-Lb-qk5" secondAttribute="centerX" id="HRQ-y6-MDr"/>
-                        <constraint firstItem="D1p-Hf-VOn" firstAttribute="centerY" secondItem="rYd-Lb-qk5" secondAttribute="centerY" constant="-10" id="IUd-IR-M5O"/>
                         <constraint firstItem="D1p-Hf-VOn" firstAttribute="leading" secondItem="rYd-Lb-qk5" secondAttribute="leading" constant="20" id="P2l-ZK-Ldd"/>
                         <constraint firstItem="7RM-ee-5Dk" firstAttribute="top" secondItem="D1p-Hf-VOn" secondAttribute="bottom" constant="15" id="PCL-y6-TCY"/>
                         <constraint firstItem="7RM-ee-5Dk" firstAttribute="centerX" secondItem="rYd-Lb-qk5" secondAttribute="centerX" id="nRf-ad-Gfi"/>
