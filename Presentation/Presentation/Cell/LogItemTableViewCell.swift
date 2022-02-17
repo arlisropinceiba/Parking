@@ -21,7 +21,7 @@ class LogItemTableViewCell: UITableViewCell {
         box.layer.borderColor = #colorLiteral(red: 0.001902872347, green: 0.2908241451, blue: 0.32291466, alpha: 1)
     }
 
-    func inithWithData(vehicle: VehicleVisible){
+    func initWithData(vehicle: VehicleVisible){
         let text = "Fecha de ingreso: \(vehicle.getAdmissionDate().inDateHourFormat()) \nFecha de salida: \(vehicle.getDepartureDate()?.inDateHourFormat() ?? "") \nTotal tiempo: \(vehicle.getLenghtOfStay()) \nValor total: \(vehicle.getValor())"
         plateLabel.text = vehicle.getPlate()
         descriptionLabel.text = text

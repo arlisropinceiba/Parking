@@ -7,8 +7,10 @@
 
 import Foundation
 import Domain
+import CoreData
 
 public class ParkingCoreDataRepository: ParkingShiftRepository {
+    
     
     var coreDataManager = CoreDataManager()
     var translator: VehicleParkingShiftTranslator = VehicleParkingShiftTranslator()
@@ -18,10 +20,14 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
     }
     
     public func saveParkingShift(shift: ParkingShift) async throws {
-        let context = coreDataManager.persistentContainer.viewContext
-        context.automaticallyMergesChangesFromParent = true
         let parkingShiftCore = try translator.fromDomainToCoreEntity(shift)
         print(parkingShiftCore)
+        try await saveData(of: parkingShiftCore)
+    }
+    
+    func saveData(of shift: NSManagedObject)  async throws  {
+        let context = coreDataManager.persistentContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
         try await context.perform {
             do {
                 try context.save()
@@ -45,8 +51,10 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
         return carParkingShiftDomainArray
     }
     
-    public func finishParkingShift(shift: ParkingShift) throws {
-        
+    public func finishParkingShift(shift: ParkingShiftPayment) async throws {
+        let parkingShiftCore = try translator.fromDomainToCoreEntity(shift)
+        print(parkingShiftCore)
+        try await saveData(of: parkingShiftCore)
     }
 
     public func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool {

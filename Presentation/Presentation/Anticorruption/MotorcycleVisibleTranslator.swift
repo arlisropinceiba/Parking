@@ -9,6 +9,16 @@ import Domain
 
 class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
     
+    public override func fromVisibleToDomainEntity(_ vehicleVisible: VehicleVisible) throws -> ParkingShiftPayment? {
+        guard let motorcycleVisible = vehicleVisible as? MotorcycleVisible else {
+            return nil
+        }
+        let motorcycle = try Motorcycle(plate: motorcycleVisible.getPlate(), cylinderCapacity: motorcycleVisible.getCylinderCapacity())
+        let shift = try MotorcycleParkingShift(admissionDate: vehicleVisible.getAdmissionDate(), departureDate: vehicleVisible.getDepartureDate(), motorcycle: motorcycle)
+        let payment = MotorcycleParkingShiftPayment(parkingShift: shift)
+        return payment
+    }
+    
     public override func fromVisibleToDomainEntity(_ vehicleVisible: VehicleVisible) throws -> ParkingShift? {
         guard let motorcycleVisible = vehicleVisible as? MotorcycleVisible else {
             return nil

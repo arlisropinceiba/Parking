@@ -15,6 +15,11 @@ class VehicleParkingShiftTranslator : CoreDataManager {
         return parking
     }
     
+    public func fromDomainToCoreEntity(_ parkingDomain: ParkingShiftPayment) throws -> NSManagedObject {
+        let parking = NSManagedObject()
+        return parking
+    }
+    
     public func fromCoreToDomainEntity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> ParkingShift? {
         return nil
     }

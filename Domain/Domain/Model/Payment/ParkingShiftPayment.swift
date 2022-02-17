@@ -5,7 +5,7 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 4/02/22.
 //
 
-class ParkingShiftPayment {
+public class ParkingShiftPayment {
     
     private var id: UUID = UUID()
     private var parkingShift: ParkingShift
@@ -13,7 +13,7 @@ class ParkingShiftPayment {
     private var priceHour: Int
     private var value: Int = 0
     
-    init(
+    public init(
         parkingShift: ParkingShift,
         priceDay: Int,
         priceHour: Int

@@ -17,7 +17,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     // MARK: Properties
     var presenter: LogHistoryPresenterProtocol?
     var currentType: VehicleType = .car
-    
+    var vehicles: [VehicleVisible] = []
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -33,35 +33,24 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     // MARK: TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return vehicles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let vehicle = vehicles[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogItemTableViewCell", for: indexPath) as! LogItemTableViewCell
+        cell.initWithData(vehicle: vehicle)
+        cell.selectionStyle = .none
+        return cell
     }
     
     // MARK: Vehicle menu
     
     func configureListButton() {
-        vehiclesListButton.menu = vehicleMenu
-        vehiclesListButton.showsMenuAsPrimaryAction = true
+        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in actionItemVehicleType(with: vehicleType)})
     }
     
-    var vehicleMenuItems: [UIAction] {
-        var itemsMenu: [UIAction] = []
-        for type in VehicleType.allCases {
-            let item = UIAction(title: type.rawValue, handler: {_ in self.actionItemVehicleType(vehicleType: type)})
-            itemsMenu.append(item)
-        }
-        return itemsMenu
-    }
-    
-    var vehicleMenu: UIMenu {
-        return UIMenu(title: "", image: nil, identifier: nil, options: [], children: vehicleMenuItems)
-    }
-    
-    func actionItemVehicleType(vehicleType: VehicleType){
-        vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
+    func actionItemVehicleType(with vehicleType: VehicleType){
         currentType = vehicleType
 //        presenter?.loadData(withThisType: currentType)
     }

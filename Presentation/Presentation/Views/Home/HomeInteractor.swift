@@ -27,8 +27,8 @@ class HomeInteractor: HomeInteractorInputProtocol {
     
     func createParkingShift(vehicle: VehicleVisible, translator: VehicleVisibleTranslator, service: ParkingShiftService, withThisType type: VehicleType) async throws{
         
-        guard let parkingShift = try translator.fromVisibleToDomainEntity(vehicle) else {
-            throw PresentationErrors.ErrorFetchParkings()}
+        guard let parkingShift: ParkingShift = try translator.fromVisibleToDomainEntity(vehicle) else {
+            throw PresentationErrors.ErrorSavingParking()}
         
         try await service.saveThis(shift: parkingShift)
         parkingsProvisional.append(parkingShift)
@@ -47,15 +47,19 @@ class HomeInteractor: HomeInteractorInputProtocol {
     func fetchCarsData() throws -> [VehicleVisible] {
         let translator = CarVisibleTranslator()
         let service = CarParkingShiftService(carParkingShiftRepository: carRepository)
-        let parkingShifts = parkingsProvisional// try service.getParkingShift()
+        let parkingShifts = try service.getParkingShift() // parkingsProvisional
         return try translator.fromDomainToVisibleEntity(parkingShifts)
     }
     
     func fetchMotorcyclesData() throws -> [VehicleVisible] {
         let translator = MotorcycleVisibleTranslator()
         let service = MotorcycleParkingShiftService(motorcycleParkingShiftRepository: motorcycleRepository)
-        let parkingShifts = parkingsProvisional// try service.getParkingShift()
+        let parkingShifts = try service.getParkingShift() // parkingsProvisional
         return try translator.fromDomainToVisibleEntity(parkingShifts)
+    }
+    
+    func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
+
     }
     
 }

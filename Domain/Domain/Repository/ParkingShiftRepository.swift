@@ -9,7 +9,7 @@ public protocol ParkingShiftRepository{
     
     func saveParkingShift(shift: ParkingShift) async throws
     func getParkingShift() throws -> [ParkingShift]
-    func finishParkingShift(shift: ParkingShift) throws
+    func finishParkingShift(shift: ParkingShiftPayment) async throws
     func searchVehicle(withPlate plate: String) throws -> [ParkingShift]
     func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool
     

@@ -7,13 +7,13 @@
 
 import Foundation
 
-class MotorcycleParkingShiftPayment: ParkingShiftPayment {
+public class MotorcycleParkingShiftPayment: ParkingShiftPayment {
     
-    init(parkingShift: ParkingShift){
+    public init(parkingShift: ParkingShift){
         super.init(parkingShift: parkingShift, priceDay: 4000, priceHour: 500)
     }
     
-    override func calculateParkingShiftPrice() throws -> Int {
+    public override func calculateParkingShiftPrice() throws -> Int {
         let extraChargeValueForHighCylinderCapacity = 2000
         let minimumCylinderCapacityToChargeExtra = 500
         var value = try super.calculateParkingShiftPrice()

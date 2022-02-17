@@ -108,24 +108,10 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Vehicle menu
     
     func configureListButton() {
-        vehiclesListButton.menu = vehicleMenu
-        vehiclesListButton.showsMenuAsPrimaryAction = true
+        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in actionItemVehicleType(with: vehicleType)})
     }
     
-    var vehicleMenuItems: [UIAction] {
-        var itemsMenu: [UIAction] = []
-        for type in VehicleType.allCases {
-            let item = UIAction(title: type.rawValue, handler: {_ in self.actionItemVehicleType(vehicleType: type)})
-            itemsMenu.append(item)
-        }
-        return itemsMenu
-    }
-    
-    var vehicleMenu: UIMenu {
-        return UIMenu(title: "", image: nil, identifier: nil, options: [], children: vehicleMenuItems)
-    }
-    
-    func actionItemVehicleType(vehicleType: VehicleType){
+    func actionItemVehicleType(with vehicleType: VehicleType){
         vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
         presenter?.loadData(date.inHourDateFormat(), withThisType: currentType)
