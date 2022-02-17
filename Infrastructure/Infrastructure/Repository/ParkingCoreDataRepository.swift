@@ -49,22 +49,18 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
         
     }
 
-    
     public func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool {
-        if (try coreDataManager.getFetch(withPredicate: "departureDate == nil && plate == \(plate)")) != [] {
-            return true
-        } else {
-            return false
-        }
+        let pakingsSaved = try getFetchActiveParkingShifts()
+        return pakingsSaved.first(where: {$0.vehicle?.plate == plate}) != nil
     }
     
     public func getFetchActiveParkingShifts() throws -> [ParkingShiftCoreEntity] {
-        let parkingShiftsSaved = try coreDataManager.getFetch(withPredicate: "departureDate == nil")
+        let parkingShiftsSaved = try coreDataManager.getFetchCurrentParking()
         return parkingShiftsSaved
     }
     
     private func searchParkingShift(withPlate plate: String) throws -> [ParkingShiftCoreEntity] {
-        let parkingShiftsSaved = try coreDataManager.getFetch(withPredicate: "plate != nil")
+        let parkingShiftsSaved = try coreDataManager.getFetchCurrentParking()
         let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.vehicle?.plate == plate})
         return parkingSavedWithSamePlate
     }

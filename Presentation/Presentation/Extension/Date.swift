@@ -35,10 +35,4 @@ extension Date {
         return "\(day.capitalized) de \(month) a las \(hour)"
     }
     
-    var localDate: Date {
-        let timezone = TimeZone.current
-        let seconds = TimeInterval(timezone.secondsFromGMT(for: self))
-        return Date(timeInterval: seconds, since: self)
-    }
-    
 }

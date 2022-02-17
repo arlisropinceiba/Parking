@@ -10,7 +10,7 @@ import UIKit
 class CarVisible: VehicleVisible {
     
     public init(id: UUID, plate: String, admissionDate: Date) {
-        super.init(id: id, plate: plate, image: UIImage(named: "car"), admissionDate: admissionDate)
+        super.init(id: id, plate: plate, image: UIImage(named: "car"), admissionDate: admissionDate, departureDate: nil, valor: "")
     }
     
     convenience public init(plate: String, admissionDate: Date){

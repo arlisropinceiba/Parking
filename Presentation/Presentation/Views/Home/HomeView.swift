@@ -12,17 +12,20 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var scroll: UIScrollView!
+    @IBOutlet weak var menu: UIMenu!
+    @IBOutlet weak var vehiclesListButton: UIButton!
     
     // MARK: Properties
     var updateTimer: Clock = Clock()
     var presenter: HomePresenterProtocol?
-    var date: Date = Date().localDate
+    var date: Date = Date()
     var vehicles: [VehicleVisible] = []
+    var currentType: VehicleType = .car
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.register(UINib(nibName: "VehicleCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "VehicleCollectionViewCell")
+        configureListButton()
         setWatch()
         presenter?.loadData(date.inHourDateFormat(), withThisType: .car)
     }
@@ -35,30 +38,32 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let vehicle = vehicles[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCollectionViewCell", for: indexPath) as! VehicleCollectionViewCell
-        cell.setData(ofThis: vehicle, withThisDate: date, inWindowWidth: scroll.frame.width)
+        cell.setData(ofThis: vehicle, withThisDate: date, inWindowWidth: view.frame.width)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vehicle = vehicles[indexPath.row]
+        let modal = FinishShiftModel(nibName: "FinishShiftModel", bundle: nil)
+        modal.vehicle = vehicle
+        modal.completion = {}
+        self.present(modal, animated: true)
     }
     
     //MARK: Action buttons
     
     @IBAction func addVehicle(_ sender: UIButton) {
-        let plate: String = randomString(length: 3) + randomNumber(length: 3)
-        let vehicle = CarVisible(plate: plate, admissionDate: date)
-        presenter?.createShift(vehicle: vehicle)
+        let modal = AddVehicleModal(nibName: "AddVehicleModal", bundle: nil)
+        modal.vehicleType = currentType
+        modal.admissionDate = date
+        modal.completionWithValues = { [self] vehicle in
+            presenter?.createShift(vehicle: vehicle, withThisType: currentType)
+        }
+        self.present(modal, animated: true)
     }
     
-    @IBAction func selectVehicle(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func advanceTime(_ sender: UIButton) {
-        let date = Calendar.current.date(byAdding: .hour, value: 1, to: self.date)
-        self.date = date ?? Date()
-        presenter?.refreshData(in: self.date.inHourDateFormat(), with: vehicles)
-    }
-    
-    @IBAction func showTariffs(_ sender: UIButton) {
-        
+    @IBAction func showLogHistory(_ sender: UIButton) {
+        presenter?.showLogHistory()
     }
     
     // MARK: Refresh
@@ -70,11 +75,11 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // MARK: Set
     func setTimeLabelText(text: String) {
-        timeLabel.text = text
+        timeLabel.text = "Home\n" + text
     }
     
     func setCounterLabelText(text: String) {
-        counterLabel.text = text
+        counterLabel.text = currentType.rawValue + ": " + text
     }
     
     // MARK: Alert
@@ -95,19 +100,35 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func addSecondToWatch(){
         date = Calendar.current.date(byAdding: .second, value: 1, to: self.date) ?? Date()
-        timeLabel.text = date.inHourDateFormat()
+        setTimeLabelText(text: date.inHourDateFormat())
         collection.reloadData()
         view.layoutIfNeeded()
     }
     
-    func randomString(length: Int) -> String {
-      let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+    // MARK: Vehicle menu
+    
+    func configureListButton() {
+        vehiclesListButton.menu = vehicleMenu
+        vehiclesListButton.showsMenuAsPrimaryAction = true
     }
     
-    func randomNumber(length: Int) -> String {
-      let letters = "0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+    var vehicleMenuItems: [UIAction] {
+        var itemsMenu: [UIAction] = []
+        for type in VehicleType.allCases {
+            let item = UIAction(title: type.rawValue, handler: {_ in self.actionItemVehicleType(vehicleType: type)})
+            itemsMenu.append(item)
+        }
+        return itemsMenu
+    }
+    
+    var vehicleMenu: UIMenu {
+        return UIMenu(title: "", image: nil, identifier: nil, options: [], children: vehicleMenuItems)
+    }
+    
+    func actionItemVehicleType(vehicleType: VehicleType){
+        vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
+        currentType = vehicleType
+        presenter?.loadData(date.inHourDateFormat(), withThisType: currentType)
     }
 }
 

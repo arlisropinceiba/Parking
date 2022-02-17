@@ -5,9 +5,10 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 15/02/22.
 //
 
-import Foundation
+import Infrastructure
+import Domain
 
-enum VehicleType {
-    case car
-    case motorcycle
+enum VehicleType: String, CaseIterable{
+    case car = "Carros"
+    case motorcycle = "Motos"
 }

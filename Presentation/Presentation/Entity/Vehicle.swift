@@ -12,12 +12,16 @@ class VehicleVisible {
     private var plate: String
     private var image: UIImage?
     private var admissionDate: Date
+    private var departureDate: Date?
+    private var valor: String
     
-    init(id: UUID, plate: String, image: UIImage?, admissionDate: Date) {
+    init(id: UUID, plate: String, image: UIImage?, admissionDate: Date, departureDate: Date?, valor: String) {
         self.id = id
         self.plate = plate
         self.image = image
         self.admissionDate = admissionDate
+        self.departureDate = departureDate
+        self.valor = valor
     }
     
     public func getPlate() -> String {
@@ -32,8 +36,22 @@ class VehicleVisible {
         return admissionDate
     }
     
-    public func getLenghtOfStay(fromAdmissionDateToNow right: Bool) -> String {
-        return getLenghtOfStay(fromAdmissionDateTo: Date().localDate)
+    public func getDepartureDate() -> Date? {
+        return departureDate
+    }
+    
+    public func getValor() -> String {
+        return valor
+    }
+    
+    public func getLenghtOfStay() -> String {
+        if let date = departureDate {
+            return getLenghtOfStay(fromAdmissionDateTo: date)}
+        else { return ""}
+    }
+    
+    public func getLenghtOfStayfromAdmissionDateToNow() -> String {
+        return getLenghtOfStay(fromAdmissionDateTo: Date())
     }
     
     public func getLenghtOfStay(fromAdmissionDateTo endDate: Date) -> String {

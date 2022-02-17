@@ -12,7 +12,7 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     
     public override func fromDomainToCoreEntity(_ parkingDomain: ParkingShift) throws -> NSManagedObject {
         let context = persistentContainer.viewContext
-        let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingCoreEntity", into: context) as! ParkingShiftCoreEntity
+        let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
         let motorcycle = NSEntityDescription.insertNewObject(forEntityName: "MotorcycleCoreEntity", into: context) as! MotorcycleCoreEntity
     
         guard let motorcycleParkingDomain = parkingDomain as? MotorcycleParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}

@@ -15,14 +15,27 @@
 		1C1732D027BC4EB200B3350F /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732CF27BC4EB200B3350F /* Vehicle.swift */; };
 		1C1732E427BC822000B3350F /* Motorcycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732E327BC822000B3350F /* Motorcycle.swift */; };
 		1C1732E627BC831C00B3350F /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732E527BC831C00B3350F /* Car.swift */; };
-		1C1732E827BC8A8B00B3350F /* CarVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732E727BC8A8B00B3350F /* CarVisibleTranslator.swift */; };
-		1C1732EA27BC8BB900B3350F /* MotorcycleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732E927BC8BB900B3350F /* MotorcycleVisibleTranslator.swift */; };
-		1C1732EC27BC8DCF00B3350F /* VehicleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732EB27BC8DCF00B3350F /* VehicleVisibleTranslator.swift */; };
 		1C1732F027BC9F1400B3350F /* PresentationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732EF27BC9F1400B3350F /* PresentationErrors.swift */; };
 		1C1732F227BCA27400B3350F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1732F127BCA27400B3350F /* Error.swift */; };
 		1C17331827BCBC0600B3350F /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17331727BCBC0600B3350F /* VehicleType.swift */; };
 		1C17331C27BCC4F600B3350F /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C17331B27BCC4F600B3350F /* Infrastructure.framework */; };
 		1C17331D27BCC4F600B3350F /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C17331B27BCC4F600B3350F /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C2E212227BD1A6900BCBBFE /* VehicleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */; };
+		1C2E212327BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212027BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift */; };
+		1C2E212427BD1A6900BCBBFE /* CarVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212127BD1A6900BCBBFE /* CarVisibleTranslator.swift */; };
+		1C2E212827BD418300BCBBFE /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212727BD418300BCBBFE /* Services.swift */; };
+		1C2E212B27BD805600BCBBFE /* AddVehicleModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212927BD805600BCBBFE /* AddVehicleModal.swift */; };
+		1C2E212C27BD805600BCBBFE /* AddVehicleModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2E212A27BD805600BCBBFE /* AddVehicleModal.xib */; };
+		1C2E212F27BD945600BCBBFE /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212E27BD945600BCBBFE /* TextField.swift */; };
+		1C2E213627BDAB1400BCBBFE /* LogHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213127BDAB1400BCBBFE /* LogHistoryPresenter.swift */; };
+		1C2E213727BDAB1400BCBBFE /* LogHistoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213227BDAB1400BCBBFE /* LogHistoryProtocols.swift */; };
+		1C2E213827BDAB1400BCBBFE /* LogHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */; };
+		1C2E213927BDAB1400BCBBFE /* LogHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213427BDAB1400BCBBFE /* LogHistoryView.swift */; };
+		1C2E213A27BDAB1400BCBBFE /* LogHistoryWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213527BDAB1400BCBBFE /* LogHistoryWireFrame.swift */; };
+		1C2E213F27BDC8AC00BCBBFE /* LogItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213D27BDC8AC00BCBBFE /* LogItemTableViewCell.swift */; };
+		1C2E214027BDC8AC00BCBBFE /* LogItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2E213E27BDC8AC00BCBBFE /* LogItemTableViewCell.xib */; };
+		1C2E214327BDD6E500BCBBFE /* FinishShiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E214127BDD6E500BCBBFE /* FinishShiftModel.swift */; };
+		1C2E214427BDD6E500BCBBFE /* FinishShiftModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */; };
 		1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E027BAF43C0033D15C /* HomeWireFrame.swift */; };
 		1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E227BAF4690033D15C /* HomePresenter.swift */; };
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
@@ -78,13 +91,26 @@
 		1C1732CF27BC4EB200B3350F /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		1C1732E327BC822000B3350F /* Motorcycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motorcycle.swift; sourceTree = "<group>"; };
 		1C1732E527BC831C00B3350F /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
-		1C1732E727BC8A8B00B3350F /* CarVisibleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarVisibleTranslator.swift; path = Presentation/Entity/CarVisibleTranslator.swift; sourceTree = SOURCE_ROOT; };
-		1C1732E927BC8BB900B3350F /* MotorcycleVisibleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MotorcycleVisibleTranslator.swift; path = Presentation/Entity/MotorcycleVisibleTranslator.swift; sourceTree = SOURCE_ROOT; };
-		1C1732EB27BC8DCF00B3350F /* VehicleVisibleTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VehicleVisibleTranslator.swift; path = Presentation/Entity/VehicleVisibleTranslator.swift; sourceTree = SOURCE_ROOT; };
 		1C1732EF27BC9F1400B3350F /* PresentationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationErrors.swift; sourceTree = "<group>"; };
 		1C1732F127BCA27400B3350F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1C17331727BCBC0600B3350F /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
 		1C17331B27BCC4F600B3350F /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleVisibleTranslator.swift; sourceTree = "<group>"; };
+		1C2E212027BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorcycleVisibleTranslator.swift; sourceTree = "<group>"; };
+		1C2E212127BD1A6900BCBBFE /* CarVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarVisibleTranslator.swift; sourceTree = "<group>"; };
+		1C2E212727BD418300BCBBFE /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		1C2E212927BD805600BCBBFE /* AddVehicleModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleModal.swift; sourceTree = "<group>"; };
+		1C2E212A27BD805600BCBBFE /* AddVehicleModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVehicleModal.xib; sourceTree = "<group>"; };
+		1C2E212E27BD945600BCBBFE /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1C2E213127BDAB1400BCBBFE /* LogHistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryPresenter.swift; sourceTree = "<group>"; };
+		1C2E213227BDAB1400BCBBFE /* LogHistoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryProtocols.swift; sourceTree = "<group>"; };
+		1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryInteractor.swift; sourceTree = "<group>"; };
+		1C2E213427BDAB1400BCBBFE /* LogHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryView.swift; sourceTree = "<group>"; };
+		1C2E213527BDAB1400BCBBFE /* LogHistoryWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryWireFrame.swift; sourceTree = "<group>"; };
+		1C2E213D27BDC8AC00BCBBFE /* LogItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogItemTableViewCell.swift; sourceTree = "<group>"; };
+		1C2E213E27BDC8AC00BCBBFE /* LogItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogItemTableViewCell.xib; sourceTree = "<group>"; };
+		1C2E214127BDD6E500BCBBFE /* FinishShiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishShiftModel.swift; sourceTree = "<group>"; };
+		1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishShiftModel.xib; sourceTree = "<group>"; };
 		1C6EE0E027BAF43C0033D15C /* HomeWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireFrame.swift; sourceTree = "<group>"; };
 		1C6EE0E227BAF4690033D15C /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
@@ -135,6 +161,7 @@
 			children = (
 				1C1732C427BBF34B00B3350F /* Date.swift */,
 				1C1732F127BCA27400B3350F /* Error.swift */,
+				1C2E212E27BD945600BCBBFE /* TextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -144,18 +171,10 @@
 			children = (
 				1C1732C827BC4C9D00B3350F /* VehicleCollectionViewCell.swift */,
 				1C1732C927BC4C9D00B3350F /* VehicleCollectionViewCell.xib */,
+				1C2E213D27BDC8AC00BCBBFE /* LogItemTableViewCell.swift */,
+				1C2E213E27BDC8AC00BCBBFE /* LogItemTableViewCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		1C1732CD27BC4CD700B3350F /* Anticorruption */ = {
-			isa = PBXGroup;
-			children = (
-				1C1732EB27BC8DCF00B3350F /* VehicleVisibleTranslator.swift */,
-				1C1732E727BC8A8B00B3350F /* CarVisibleTranslator.swift */,
-				1C1732E927BC8BB900B3350F /* MotorcycleVisibleTranslator.swift */,
-			);
-			path = Anticorruption;
 			sourceTree = "<group>";
 		};
 		1C1732CE27BC4CF000B3350F /* Entity */ = {
@@ -180,6 +199,7 @@
 		1C1732D927BC724A00B3350F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1C2E213027BDAAA700BCBBFE /* LogHistory */,
 				1C6EE0D527BAAEAF0033D15C /* Home */,
 			);
 			path = Views;
@@ -207,6 +227,39 @@
 				1C17331B27BCC4F600B3350F /* Infrastructure.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C2E211E27BD1A4A00BCBBFE /* Anticorruption */ = {
+			isa = PBXGroup;
+			children = (
+				1C2E212127BD1A6900BCBBFE /* CarVisibleTranslator.swift */,
+				1C2E212027BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift */,
+				1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */,
+			);
+			path = Anticorruption;
+			sourceTree = "<group>";
+		};
+		1C2E212D27BD805B00BCBBFE /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				1C2E212927BD805600BCBBFE /* AddVehicleModal.swift */,
+				1C2E212A27BD805600BCBBFE /* AddVehicleModal.xib */,
+				1C2E214127BDD6E500BCBBFE /* FinishShiftModel.swift */,
+				1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		1C2E213027BDAAA700BCBBFE /* LogHistory */ = {
+			isa = PBXGroup;
+			children = (
+				1C2E213127BDAB1400BCBBFE /* LogHistoryPresenter.swift */,
+				1C2E213227BDAB1400BCBBFE /* LogHistoryProtocols.swift */,
+				1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */,
+				1C2E213427BDAB1400BCBBFE /* LogHistoryView.swift */,
+				1C2E213527BDAB1400BCBBFE /* LogHistoryWireFrame.swift */,
+			);
+			path = LogHistory;
 			sourceTree = "<group>";
 		};
 		1C6EE0D527BAAEAF0033D15C /* Home */ = {
@@ -251,14 +304,16 @@
 				1C0AB6F027B6F91500D8B8BD /* Clock.swift */,
 				1CEA199C27B4662400865244 /* SceneDelegate.swift */,
 				1CEA19A327B4662700865244 /* Assets.xcassets */,
-				1C17331927BCBC0E00B3350F /* Enum */,
-				1C1732CD27BC4CD700B3350F /* Anticorruption */,
+				1C2E212727BD418300BCBBFE /* Services.swift */,
+				1C2E211E27BD1A4A00BCBBFE /* Anticorruption */,
 				1C1732CC27BC4CA400B3350F /* Cell */,
 				1C1732CE27BC4CF000B3350F /* Entity */,
+				1C17331927BCBC0E00B3350F /* Enum */,
 				1C1732EE27BC9EC800B3350F /* Exception */,
 				1C1732C327BBF33F00B3350F /* Extension */,
 				1C1732D827BC723900B3350F /* Storyboards */,
 				1C1732D927BC724A00B3350F /* Views */,
+				1C2E212D27BD805B00BCBBFE /* Modal */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -386,9 +441,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CEA19A727B4662700865244 /* LaunchScreen.storyboard in Resources */,
+				1C2E212C27BD805600BCBBFE /* AddVehicleModal.xib in Resources */,
 				1C1732CB27BC4C9D00B3350F /* VehicleCollectionViewCell.xib in Resources */,
+				1C2E214027BDC8AC00BCBBFE /* LogItemTableViewCell.xib in Resources */,
 				1CEA19A427B4662700865244 /* Assets.xcassets in Resources */,
 				1CEA19A227B4662400865244 /* Main.storyboard in Resources */,
+				1C2E214427BDD6E500BCBBFE /* FinishShiftModel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,19 +473,29 @@
 			files = (
 				1C1732F027BC9F1400B3350F /* PresentationErrors.swift in Sources */,
 				1C1732D027BC4EB200B3350F /* Vehicle.swift in Sources */,
+				1C2E212F27BD945600BCBBFE /* TextField.swift in Sources */,
+				1C2E214327BDD6E500BCBBFE /* FinishShiftModel.swift in Sources */,
 				1CEA199F27B4662400865244 /* HomeView.swift in Sources */,
 				1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */,
-				1C1732E827BC8A8B00B3350F /* CarVisibleTranslator.swift in Sources */,
+				1C2E212327BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift in Sources */,
 				1C1732E427BC822000B3350F /* Motorcycle.swift in Sources */,
+				1C2E213727BDAB1400BCBBFE /* LogHistoryProtocols.swift in Sources */,
+				1C2E212227BD1A6900BCBBFE /* VehicleVisibleTranslator.swift in Sources */,
+				1C2E212427BD1A6900BCBBFE /* CarVisibleTranslator.swift in Sources */,
 				1C1732C727BC447D00B3350F /* BaseController.swift in Sources */,
+				1C2E213F27BDC8AC00BCBBFE /* LogItemTableViewCell.swift in Sources */,
 				1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */,
-				1C1732EC27BC8DCF00B3350F /* VehicleVisibleTranslator.swift in Sources */,
+				1C2E212B27BD805600BCBBFE /* AddVehicleModal.swift in Sources */,
+				1C2E212827BD418300BCBBFE /* Services.swift in Sources */,
 				1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */,
 				1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */,
-				1C1732EA27BC8BB900B3350F /* MotorcycleVisibleTranslator.swift in Sources */,
 				1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */,
+				1C2E213627BDAB1400BCBBFE /* LogHistoryPresenter.swift in Sources */,
+				1C2E213927BDAB1400BCBBFE /* LogHistoryView.swift in Sources */,
+				1C2E213827BDAB1400BCBBFE /* LogHistoryInteractor.swift in Sources */,
 				1C1732E627BC831C00B3350F /* Car.swift in Sources */,
 				1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */,
+				1C2E213A27BDAB1400BCBBFE /* LogHistoryWireFrame.swift in Sources */,
 				1C1732CA27BC4C9D00B3350F /* VehicleCollectionViewCell.swift in Sources */,
 				1C1732C527BBF34B00B3350F /* Date.swift in Sources */,
 				1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */,

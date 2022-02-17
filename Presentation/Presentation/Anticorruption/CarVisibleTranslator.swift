@@ -14,7 +14,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
             return nil
         }
         let car = try Car(plate: carVisible.getPlate())
-        return try CarParkingShift(admissionDate: Date().localDate, car: car)
+        return try CarParkingShift(admissionDate: Date(), car: car)
     }
     
     public override func fromDomainToVisibleEntity(_ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {

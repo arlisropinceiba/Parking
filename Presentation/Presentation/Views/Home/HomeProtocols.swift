@@ -20,6 +20,7 @@ protocol HomeViewProtocol: AnyObject {
 protocol HomeWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createHomeModule() -> UIViewController
+    func showLogHistory(from view: HomeViewProtocol)
 }
 
 protocol HomePresenterProtocol: AnyObject {
@@ -30,7 +31,8 @@ protocol HomePresenterProtocol: AnyObject {
     
     func loadData(_ date: String, withThisType type: VehicleType)
     func refreshData(in date: String, with data: [VehicleVisible])
-    func createShift(vehicle: VehicleVisible)
+    func createShift(vehicle: VehicleVisible, withThisType type: VehicleType)
+    func showLogHistory()
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {
@@ -43,5 +45,6 @@ protocol HomeInteractorInputProtocol: AnyObject {
     var presenter: HomeInteractorOutputProtocol? { get set }
     
     func createCarPakingShift(car: CarVisible) async throws
+    func createMotorcyclePakingShift(motorcycle: MotorcycleVisible) async throws
     func loadData(withThisType type: VehicleType) throws 
 }

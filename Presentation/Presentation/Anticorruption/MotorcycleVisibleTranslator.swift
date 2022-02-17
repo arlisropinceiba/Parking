@@ -14,7 +14,7 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
             return nil
         }
         let motorcycle = try Motorcycle(plate: motorcycleVisible.getPlate(), cylinderCapacity: motorcycleVisible.getCylinderCapacity())
-        return try MotorcycleParkingShift(admissionDate: Date().localDate, motorcycle: motorcycle)
+        return try MotorcycleParkingShift(admissionDate: Date(), motorcycle: motorcycle)
     }
     
     public override func fromDomainToVisibleEntity(_ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {

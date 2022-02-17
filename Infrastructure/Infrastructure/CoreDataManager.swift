@@ -26,7 +26,15 @@ public class CoreDataManager {
         return container
     }()
     
-    func getFetch(withPredicate predicate: String) throws -> [ParkingShiftCoreEntity]  {
+    func getFetchCurrentParking() throws -> [ParkingShiftCoreEntity] {
+        return try getFetch(withPredicate: "departureDate == nil")
+    }
+    
+    func getFetchHistoricalParking() throws -> [ParkingShiftCoreEntity] {
+        return try getFetch(withPredicate: "departureDate != nil")
+    }
+    
+    private func getFetch(withPredicate predicate: String) throws -> [ParkingShiftCoreEntity]  {
         let context = persistentContainer.viewContext
 
         let fetchRequest = NSFetchRequest<ParkingShiftCoreEntity>(entityName: "ParkingShiftCoreEntity")

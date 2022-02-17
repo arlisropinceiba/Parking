@@ -15,9 +15,9 @@ public class ParkingShiftService {
     
     public func saveThis(shift: ParkingShift) async throws {
         if try parkingShitRepository.isThereAVehicleWithActiveParkingShift(plate: shift.getVehicle().getPlate()) {
-            try await parkingShitRepository.saveParkingShift(shift: shift)
-        } else {
             throw DomainErrors.ExistingPlate()
+        } else {
+            try await parkingShitRepository.saveParkingShift(shift: shift)
         }
     }
     

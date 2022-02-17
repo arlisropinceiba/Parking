@@ -31,8 +31,8 @@ class HomeWireFrame: HomeWireFrameProtocol {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
-    func showHome(from view: HomeViewProtocol) {
-        let new = HomeWireFrame.createHomeModule()
+    func showLogHistory(from view: HomeViewProtocol) {
+        let new = LogHistoryWireFrame.createLogHistoryModule()
         if let newView = view as? UIViewController{
             newView.navigationController?.pushViewController(new, animated: true)
         }

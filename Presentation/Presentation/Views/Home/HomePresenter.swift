@@ -13,10 +13,15 @@ class HomePresenter  {
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeWireFrameProtocol?
  
-    func createShift(vehicle: VehicleVisible) {
+    func createShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
         Task {
             do {
-                try await interactor?.createCarPakingShift(car: vehicle as! CarVisible)
+                switch type {
+                case .car:
+                    try await interactor?.createCarPakingShift(car: vehicle as! CarVisible)
+                case .motorcycle:
+                    try await interactor?.createMotorcyclePakingShift(motorcycle: vehicle as! MotorcycleVisible)
+                }
             } catch let error {
                 view?.showAlert(message: error.messageDescription())
             }
@@ -40,6 +45,10 @@ class HomePresenter  {
         DispatchQueue.main.async { [self] in
             view?.setCounterLabelText(text:"\(data.count)")
             view?.refreshCollection(with: data)}
+    }
+    
+    func showLogHistory() {
+        wireFrame?.showLogHistory(from: view!)
     }
 }
 
