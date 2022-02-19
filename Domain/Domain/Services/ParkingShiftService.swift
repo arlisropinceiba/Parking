@@ -22,10 +22,11 @@ public class ParkingShiftService {
     }
     
     public func getParkingShift() throws -> [ParkingShift] {
-        return try parkingShitRepository.getParkingShift()
+        let shifts = try parkingShitRepository.getParkingShift()
+        return shifts
     }
     
-    public func getFinalizedParkingShifts() throws -> [ParkingShift]{
+    public func getFinalizedParkingShifts() throws -> [ParkingShiftPayment]{
         return try parkingShitRepository.getFinalizedParkingShifts()
     }
     

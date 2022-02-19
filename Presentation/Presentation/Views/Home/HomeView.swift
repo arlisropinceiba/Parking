@@ -53,7 +53,6 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     //MARK: Action buttons
-    
     @IBAction func addVehicle(_ sender: UIButton) {
         let modal = AddVehicleModal(nibName: "AddVehicleModal", bundle: nil)
         modal.vehicleType = currentType

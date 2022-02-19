@@ -10,17 +10,17 @@ import Domain
 
 class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
     
-    public override func fromDomainToCoreEntity(_ parkingShiftPayment: ParkingShiftPayment) throws -> NSManagedObject {
-        let context = persistentContainer.viewContext
+    public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingShiftPayment: ParkingShiftPayment) throws -> NSManagedObject {
+        let context = manager.persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
         let motorcycle = NSEntityDescription.insertNewObject(forEntityName: "MotorcycleCoreEntity", into: context) as! MotorcycleCoreEntity
-    
+
         guard let motorcycleParkingShiftPayment = parkingShiftPayment as? MotorcycleParkingShiftPayment else { throw InfrastructureErrors.ErrorSavingParking()}
         guard let motorcycleParkingShift = motorcycleParkingShiftPayment.getParkingShift() as? MotorcycleParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
         motorcycle.plate = motorcycleParkingShift.getMotorcycle()?.getPlate()
         motorcycle.cylinderCapacity = Int32(motorcycleParkingShift.getMotorcycle()?.getCylinderCapacity() ?? 0)
         parking.id = motorcycleParkingShift.getId()
-        parking.admissionDate = motorcycleParkingShift.getAdmissionDate()
+        parking.admissonDate = motorcycleParkingShift.getAdmissionDate()
         do {
             parking.departureDate = try motorcycleParkingShift.getDepartureDate()
         } catch {
@@ -31,8 +31,8 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         return parking
     }
     
-    public override func fromDomainToCoreEntity(_ parkingDomain: ParkingShift) throws -> NSManagedObject {
-        let context = persistentContainer.viewContext
+    public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingDomain: ParkingShift) throws -> NSManagedObject {
+        let context = manager.persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
         let motorcycle = NSEntityDescription.insertNewObject(forEntityName: "MotorcycleCoreEntity", into: context) as! MotorcycleCoreEntity
     
@@ -40,7 +40,7 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         motorcycle.plate = motorcycleParkingDomain.getMotorcycle()?.getPlate()
         motorcycle.cylinderCapacity = Int32(motorcycleParkingDomain.getMotorcycle()?.getCylinderCapacity() ?? 0)
         parking.id = motorcycleParkingDomain.getId()
-        parking.admissionDate = motorcycleParkingDomain.getAdmissionDate()
+        parking.admissonDate = motorcycleParkingDomain.getAdmissionDate()
         do {
             parking.departureDate = try motorcycleParkingDomain.getDepartureDate()
         } catch {
@@ -50,31 +50,44 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         return parking
     }
     
-    public override func fromCoreToDomainEntity(_ parkingCoreEntity: ParkingShiftCoreEntity) throws -> MotorcycleParkingShift? {
-        guard let motorcycleCoreEntity = parkingCoreEntity.vehicle as? MotorcycleCoreEntity else { throw InfrastructureErrors.ErrorFetchParkings()}
+    public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntity: ParkingShiftCoreEntity) throws -> MotorcycleParkingShift? {
+        guard let motorcycleCoreEntity = parkingCoreEntity.vehicle as? MotorcycleCoreEntity else {
+            return nil}
         guard let plate = motorcycleCoreEntity.plate,
-                let admissionDate = parkingCoreEntity.admissionDate
-        else {
+              let admissionDate = parkingCoreEntity.admissonDate,
+              let id = parkingCoreEntity.id else {
             return nil
         }
+        
         let capacity = Int(motorcycleCoreEntity.cylinderCapacity)
         
         let motorcycle = try Motorcycle(plate: plate, cylinderCapacity: capacity)
         if let departureDate = parkingCoreEntity.departureDate {
-            return try MotorcycleParkingShift(admissionDate: admissionDate, departureDate: departureDate, motorcycle: motorcycle)
+            return try MotorcycleParkingShift(id: id, admissionDate: admissionDate, departureDate: departureDate, motorcycle: motorcycle)
         } else {
-            return try MotorcycleParkingShift(admissionDate: admissionDate, motorcycle: motorcycle)
+            return try MotorcycleParkingShift(id: id, admissionDate: admissionDate, motorcycle: motorcycle)
         }
     }
     
-    public func fromCoreToDomainEntity(_ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [MotorcycleParkingShift] {
+    public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShift] {
         var motorcycleParkingShiftArray: [MotorcycleParkingShift] = []
         for itemCore in parkingCoreEntityArray {
-            if let itemDomain = try fromCoreToDomainEntity(itemCore) {
+            if let itemDomain = try fromCoreToDomainEntity(manager, itemCore) {
                 motorcycleParkingShiftArray.append(itemDomain)
             }
         }
         return motorcycleParkingShiftArray
+    }
+    
+    public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShiftPayment] {
+        var motorcycleParkingShiftArrayPayments: [ParkingShiftPayment] = []
+        for itemCore in parkingCoreEntityArray {
+            if let itemDomain: MotorcycleParkingShift = try fromCoreToDomainEntity(manager, itemCore) {
+                let payment = MotorcycleParkingShiftPayment(parkingShift: itemDomain)
+                motorcycleParkingShiftArrayPayments.append(payment)
+            }
+        }
+        return motorcycleParkingShiftArrayPayments
     }
 }
 

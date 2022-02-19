@@ -12,6 +12,7 @@ class LogItemTableViewCell: UITableViewCell {
     @IBOutlet weak var box: UIView!
     @IBOutlet weak var plateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var vehicleImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,10 @@ class LogItemTableViewCell: UITableViewCell {
     }
 
     func initWithData(vehicle: VehicleVisible){
-        let text = "Fecha de ingreso: \(vehicle.getAdmissionDate().inDateHourFormat()) \nFecha de salida: \(vehicle.getDepartureDate()?.inDateHourFormat() ?? "") \nTotal tiempo: \(vehicle.getLenghtOfStay()) \nValor total: \(vehicle.getValor())"
-        plateLabel.text = vehicle.getPlate()
+        vehicleImage.image = vehicle.getImage()
+        let descriptionVehicle = vehicle is MotorcycleVisible ? "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":""
+        plateLabel.text = vehicle.getPlate() + "\n" + descriptionVehicle
+        let text = "🗓 Fecha de ingreso: \(vehicle.getAdmissionDate().inDateHourFormat()) \n🗓 Fecha de salida: \(vehicle.getDepartureDate()?.inDateHourFormat() ?? "") \n🕗 Total tiempo: \(vehicle.getLenghtOfStay()) \n💲 Valor total: \(vehicle.getValor())"
         descriptionLabel.text = text
     }
     

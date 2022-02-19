@@ -8,7 +8,7 @@
 import UIKit
 
 class VehicleVisible {
-    private var id: UUID
+    private var id: UUID = UUID()
     private var plate: String
     private var image: UIImage?
     private var admissionDate: Date
@@ -24,6 +24,10 @@ class VehicleVisible {
         self.valor = valor
     }
     
+    public func getId() -> UUID {
+        return id
+    }
+    
     public func getPlate() -> String {
         return plate
     }
@@ -34,6 +38,10 @@ class VehicleVisible {
     
     public func getAdmissionDate() -> Date {
         return admissionDate
+    }
+    
+    public func setDepartureDate(_ date: Date){
+        self.departureDate = date
     }
     
     public func getDepartureDate() -> Date? {

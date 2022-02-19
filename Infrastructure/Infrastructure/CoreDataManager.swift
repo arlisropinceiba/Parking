@@ -27,25 +27,30 @@ public class CoreDataManager {
     }()
     
     func getFetchCurrentParking() throws -> [ParkingShiftCoreEntity] {
-        return try getFetch(withPredicate: "departureDate == nil")
+        return try getFetch(withPredicate: NSPredicate(format: "departureDate == nil"))
     }
-    
+
     func getFetchHistoricalParking() throws -> [ParkingShiftCoreEntity] {
-        return try getFetch(withPredicate: "departureDate != nil")
+        return try getFetch(withPredicate: NSPredicate(format: "departureDate != nil"))
     }
     
-    private func getFetch(withPredicate predicate: String) throws -> [ParkingShiftCoreEntity]  {
+    func getFetchById(_ id: UUID) throws -> [ParkingShiftCoreEntity] {
+        return try getFetch(withPredicate: NSPredicate(format: "id == %@", id as CVarArg))
+    }
+    
+    private func getFetch(withPredicate predicate: NSPredicate) throws -> [ParkingShiftCoreEntity]  {
         let context = persistentContainer.viewContext
-        let fetchRequest = predicate == "" ? ParkingShiftCoreEntity.fetchRequest():ParkingShiftCoreEntity.fetchRequest(withPredicate: predicate)
+        let fetchRequest = ParkingShiftCoreEntity.fetchRequest(withPredicate: predicate)
 
         do{
             let parkings = try context.fetch(fetchRequest)
             for (index, parking) in parkings.enumerated() {
-                print("Parking \(index) - Admission date: \(parking.admissionDate?.description ?? "N/A") - Departure date:  \(parking.departureDate?.description ?? "N/A") - Plate car:\(parking.vehicle?.plate ?? "N/A")")
+                print("Parking \(index) - Id: \(String(describing: parking.id)) - Admission date: \(parking.admissonDate?.description ?? "N/A") - Departure date:  \(parking.departureDate?.description ?? "N/A") - Plate vehicle: \(parking.vehicle?.plate ?? "N/A") - Cylinder capacity: \((parking.vehicle as? MotorcycleCoreEntity)?.cylinderCapacity ?? 0)")
             }
             return parkings
         } catch {
             throw InfrastructureErrors.ErrorFetchParkings()
         }
     }
+
 }

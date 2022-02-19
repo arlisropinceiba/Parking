@@ -28,4 +28,8 @@ class VehicleVisibleTranslator {
     func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShift]) throws -> [VehicleVisible]{
         return []
     }
+    
+    func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
+        return []
+    }
 }

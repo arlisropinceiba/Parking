@@ -5,13 +5,12 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 9/02/22.
 //
 
-import Foundation
 import Domain
 
 public class MotorcycleParkingCoreDataRepository: ParkingCoreDataRepository, MotorcycleParkingShiftRepository {
-    
+
     public static let shared = MotorcycleParkingCoreDataRepository()
-    
+
     public init(){
         super.init(translator: MotorcycleParkingShiftTranslator())
     }

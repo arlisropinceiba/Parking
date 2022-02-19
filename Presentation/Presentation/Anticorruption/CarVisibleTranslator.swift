@@ -16,6 +16,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
         let car = try Car(
             plate: carVisible.getPlate())
         let shift = try CarParkingShift(
+            id: vehicleVisible.getId(),
             admissionDate: vehicleVisible.getAdmissionDate(),
             departureDate: Date(),
             car: car)
@@ -29,12 +30,14 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
         }
         let car = try Car(plate: carVisible.getPlate())
         return try CarParkingShift(
+            id: vehicleVisible.getId(),
             admissionDate: Date(),
             car: car)
     }
     
     public override func fromDomainToVisibleEntity(_ parkingShiftPayment: ParkingShiftPayment) throws -> VehicleVisible? {
-        if let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment, let carParkingShift = carParkingShiftPayment.getParkingShift() as? CarParkingShift {
+        if let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment,
+            let carParkingShift = carParkingShiftPayment.getParkingShift() as? CarParkingShift {
             return CarVisible(
                 id: carParkingShift.getId(),
                 plate: carParkingShift.getCar()?.getPlate() ?? "...",
@@ -55,6 +58,16 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
     }
 
     public override func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShift]) throws -> [VehicleVisible] {
+        var carParkingShiftArray: [VehicleVisible] = []
+        for itemCore in parkingCoreEntityArray {
+            if let itemDomain = try fromDomainToVisibleEntity(itemCore) {
+                carParkingShiftArray.append(itemDomain)
+            }
+        }
+        return carParkingShiftArray
+    }
+    
+    public override func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
         var carParkingShiftArray: [VehicleVisible] = []
         for itemCore in parkingCoreEntityArray {
             if let itemDomain = try fromDomainToVisibleEntity(itemCore) {

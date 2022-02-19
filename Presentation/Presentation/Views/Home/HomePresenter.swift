@@ -6,7 +6,7 @@
 //
 import Foundation
 
-class HomePresenter  {
+class HomePresenter  { // Arreglar
     
     // MARK: Properties
     weak var view: HomeViewProtocol?
@@ -16,12 +16,7 @@ class HomePresenter  {
     func createShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
         Task {
             do {
-                switch type {
-                case .car:
-                    try await interactor?.createCarParkingShift(car: vehicle as! CarVisible)
-                case .motorcycle:
-                    try await interactor?.createMotorcycleParkingShift(motorcycle: vehicle as! MotorcycleVisible)
-                }
+                try await interactor?.createParkingShift(withThisType: type, andThisVehicle: vehicle)
             } catch let error {
                 view?.showAlert(message: error.messageDescription())
             }
@@ -31,14 +26,8 @@ class HomePresenter  {
     func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
         Task {
             do {
-                switch type {
-                case .car:
-                    let newVehicle = try await interactor?.finishCarParkingShift(car: vehicle as! CarVisible)
-                    view?.showPayment(vehicle: newVehicle!)
-                case .motorcycle:
-                    let newVehicle = try await interactor?.finishMotorcycleParkingShift(motorcycle: vehicle as! MotorcycleVisible)
-                    view?.showPayment(vehicle: newVehicle!)
-                }
+                let newVehicle = try await interactor?.finishParkingShift(withThisType: type, andThisVehicle: vehicle)
+                view?.showPayment(vehicle: newVehicle!)
             } catch let error {
                 view?.showAlert(message: error.messageDescription())
             }
@@ -48,7 +37,7 @@ class HomePresenter  {
     func loadData(_ date: String, withThisType type: VehicleType) {
         view?.setTimeLabelText(text: date)
         do {
-            try interactor?.loadData(withThisType: type)
+            try interactor?.fetchData(withThisType: type)
         } catch let error {
             view?.showAlert(message: error.messageDescription())
         }

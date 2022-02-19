@@ -8,7 +8,7 @@
 import Infrastructure
 import Domain
 
-enum VehicleType: String, CaseIterable{
+enum VehicleType: String, CaseIterable {
     case car = "Carros"
     case motorcycle = "Motos"
 }

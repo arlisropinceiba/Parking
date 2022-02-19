@@ -17,6 +17,7 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
             plate: motorcycleVisible.getPlate(),
             cylinderCapacity: motorcycleVisible.getCylinderCapacity())
         let shift = try MotorcycleParkingShift(
+            id: vehicleVisible.getId(),
             admissionDate: vehicleVisible.getAdmissionDate(),
             departureDate: vehicleVisible.getDepartureDate(),
             motorcycle: motorcycle)
@@ -32,6 +33,7 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
             plate: motorcycleVisible.getPlate(),
             cylinderCapacity: motorcycleVisible.getCylinderCapacity())
         return try MotorcycleParkingShift(
+            id: vehicleVisible.getId(),
             admissionDate: Date(),
             motorcycle: motorcycle)
     }
@@ -59,6 +61,16 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
     }
 
     public override func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShift]) throws -> [VehicleVisible] {
+        var motorcycleParkingShiftArray: [VehicleVisible] = []
+        for itemCore in parkingCoreEntityArray {
+            if let itemDomain = try fromDomainToVisibleEntity(itemCore) {
+                motorcycleParkingShiftArray.append(itemDomain)
+            }
+        }
+        return motorcycleParkingShiftArray
+    }
+    
+    public override func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
         var motorcycleParkingShiftArray: [VehicleVisible] = []
         for itemCore in parkingCoreEntityArray {
             if let itemDomain = try fromDomainToVisibleEntity(itemCore) {

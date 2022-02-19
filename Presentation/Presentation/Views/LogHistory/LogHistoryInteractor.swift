@@ -13,30 +13,20 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: LogHistoryInteractorOutputProtocol?
-    let carRepository = CarParkingCoreDataRepository()
-    let motorcycleRepository = MotorcycleParkingCoreDataRepository()
 
-    func loadData(withThisType type: VehicleType) throws {
-        var vehicles: [VehicleVisible] = []
+    func getService(withThisType type: VehicleType) -> (LocalService) {
         switch type {
-        case .car: vehicles = try fetchCarsData()
-        case .motorcycle: vehicles = try fetchMotorcyclesData()
+        case .car:
+            return LocalService(translator: CarVisibleTranslator(), service: CarParkingShiftService(carParkingShiftRepository: CarParkingCoreDataRepository.shared))
+        case .motorcycle:
+            return LocalService(translator: MotorcycleVisibleTranslator(), service: MotorcycleParkingShiftService(motorcycleParkingShiftRepository: MotorcycleParkingCoreDataRepository.shared))
         }
+    }
+    
+    func fetchData(withThisType type: VehicleType) throws {
+        let service = getService(withThisType: type)
+        let vehicles: [VehicleVisible] = try service.fetchLog()
         presenter?.refreshData(with: vehicles)
-    }
-    
-    func fetchCarsData() throws -> [VehicleVisible] {
-        let translator = CarVisibleTranslator()
-        let service = CarParkingShiftService(carParkingShiftRepository: carRepository)
-        let parkingShifts = try service.getFinalizedParkingShifts()
-        return try translator.fromDomainToVisibleEntity(parkingShifts)
-    }
-    
-    func fetchMotorcyclesData() throws -> [VehicleVisible] {
-        let translator = MotorcycleVisibleTranslator()
-        let service = MotorcycleParkingShiftService(motorcycleParkingShiftRepository: motorcycleRepository)
-        let parkingShifts = try service.getFinalizedParkingShifts()
-        return try translator.fromDomainToVisibleEntity(parkingShifts)
     }
 }
 

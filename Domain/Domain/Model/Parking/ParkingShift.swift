@@ -7,16 +7,18 @@
 
 public class ParkingShift {
    
-    private var id: UUID = UUID()
+    private var id: UUID
     private var admissionDate: Date
     private var departureDate: Date?
     private var vehicle: Vehicle
     
     public init(
+        id: UUID,
         admissionDate: Date,
         departureDate: Date?,
         vehicle: Vehicle
     ) throws {
+        self.id = id
         self.admissionDate = admissionDate
         self.departureDate = departureDate
         self.vehicle = vehicle
@@ -27,7 +29,7 @@ public class ParkingShift {
         admissionDate: Date,
         vehicle: Vehicle
     ) throws {
-        try self.init(admissionDate: admissionDate, departureDate: nil, vehicle: vehicle)
+        try self.init(id: UUID(), admissionDate: admissionDate, departureDate: nil, vehicle: vehicle)
         try itIsNotACarWithPlateAOnMondayOrSunday(admissionDate: admissionDate, plate: vehicle.getPlate())
     }
 

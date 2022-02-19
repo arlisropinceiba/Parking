@@ -7,12 +7,12 @@
 
 public class MotorcycleParkingShift: ParkingShift{
     
-    public init(admissionDate: Date, departureDate: Date?, motorcycle: Motorcycle) throws {
-        try super.init(admissionDate: admissionDate, departureDate: departureDate, vehicle: motorcycle)
+    public init(id: UUID, admissionDate: Date, departureDate: Date?, motorcycle: Motorcycle) throws {
+        try super.init(id: id, admissionDate: admissionDate, departureDate: departureDate, vehicle: motorcycle)
     }
     
-    convenience public init(admissionDate: Date, motorcycle: Motorcycle) throws {
-        try self.init(admissionDate: admissionDate, departureDate: nil, motorcycle: motorcycle)
+    convenience public init(id: UUID, admissionDate: Date, motorcycle: Motorcycle) throws {
+        try self.init(id: id, admissionDate: admissionDate, departureDate: nil, motorcycle: motorcycle)
     }
     
     public func getMotorcycle() -> Motorcycle? {

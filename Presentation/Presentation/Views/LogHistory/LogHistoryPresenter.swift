@@ -21,7 +21,7 @@ class LogHistoryPresenter  {
     
     func loadData(withThisType type: VehicleType) {
         do {
-            try interactor?.loadData(withThisType: type)
+            try interactor?.fetchData(withThisType: type)
         } catch let error {
             view?.showAlert(message: error.messageDescription())
         }
