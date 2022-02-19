@@ -13,7 +13,7 @@ class ParkingShiftPaymentTest: XCTestCase {
     func test_calculateParkingShiftPriceAl27H_calculateParkingValue_success(){
         // Arrange
         let car = try! Car(plate: "DSA123")
-        let shift = try! ParkingShift(admissionDate: Date().localDate, departureDate: Date().localDate.advanceDate(thisHours: 27), vehicle: car)
+        let shift = try! ParkingShift(id: UUID(), admissionDate: Date().localDate, departureDate: Date().localDate.advanceDate(thisHours: 27), vehicle: car)
         let payment = ParkingShiftPayment(parkingShift: shift, priceDay: 8000, priceHour: 1000)
         // Act
         let value = try? payment.calculateParkingShiftPrice()
@@ -25,7 +25,7 @@ class ParkingShiftPaymentTest: XCTestCase {
     func test_calculateParkingShiftPriceAt10H_calculateParkingValue_success(){
         // Arrange
         let car = try! Car(plate: "DSA123")
-        let shift = try! ParkingShift(admissionDate: Date().localDate, departureDate: Date().localDate.advanceDate(thisHours: 10), vehicle: car)
+        let shift = try! ParkingShift(id: UUID(), admissionDate: Date().localDate, departureDate: Date().localDate.advanceDate(thisHours: 10), vehicle: car)
         let payment = ParkingShiftPayment(parkingShift: shift, priceDay: 8000, priceHour: 1000)
         // Act
         let value = try? payment.calculateParkingShiftPrice()
