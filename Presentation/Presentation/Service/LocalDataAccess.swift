@@ -13,9 +13,14 @@ class LocalService {
     var translator: VehicleVisibleTranslator
     var service: ParkingShiftService
     
-    init(translator: VehicleVisibleTranslator, service: ParkingShiftService) {
-        self.translator = translator
-        self.service = service
+    init(type: VehicleType) {
+        switch type {
+        case .car:
+            translator = CarVisibleTranslator()
+            service = CarParkingShiftService(carParkingShiftRepository: CarParkingCoreDataRepository.shared)
+        case .motorcycle:
+            translator = MotorcycleVisibleTranslator()
+            service = MotorcycleParkingShiftService(motorcycleParkingShiftRepository: MotorcycleParkingCoreDataRepository.shared)
+        }
     }
-
 }
