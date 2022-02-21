@@ -41,11 +41,15 @@
 		1C2E214627BDEE0D00BCBBFE /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2E214527BDEE0D00BCBBFE /* Domain.framework */; };
 		1C2E214727BDEE0D00BCBBFE /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2E214527BDEE0D00BCBBFE /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C2E214927BDF1DE00BCBBFE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E214827BDF1DE00BCBBFE /* Button.swift */; };
-		1C3A988227C0523A00D366DB /* LocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A988127C0523A00D366DB /* LocalService.swift */; };
+		1C3A988227C0523A00D366DB /* CreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A988127C0523A00D366DB /* CreateService.swift */; };
 		1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E027BAF43C0033D15C /* HomeWireFrame.swift */; };
 		1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E227BAF4690033D15C /* HomePresenter.swift */; };
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
 		1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */; };
+		1CE4E78C27C3BA1700FE6FFB /* AppWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E78B27C3BA1700FE6FFB /* AppWindow.swift */; };
+		1CE4E78E27C3BE0E00FE6FFB /* FetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E78D27C3BE0E00FE6FFB /* FetchService.swift */; };
+		1CE4E79027C3BEEA00FE6FFB /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E78F27C3BEEA00FE6FFB /* UpdateService.swift */; };
+		1CE4E79227C3BF2100FE6FFB /* LocalDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */; };
 		1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199A27B4662400865244 /* AppDelegate.swift */; };
 		1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199C27B4662400865244 /* SceneDelegate.swift */; };
 		1CEA199F27B4662400865244 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199E27B4662400865244 /* HomeView.swift */; };
@@ -122,11 +126,15 @@
 		1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishShiftModel.xib; sourceTree = "<group>"; };
 		1C2E214527BDEE0D00BCBBFE /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2E214827BDF1DE00BCBBFE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		1C3A988127C0523A00D366DB /* LocalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalService.swift; sourceTree = "<group>"; };
+		1C3A988127C0523A00D366DB /* CreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateService.swift; sourceTree = "<group>"; };
 		1C6EE0E027BAF43C0033D15C /* HomeWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireFrame.swift; sourceTree = "<group>"; };
 		1C6EE0E227BAF4690033D15C /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		1CE4E78B27C3BA1700FE6FFB /* AppWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWindow.swift; sourceTree = "<group>"; };
+		1CE4E78D27C3BE0E00FE6FFB /* FetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchService.swift; sourceTree = "<group>"; };
+		1CE4E78F27C3BEEA00FE6FFB /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
+		1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataAccess.swift; sourceTree = "<group>"; };
 		1CEA199727B4662400865244 /* Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEA199A27B4662400865244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CEA199C27B4662400865244 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -282,7 +290,10 @@
 		1C3A988027C050B700D366DB /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				1C3A988127C0523A00D366DB /* LocalService.swift */,
+				1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */,
+				1C3A988127C0523A00D366DB /* CreateService.swift */,
+				1CE4E78D27C3BE0E00FE6FFB /* FetchService.swift */,
+				1CE4E78F27C3BEEA00FE6FFB /* UpdateService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -357,6 +368,7 @@
 			children = (
 				1CEA19BB27B4662700865244 /* PresentationUITests.swift */,
 				1CEA19BD27B4662700865244 /* PresentationUITestsLaunchTests.swift */,
+				1CE4E78B27C3BA1700FE6FFB /* AppWindow.swift */,
 			);
 			path = PresentationUITests;
 			sourceTree = "<group>";
@@ -513,15 +525,17 @@
 				1C1732C727BC447D00B3350F /* BaseController.swift in Sources */,
 				1C2E213F27BDC8AC00BCBBFE /* LogItemTableViewCell.swift in Sources */,
 				1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */,
+				1CE4E79227C3BF2100FE6FFB /* LocalDataAccess.swift in Sources */,
 				1C2E212B27BD805600BCBBFE /* AddVehicleModal.swift in Sources */,
 				1C2E212827BD418300BCBBFE /* Services.swift in Sources */,
 				1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */,
 				1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */,
 				1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */,
-				1C3A988227C0523A00D366DB /* LocalService.swift in Sources */,
+				1C3A988227C0523A00D366DB /* CreateService.swift in Sources */,
 				1C2E213627BDAB1400BCBBFE /* LogHistoryPresenter.swift in Sources */,
 				1C2E213927BDAB1400BCBBFE /* LogHistoryView.swift in Sources */,
 				1C2E213827BDAB1400BCBBFE /* LogHistoryInteractor.swift in Sources */,
+				1CE4E78E27C3BE0E00FE6FFB /* FetchService.swift in Sources */,
 				1C1732E627BC831C00B3350F /* Car.swift in Sources */,
 				1C0C69D427BE6FC200CF288E /* PaymentModal.swift in Sources */,
 				1C6EE0E127BAF43C0033D15C /* HomeWireFrame.swift in Sources */,
@@ -531,6 +545,7 @@
 				1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */,
 				1C17331827BCBC0600B3350F /* VehicleType.swift in Sources */,
 				1C1732F227BCA27400B3350F /* Error.swift in Sources */,
+				1CE4E79027C3BEEA00FE6FFB /* UpdateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE4E78C27C3BA1700FE6FFB /* AppWindow.swift in Sources */,
 				1CEA19BE27B4662700865244 /* PresentationUITestsLaunchTests.swift in Sources */,
 				1CEA19BC27B4662700865244 /* PresentationUITests.swift in Sources */,
 			);

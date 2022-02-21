@@ -34,7 +34,11 @@ public class ParkingShiftService {
         try await parkingShitRepository.finishParkingShift(shift: shift)
     }
     
-    public func searchVehicle(withPlate plate: String) throws -> [ParkingShift] {
-        try parkingShitRepository.searchVehicle(withPlate: plate)
+    public func searchParkingShift(withPlate plate: String) throws -> [ParkingShift] {
+        try parkingShitRepository.searchParkingShift(withPlate: plate)
+    }
+    
+    public func searchFinalizedParkingShift(withPlate plate: String) throws -> [ParkingShiftPayment] {
+        try parkingShitRepository.searchFinalizedParkingShift(withPlate: plate)
     }
 }

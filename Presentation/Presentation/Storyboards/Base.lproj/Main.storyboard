@@ -63,7 +63,7 @@
                                     <constraint firstAttribute="height" constant="1" id="81w-T1-9w1"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K1J-jU-eq8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K1J-jU-eq8">
                                 <rect key="frame" x="0.0" y="169" width="414" height="727"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -293,6 +293,7 @@
                         <outlet property="collection" destination="7Mb-Tu-W0z" id="TRu-in-dpM"/>
                         <outlet property="counterLabel" destination="wDD-rY-Z01" id="qoi-wT-Ffn"/>
                         <outlet property="menu" destination="1rT-0h-cWm" id="RMa-Bt-iBX"/>
+                        <outlet property="plateTextfield" destination="ZMc-qF-ADo" id="ytu-ix-Cc1"/>
                         <outlet property="timeLabel" destination="gIF-4a-a03" id="Sdu-qu-RVx"/>
                         <outlet property="vehiclesListButton" destination="aTA-cR-y3w" id="jpn-sp-s4s"/>
                     </connections>

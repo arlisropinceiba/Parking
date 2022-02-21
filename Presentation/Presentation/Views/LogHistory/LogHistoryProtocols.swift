@@ -29,6 +29,7 @@ protocol LogHistoryPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func loadData(withThisType type: VehicleType)
+    func searchBy(plate: String, withThisType type: VehicleType)
 }
 
 protocol LogHistoryInteractorOutputProtocol: AnyObject {
@@ -40,4 +41,5 @@ protocol LogHistoryInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: LogHistoryInteractorOutputProtocol? { get set }
     func fetchData(withThisType type: VehicleType) throws
+    func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws
 }

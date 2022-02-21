@@ -48,7 +48,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     
     //MARK: Action button
     @IBAction func searchByPlate(_ sender: UIButton) {
-        
+        presenter?.searchBy(plate: searchTextField.text ?? "", withThisType: currentType)
     }
     
     // MARK: Refresh

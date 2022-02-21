@@ -26,6 +26,15 @@ class LogHistoryPresenter  {
             view?.showAlert(message: error.messageDescription())
         }
     }
+    
+    func searchBy(plate: String, withThisType type: VehicleType) {
+        do {
+            try interactor?.fetchData(withThisType: type, andThisPlate: plate)
+        } catch let error {
+            view?.showAlert(message: error.messageDescription())
+        }
+    }
+    
 }
 
 extension LogHistoryPresenter: LogHistoryPresenterProtocol {

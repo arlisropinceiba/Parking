@@ -42,4 +42,10 @@ class HomeInteractor: HomeInteractorInputProtocol {
         try fetchData(withThisType: type)
         return vehicleVisible
     }
+    
+    func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws {
+        let service = getService(withThisType: type)
+        let vehicles: [VehicleVisible] = plate == "" ? try service.fetchData():try service.fetchData(withPlate: plate.uppercased())
+        presenter?.refreshData(with: vehicles)
+    }
 }

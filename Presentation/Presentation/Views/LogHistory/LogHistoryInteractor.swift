@@ -28,5 +28,11 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
         let vehicles: [VehicleVisible] = try service.fetchLog()
         presenter?.refreshData(with: vehicles)
     }
+    
+    func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws {
+        let service = getService(withThisType: type)
+        let vehicles: [VehicleVisible] = plate == "" ? try service.fetchLog():try service.fetchLog(withPlate: plate.uppercased())
+        presenter?.refreshData(with: vehicles)
+    }
 }
 

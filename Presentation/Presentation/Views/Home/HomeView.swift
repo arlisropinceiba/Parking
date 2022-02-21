@@ -14,6 +14,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var menu: UIMenu!
     @IBOutlet weak var vehiclesListButton: UIButton!
+    @IBOutlet weak var plateTextfield: UITextField!
     
     // MARK: Properties
     var updateTimer: Clock = Clock()
@@ -68,7 +69,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     @IBAction func searchByPlate(_ sender: UIButton) {
-        
+        presenter?.searchBy(plate: plateTextfield.text ?? "", withThisType: currentType)
     }
     
     // MARK: Refresh

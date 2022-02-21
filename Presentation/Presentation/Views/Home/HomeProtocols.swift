@@ -34,6 +34,7 @@ protocol HomePresenterProtocol: AnyObject {
     func refreshData(in date: String, with data: [VehicleVisible])
     func createShift(vehicle: VehicleVisible, withThisType type: VehicleType)
     func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType)
+    func searchBy(plate: String, withThisType type: VehicleType) 
     func showLogHistory()
 }
 
@@ -48,5 +49,6 @@ protocol HomeInteractorInputProtocol: AnyObject {
     
     func createParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws
     func fetchData(withThisType type: VehicleType) throws
+    func fetchData(withThisType type: VehicleType, andThisPlate: String) throws
     func finishParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible
 }

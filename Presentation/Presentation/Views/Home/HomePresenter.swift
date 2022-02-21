@@ -53,12 +53,22 @@ class HomePresenter  { // Arreglar
             view?.refreshCollection(with: data)}
     }
     
+    func searchBy(plate: String, withThisType type: VehicleType) {
+        do {
+            try interactor?.fetchData(withThisType: type, andThisPlate: plate)
+        } catch let error {
+            view?.showAlert(message: error.messageDescription())
+        }
+    }
+    
     func showLogHistory() {
         wireFrame?.showLogHistory(from: view!)
     }
 }
 
 extension HomePresenter: HomePresenterProtocol {
+
+    
     // TODO: implement presenter methods
 }
 
