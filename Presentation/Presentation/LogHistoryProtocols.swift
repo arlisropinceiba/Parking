@@ -16,7 +16,7 @@ protocol LogHistoryViewProtocol: AnyObject {
     func showAlert(message: String)
 }
 
-protocol LogHistoryWireFrameProtocol: AnyObject {
+protocol LogHistoryRouterProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createLogHistoryModule() -> UIViewController
 }
@@ -25,7 +25,7 @@ protocol LogHistoryPresenterProtocol: AnyObject {
     // VIEW -> PRESENTER
     var view: LogHistoryViewProtocol? { get set }
     var interactor: LogHistoryInteractorInputProtocol? { get set }
-    var wireFrame: LogHistoryWireFrameProtocol? { get set }
+    var wireFrame: LogHistoryRouterProtocol? { get set }
     
     func viewDidLoad()
     func loadData(withThisType type: VehicleType)

@@ -13,7 +13,7 @@ class LogHistoryPresenter  {
     // MARK: Properties
     weak var view: LogHistoryViewProtocol?
     var interactor: LogHistoryInteractorInputProtocol?
-    var wireFrame: LogHistoryWireFrameProtocol?
+    var wireFrame: LogHistoryRouterProtocol?
     
     func refreshData(with data: [VehicleVisible]){
         view?.refreshTable(with: data)

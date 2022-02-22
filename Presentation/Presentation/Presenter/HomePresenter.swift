@@ -11,7 +11,7 @@ class HomePresenter  { // Arreglar
     // MARK: Properties
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
-    var wireFrame: HomeWireFrameProtocol?
+    var wireFrame: HomeRouterProtocol?
  
     func createShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
         Task {

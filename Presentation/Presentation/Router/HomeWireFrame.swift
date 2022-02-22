@@ -1,5 +1,5 @@
 //
-//  HomeWireFrame.swift
+//  HomeRouter.swift
 //  Presentation
 //
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 14/02/22.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class HomeWireFrame: HomeWireFrameProtocol {
+class HomeRouter: HomeRouterProtocol {
 
     class func createHomeModule() -> UIViewController {
         let navigationController = homeStoryboard.instantiateViewController(withIdentifier: "HomeView")
         if let view = navigationController as? HomeView {
             let presenter: HomePresenterProtocol & HomeInteractorOutputProtocol = HomePresenter()
             let interactor: HomeInteractorInputProtocol = HomeInteractor()
-            let wireFrame: HomeWireFrameProtocol = HomeWireFrame()
+            let wireFrame: HomeRouterProtocol = HomeRouter()
             
             view.presenter = presenter
             presenter.view = view
@@ -32,7 +32,7 @@ class HomeWireFrame: HomeWireFrameProtocol {
     }
     
     func showLogHistory(from view: HomeViewProtocol) {
-        let new = LogHistoryWireFrame.createLogHistoryModule()
+        let new = LogHistoryRouter.createLogHistoryModule()
         if let newView = view as? UIViewController{
             newView.navigationController?.pushViewController(new, animated: true)
         }

@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.backgroundColor = .white
         
-        let viewController = HomeWireFrame.createHomeModule()
+        let viewController = HomeRouter.createHomeModule()
         let navigation = UINavigationController(rootViewController: viewController)
         
         window.rootViewController = navigation

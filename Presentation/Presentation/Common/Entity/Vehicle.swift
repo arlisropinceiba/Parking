@@ -13,7 +13,7 @@ class VehicleVisible {
     private var image: UIImage?
     private var admissionDate: Date
     private var departureDate: Date?
-    private var valor: String
+    private var valueParkingShift: String
     
     init(id: UUID, plate: String, image: UIImage?, admissionDate: Date, departureDate: Date?, valor: String) {
         self.id = id
@@ -21,7 +21,7 @@ class VehicleVisible {
         self.image = image
         self.admissionDate = admissionDate
         self.departureDate = departureDate
-        self.valor = valor
+        self.valueParkingShift = valor
     }
     
     public func getId() -> UUID {
@@ -49,7 +49,7 @@ class VehicleVisible {
     }
     
     public func getValor() -> String {
-        return valor
+        return valueParkingShift
     }
     
     public func getLenghtOfStay() -> String {

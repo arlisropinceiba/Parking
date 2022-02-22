@@ -10,8 +10,8 @@ import Domain
 
 class LocalService {
     
-    var translator: VehicleVisibleTranslator
-    var service: ParkingShiftService
+    private var translator: VehicleVisibleTranslator
+    private var service: ParkingShiftService
     
     init(type: VehicleType) {
         switch type {
@@ -22,5 +22,13 @@ class LocalService {
             translator = MotorcycleVisibleTranslator()
             service = MotorcycleParkingShiftService(motorcycleParkingShiftRepository: MotorcycleParkingCoreDataRepository.shared)
         }
+    }
+    
+    func getTranslator() -> VehicleVisibleTranslator {
+        return translator
+    }
+    
+    func getService() -> ParkingShiftService {
+        return service
     }
 }

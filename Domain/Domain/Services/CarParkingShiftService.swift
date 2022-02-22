@@ -17,7 +17,7 @@ public class CarParkingShiftService: ParkingShiftService {
     }
     
     private func areThereParkingSpaces() throws {
-        let minimumNumberOfCarsAllowed = 20
+        let minimumNumberOfCarsAllowed = 14
         let carsCount  = try (parkingShitRepository as? CarParkingShiftRepository)?.getCountOfCars() ?? minimumNumberOfCarsAllowed
         guard carsCount < minimumNumberOfCarsAllowed else {
             throw DomainErrors.CarLimitReached()

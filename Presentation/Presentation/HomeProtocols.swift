@@ -18,7 +18,7 @@ protocol HomeViewProtocol: AnyObject {
     func showPayment(vehicle: VehicleVisible)
 }
 
-protocol HomeWireFrameProtocol: AnyObject {
+protocol HomeRouterProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createHomeModule() -> UIViewController
     func showLogHistory(from view: HomeViewProtocol)
@@ -28,7 +28,7 @@ protocol HomePresenterProtocol: AnyObject {
     // VIEW -> PRESENTER
     var view: HomeViewProtocol? { get set }
     var interactor: HomeInteractorInputProtocol? { get set }
-    var wireFrame: HomeWireFrameProtocol? { get set }
+    var wireFrame: HomeRouterProtocol? { get set }
     
     func loadData(_ date: String, withThisType type: VehicleType)
     func refreshData(in date: String, with data: [VehicleVisible])
