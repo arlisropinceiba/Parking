@@ -12,15 +12,13 @@ class HomeInteractor: HomeInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: HomeInteractorOutputProtocol?
-    var translator: VehicleVisibleTranslator?
-    var service: ParkingShiftService?
     
     func createParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws {
         let localAccess = LocalService(type: type)
         guard let parkingShift: ParkingShift = try localAccess.getTranslator().fromVisibleToDomainEntity(vehicle) else {
             throw PresentationErrors.ErrorSavingParking()}
         
-        try await service?.saveThis(shift: parkingShift)
+        try await localAccess.getService().saveThis(shift: parkingShift)
         try fetchData(withThisType: type)
     }
     
@@ -32,7 +30,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         
         try await localAccess.getService().finishParkingShift(shift: parkingShiftPayment)
         
-        guard let vehicleVisible: VehicleVisible = try translator?.fromDomainToVisibleEntity(parkingShiftPayment) else {
+        guard let vehicleVisible: VehicleVisible = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShiftPayment) else {
             return vehicle}
         try fetchData(withThisType: type)
         return vehicleVisible
