@@ -15,6 +15,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var menu: UIMenu!
     @IBOutlet weak var vehiclesListButton: UIButton!
     @IBOutlet weak var plateTextfield: UITextField!
+    @IBOutlet weak var addVehiclesButton: UIButton!
     
     // MARK: Properties
     var updateTimer: Clock = Clock()
