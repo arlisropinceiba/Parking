@@ -24,8 +24,7 @@ pipeline {
     stage('Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-        sh 'xcodebuild test -scheme DomainTests -configuration "Debug" -destination platform="iOS Simulator",name="iPhone 12",OS=15.2'
-        
+        sh 'xcodebuild test -scheme Domain/DomainTests -configuration "Debug" -destination platform="iOS Simulator",name="iPhone 12",OS=15.2'
       }
     }
 
