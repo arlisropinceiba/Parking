@@ -24,6 +24,7 @@ class AddVehicleModal: UIViewController {
         stackCapacity.isHidden = !(vehicleType == .motorcycle)
         capacityLabel.keyboardType = .numberPad
         plateLabel.keyboardType = .alphabet
+        plateLabel.accessibilityIdentifier = "PlateTextField"
     }
 
     @IBAction func close(_ sender: UIButton) {

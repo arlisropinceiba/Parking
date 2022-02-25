@@ -25,6 +25,7 @@ class FinishShiftModel: UIViewController {
         let text = "Ingreso el día \(vehicle?.getAdmissionDate().inDateHourFormat() ?? "...") para un total de \(vehicle?.getLenghtOfStayfromAdmissionDateToNow() ?? "...")"
         
         descriptionLabel.text = text
+        descriptionLabel.accessibilityIdentifier = "ValueLabel"
     }
     
     @IBAction func completionProcess(_ sender: UIButton) {

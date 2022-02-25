@@ -30,6 +30,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         configureListButton()
         setWatch()
         presenter?.loadData(date.inHourDateFormat(), withThisType: .car)
+        plateTextfield.accessibilityIdentifier = "PlateFinder"
     }
     
     //MARK: Collection
