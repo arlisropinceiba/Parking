@@ -12,9 +12,12 @@ class PresentationUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
-
-    override func setUpWithError() throws {
+    
+    override func setUp() {
+        super.setUp()
         continueAfterFailure = false
+        app.launch()
+        sleep(1)
     }
 
     func testLaunch() throws {

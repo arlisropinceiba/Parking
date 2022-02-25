@@ -23,6 +23,7 @@ class AddVehicleModal: UIViewController {
         box.layer.cornerRadius = 20
         stackCapacity.isHidden = !(vehicleType == .motorcycle)
         capacityLabel.keyboardType = .numberPad
+        capacityLabel.accessibilityIdentifier = "CapacityTextField"
         plateLabel.keyboardType = .alphabet
         plateLabel.accessibilityIdentifier = "PlateTextField"
     }

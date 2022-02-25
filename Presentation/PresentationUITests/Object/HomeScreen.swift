@@ -1,5 +1,5 @@
 //
-//  HomeTest.swift
+//  HomeScreen.swift
 //  PresentationUITests
 //
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 22/02/22.
@@ -8,29 +8,34 @@
 import XCTest
 import Presentation
 
-class HomeTest: XCTestCase, Screen {
+struct HomeScreen: Screen {
     
-    let app: XCUIApplication = XCUIApplication()
-    var plate = ""
+    let app: XCUIApplication
     
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app.launch()
-        sleep(1)
+    func makeTap(inThisButton button: ElementsIdentifiers) -> Self {
+        app.buttons[button.rawValue].tap()
+        return self
     }
     
+    func type(inThisTextField element: ElementsIdentifiers, thatText text: String) -> Self {
+        let textField = app.textFields[element.rawValue]
+        textField.tap()
+        textField.typeText(text)
+        return self
+    }
+        
     func test_tappingAddVehiclesButton_addVehicle_success() {
         // Arrange
         app.buttons["+"].tap()
         let plate = randomString(length: 3) + randomNumber(length: 3)
-        let plateTextFields = app/*@START_MENU_TOKEN@*/.textFields["PlateTextField"]/*[[".textFields[\"ABC123\"]",".textFields[\"PlateTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let plateTextFields = app.textFields["PlateTextField"]
         plateTextFields.tap()
         plateTextFields.typeText(plate)
         // Act
         app.buttons["Agregar"].tap()
         // Assert
         XCTAssertTrue(app.collectionViews.staticTexts[plate].exists)
+        finishShift(plate: plate)
     }
     
     func test_tappingPlateInFinder_searchForPlate_success(){
@@ -59,7 +64,13 @@ class HomeTest: XCTestCase, Screen {
     
     func test_tappingFinishParkingShiftButton_finishService_success() {
         // Arrange
-        let cell = app.collectionViews.staticTexts["0H"]
+        app.buttons["+"].tap()
+        let plate = randomString(length: 3) + randomNumber(length: 3)
+        let plateTextFields = app/*@START_MENU_TOKEN@*/.textFields["PlateTextField"]/*[[".textFields[\"ABC123\"]",".textFields[\"PlateTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        plateTextFields.tap()
+        plateTextFields.typeText(plate)
+        app.buttons["Agregar"].tap()
+        let cell = app.collectionViews.staticTexts[plate]
         cell.tap()
         // Act
         app/*@START_MENU_TOKEN@*/.staticTexts["Finalizar turno"]/*[[".buttons[\"Finalizar turno\"].staticTexts[\"Finalizar turno\"]",".staticTexts[\"Finalizar turno\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
@@ -76,7 +87,7 @@ class HomeTest: XCTestCase, Screen {
         plateTextFields.tap()
         plateTextFields.typeText(plate)
         app.buttons["Agregar"].tap()
-        let cell = app.collectionViews.staticTexts["0H"]
+        let cell = app.collectionViews.staticTexts[plate]
         cell.tap()
         app/*@START_MENU_TOKEN@*/.staticTexts["Finalizar turno"]/*[[".buttons[\"Finalizar turno\"].staticTexts[\"Finalizar turno\"]",".staticTexts[\"Finalizar turno\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         // Act
@@ -95,4 +106,10 @@ class HomeTest: XCTestCase, Screen {
       return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
+    func finishShift(plate: String){
+        let cell = app.collectionViews.staticTexts[plate]
+        cell.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Finalizar turno"]/*[[".buttons[\"Finalizar turno\"].staticTexts[\"Finalizar turno\"]",".staticTexts[\"Finalizar turno\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Aceptar"]/*[[".buttons[\"Aceptar\"].staticTexts[\"Aceptar\"]",".staticTexts[\"Aceptar\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    }
 }
