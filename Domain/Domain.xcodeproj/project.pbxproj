@@ -29,6 +29,7 @@
 		1C4E68F427B1A38600C19DF8 /* CarParkingShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68F327B1A38600C19DF8 /* CarParkingShift.swift */; };
 		1C4E68F627B1A61C00C19DF8 /* MotorcycleParkingShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E68F527B1A61C00C19DF8 /* MotorcycleParkingShift.swift */; };
 		1C4E690327B1EFE400C19DF8 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E690227B1EFE400C19DF8 /* DayOfWeek.swift */; };
+		1C7ECF7327C94FC000C4821F /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7ECF7227C94FC000C4821F /* DomainTests.swift */; };
 		1CEA198B27B42B6300865244 /* CarParkingShiftRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA198A27B42B6300865244 /* CarParkingShiftRepository.swift */; };
 		1CEA198D27B42BBA00865244 /* MotorcycleParkingShiftRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA198C27B42BBA00865244 /* MotorcycleParkingShiftRepository.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		1C4E68F327B1A38600C19DF8 /* CarParkingShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkingShift.swift; sourceTree = "<group>"; };
 		1C4E68F527B1A61C00C19DF8 /* MotorcycleParkingShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleParkingShift.swift; sourceTree = "<group>"; };
 		1C4E690227B1EFE400C19DF8 /* DayOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		1C7ECF7227C94FC000C4821F /* DomainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		1CEA198A27B42B6300865244 /* CarParkingShiftRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarParkingShiftRepository.swift; sourceTree = "<group>"; };
 		1CEA198C27B42BBA00865244 /* MotorcycleParkingShiftRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleParkingShiftRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 		1C2CF1B327AD5C63002C37C4 /* DomainTests */ = {
 			isa = PBXGroup;
 			children = (
+				1C7ECF7227C94FC000C4821F /* DomainTests.swift */,
 				1C2CF1F327ADC518002C37C4 /* Extension */,
 				1C2CF1C327AD5CDE002C37C4 /* Modal */,
 			);
@@ -386,6 +389,7 @@
 				1C2CF1F227ADC514002C37C4 /* Date.swift in Sources */,
 				1C2CF1F527ADC68D002C37C4 /* MotorcycleParkingShiftPaymentTest.swift in Sources */,
 				1C2CF1E227AD9B7F002C37C4 /* VehicleTest.swift in Sources */,
+				1C7ECF7327C94FC000C4821F /* DomainTests.swift in Sources */,
 				1C2CF1E827ADA0E4002C37C4 /* ParkingShiftTest.swift in Sources */,
 				1C2CF1EE27ADBDFB002C37C4 /* ParkingShiftPayment.swift in Sources */,
 			);

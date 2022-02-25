@@ -9,6 +9,8 @@ import XCTest
 
 class PresentationUITestsLaunchTests: XCTestCase {
 
+    let app = XCUIApplication()
+    
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
@@ -21,7 +23,6 @@ class PresentationUITestsLaunchTests: XCTestCase {
     }
 
     func testLaunch() throws {
-        let app = XCUIApplication()
         app.launch()
 
         // Insert steps here to perform after app launch but before taking a screenshot,
