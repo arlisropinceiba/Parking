@@ -2,13 +2,13 @@ coverage_service: cobertura_xml
 output_directory: ./
 source_directory:
   - Domain
-  - Presentation
 binary_basename:
   - Domain
   - Presentation
 ignore:
   - Infrastructure
+  - Presentation
 
 workspace: Parking.xcworkspace
-scheme: Presentation
+scheme: Domain
 xcodeproj: Presentation/Presentation.xcodeproj
