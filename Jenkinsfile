@@ -23,7 +23,6 @@ pipeline {
     stage('Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-        sh "xcodebuild -list"
         sh 'xcodebuild test -scheme Domain -configuration "Debug" -destination "platform=iOS Simulator,name=iPhone 12 Pro Max,OS=15.2"'
       }
     }
