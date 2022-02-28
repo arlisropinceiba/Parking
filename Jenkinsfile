@@ -16,7 +16,6 @@ pipeline {
     stage('Compile') {
       steps {
         echo "------------>Compile<------------"
-        //sh 'pod install' // Esta instrucción puede variar dependiendo del gestor de paquetes.
         sh 'xcodebuild -scheme Presentation clean build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED="NO"'
       }
     } 
@@ -26,15 +25,14 @@ pipeline {
         echo "------------>Unit Tests<------------"
         sh "xcodebuild -list"
         sh 'xcodebuild test -scheme Domain -configuration "Debug" -destination "platform=iOS Simulator,name=iPhone 12 Pro Max,OS=15.2"'
-        //sh 'xcodebuild test -scheme Presentation -configuration "Debug" -destination "platform=iOS Simulator,name=iPhone 12 Pro Max,OS=15.2"'
       }
     }
 
     stage('Static Code Analysis') {
       steps{
-        echo '------------>Análisis de código estático<------------'
-        sh 'swiftlint lint > swiftlint.txt || true'
+        echo '------------>Análisis estático de código<------------'
         sh 'run-sonar-swift.sh -h'
+        sh 'swiftlint lint > swiftlint.txt || true'
         withSonarQubeEnv('Sonar') {
             sh "${tool name: 'SonarScanner-Mac', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
         }
