@@ -15,6 +15,7 @@ public enum DomainErrors: Error {
     case InvalidPlate(message: String = "La placa igresada no tiene un formato válido.")
     case NoExistDepartureDate(message: String = "El vehículo aún esta en el parqueadero.")
     case InvalidDate(message: String = "Se ha ingresado una fecha inválida")
+    case InvalidCylinderCapacity(message: String = "La capacidad de cilindraje debería ser mayor")
     case InvalidVehicle
     case InvalidIndexInServices
 }

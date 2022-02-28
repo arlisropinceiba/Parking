@@ -40,13 +40,14 @@
 		1C2E214627BDEE0D00BCBBFE /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2E214527BDEE0D00BCBBFE /* Domain.framework */; };
 		1C2E214727BDEE0D00BCBBFE /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2E214527BDEE0D00BCBBFE /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C2E214927BDF1DE00BCBBFE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E214827BDF1DE00BCBBFE /* Button.swift */; };
+		1C51675727CC596B0063D925 /* PresentationUITestsHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C51675627CC596B0063D925 /* PresentationUITestsHomeScreen.swift */; };
 		1C6BB04127C56567001858BE /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6BB04027C56567001858BE /* Screen.swift */; };
 		1C6BB04327C565AE001858BE /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6BB04227C565AE001858BE /* HomeScreen.swift */; };
 		1C6EE0E127BAF43C0033D15C /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E027BAF43C0033D15C /* HomeRouter.swift */; };
 		1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E227BAF4690033D15C /* HomePresenter.swift */; };
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
 		1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */; };
-		1C7ECF6227C936DF00C4821F /* ElementsIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7ECF6127C936DF00C4821F /* ElementsIdentifiers.swift */; };
+		1C7ECF6227C936DF00C4821F /* HomeElementsIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */; };
 		1CE4E79227C3BF2100FE6FFB /* LocalDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */; };
 		1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199A27B4662400865244 /* AppDelegate.swift */; };
 		1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199C27B4662400865244 /* SceneDelegate.swift */; };
@@ -123,13 +124,14 @@
 		1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishShiftModel.xib; sourceTree = "<group>"; };
 		1C2E214527BDEE0D00BCBBFE /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2E214827BDF1DE00BCBBFE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		1C51675627CC596B0063D925 /* PresentationUITestsHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationUITestsHomeScreen.swift; sourceTree = "<group>"; };
 		1C6BB04027C56567001858BE /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		1C6BB04227C565AE001858BE /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		1C6EE0E027BAF43C0033D15C /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		1C6EE0E227BAF4690033D15C /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
-		1C7ECF6127C936DF00C4821F /* ElementsIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsIdentifiers.swift; sourceTree = "<group>"; };
+		1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeElementsIdentifiers.swift; sourceTree = "<group>"; };
 		1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataAccess.swift; sourceTree = "<group>"; };
 		1CEA199727B4662400865244 /* Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEA199A27B4662400865244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				1CEA19BB27B4662700865244 /* PresentationUITests.swift */,
+				1C51675627CC596B0063D925 /* PresentationUITestsHomeScreen.swift */,
 				1CEA19BD27B4662700865244 /* PresentationUITestsLaunchTests.swift */,
 			);
 			path = Test;
@@ -362,7 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				1C6BB04027C56567001858BE /* Screen.swift */,
-				1C7ECF6127C936DF00C4821F /* ElementsIdentifiers.swift */,
+				1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -615,8 +618,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C51675727CC596B0063D925 /* PresentationUITestsHomeScreen.swift in Sources */,
 				1CEA19BE27B4662700865244 /* PresentationUITestsLaunchTests.swift in Sources */,
-				1C7ECF6227C936DF00C4821F /* ElementsIdentifiers.swift in Sources */,
+				1C7ECF6227C936DF00C4821F /* HomeElementsIdentifiers.swift in Sources */,
 				1CEA19BC27B4662700865244 /* PresentationUITests.swift in Sources */,
 				1C6BB04327C565AE001858BE /* HomeScreen.swift in Sources */,
 				1C6BB04127C56567001858BE /* Screen.swift in Sources */,

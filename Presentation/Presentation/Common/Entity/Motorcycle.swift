@@ -11,7 +11,7 @@ class MotorcycleVisible: VehicleVisible {
     
     var cylinderCapacity: Int
     
-    private init(id: UUID, plate: String, admissionDate: Date, cylinderCapacity: Int) {
+    public init(id: UUID, plate: String, admissionDate: Date, cylinderCapacity: Int) {
         self.cylinderCapacity = cylinderCapacity
         super.init(id: id, plate: plate, image: UIImage(named: "motorcycle"), admissionDate: admissionDate, departureDate: nil, valor: "")
     }

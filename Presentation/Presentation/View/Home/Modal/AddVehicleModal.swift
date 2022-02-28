@@ -51,7 +51,7 @@ class AddVehicleModal: UIViewController {
             completionWithValues(car)
             dismiss(animated: true, completion: nil)
         case .motorcycle:
-            let motorcycle = MotorcycleVisible(plate: plate, admissionDate: admissionDate ?? Date(), cylinderCapacity: cylinderCapacity)
+            let motorcycle = MotorcycleVisible(plate: plate.uppercased(), admissionDate: admissionDate ?? Date(), cylinderCapacity: cylinderCapacity)
             completionWithValues(motorcycle)
             dismiss(animated: true, completion: nil)
         }

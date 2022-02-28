@@ -56,7 +56,8 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
             return MotorcycleVisible(
                 id: motorcycleParkingShift.getId(),
                 plate: motorcycleParkingShift.getMotorcycle()?.getPlate() ?? "",
-                admissionDate: motorcycleParkingShift.getAdmissionDate())}
+                admissionDate: motorcycleParkingShift.getAdmissionDate(),
+                cylinderCapacity: motorcycleParkingShift.getMotorcycle()?.getCylinderCapacity() ?? 0)}
         return nil
     }
 
