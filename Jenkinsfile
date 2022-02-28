@@ -41,4 +41,14 @@ pipeline {
       }
     }
   }
+
+  posts {
+    failure {
+      echo 'This will run only if failed'
+      mail (to: 'arlin.ropero@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
+    }
+    success {
+      echo 'This will run only if successful'
+    }
+  }
 }
