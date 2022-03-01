@@ -6,6 +6,8 @@ source_directory:
 binary_basename:
   - Domain
   - Presentation
+ignore:
+  - Infrastructure
 
 workspace: Parking.xcworkspace
 scheme: Presentation
