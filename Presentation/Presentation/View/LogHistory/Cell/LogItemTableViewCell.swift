@@ -24,9 +24,11 @@ class LogItemTableViewCell: UITableViewCell {
 
     func initWithData(vehicle: VehicleVisible){
         vehicleImage.image = vehicle.getImage()
+        let addmissionDate = DateFormat.inDateHourFormat(vehicle.getAdmissionDate())
+        let departureDate = DateFormat.inDateHourFormat(vehicle.getDepartureDate() ?? Date())
         let descriptionVehicle = vehicle is MotorcycleVisible ? "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":""
         plateLabel.text = vehicle.getPlate() + "\n" + descriptionVehicle
-        let text = "🗓 Fecha de ingreso: \(vehicle.getAdmissionDate().inDateHourFormat()) \n🗓 Fecha de salida: \(vehicle.getDepartureDate()?.inDateHourFormat() ?? "") \n🕗 Total tiempo: \(vehicle.getLenghtOfStay()) \n💲 Valor total: \(vehicle.getValor())"
+        let text = "🗓 Fecha de ingreso: \(addmissionDate) \n🗓 Fecha de salida: \(departureDate) \n🕗 Total tiempo: \(vehicle.getLenghtOfStay()) \n💲 Valor total: \(vehicle.getValor())"
         descriptionLabel.text = text
     }
     
