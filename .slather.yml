@@ -3,10 +3,10 @@ output_directory: ./
 source_directory:
   - Domain
   - Presentation
-  - Infrastructure
 binary_basename:
   - Domain
   - Presentation
+ignore:
   - Infrastructure
 
 workspace: Parking.xcworkspace
