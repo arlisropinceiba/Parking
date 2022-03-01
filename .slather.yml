@@ -2,11 +2,9 @@ coverage_service: cobertura_xml
 output_directory: ./
 source_directory:
   - Domain
-  - Infrastructure
   - Presentation
 binary_basename:
   - Domain
-  - Infrastructure
   - Presentation
 
 workspace: Parking.xcworkspace
