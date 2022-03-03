@@ -8,7 +8,7 @@
 import Domain
 
 class CarVisibleTranslator: VehicleVisibleTranslator {
-    
+
     public override func fromVisibleToDomainEntity(
         _ vehicleVisible: VehicleVisible) throws -> ParkingShiftPayment? {
         guard let carVisible = vehicleVisible as? CarVisible else {
@@ -24,7 +24,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
         let payment = CarParkingShiftPayment(parkingShift: shift)
         return payment
     }
-    
+
     public override func fromVisibleToDomainEntity(_ vehicleVisible: VehicleVisible) throws -> ParkingShift? {
         guard let carVisible = vehicleVisible as? CarVisible else {
             return nil
@@ -35,7 +35,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
             admissionDate: Date(),
             car: car)
     }
-    
+
     public override func fromDomainToVisibleEntity(
         _ parkingShiftPayment: ParkingShiftPayment) throws -> VehicleVisible? {
         if let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment,
@@ -49,7 +49,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
         }
         return nil
     }
-    
+
     public override func fromDomainToVisibleEntity(
         _ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {
         if let carParkingShift = parkingDomainEntity as? CarParkingShift {
@@ -70,7 +70,7 @@ class CarVisibleTranslator: VehicleVisibleTranslator {
         }
         return carParkingShiftArray
     }
-    
+
     public override func fromDomainToVisibleEntity(
         _ parkingCoreEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
         var carParkingShiftArray: [VehicleVisible] = []

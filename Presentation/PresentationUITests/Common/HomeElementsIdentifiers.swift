@@ -15,7 +15,7 @@ enum HomeElementsIdentifiers: String {
     case motorcycleItemList = "Motos"
     case ramdonVehicleValuesButton = "Valores aleatorios"
     case finishParkingShifButton = "Finalizar turno"
-    
+
     case plateTextField = "PlateTextField"
     case cylinderCapacityTextField = "CapacityTextField"
     case plateFinderTextField = "PlateFinder"

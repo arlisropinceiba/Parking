@@ -9,7 +9,7 @@ import CoreData
 import Domain
 
 class CarParkingShiftTranslator: VehicleParkingShiftTranslator {
-    
+
     public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingShiftPayment: ParkingShiftPayment) throws -> NSManagedObject {
         let context = manager.persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
@@ -29,12 +29,12 @@ class CarParkingShiftTranslator: VehicleParkingShiftTranslator {
         parking.value = "\(try carParkingShiftPayment.calculateParkingShiftPrice())"
         return parking
     }
-    
+
     public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingDomain: ParkingShift) throws -> NSManagedObject {
         let context = manager.persistentContainer.viewContext
         let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
         let car = NSEntityDescription.insertNewObject(forEntityName: "CarCoreEntity", into: context) as! CarCoreEntity
-    
+
         guard let carParkingDomain = parkingDomain as? CarParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
         car.plate = carParkingDomain.getCar()?.getPlate()
         parking.uid = carParkingDomain.getId()
@@ -62,7 +62,7 @@ class CarParkingShiftTranslator: VehicleParkingShiftTranslator {
             return try CarParkingShift(uid: uid, admissionDate: admissionDate, car: car)
         }
     }
-    
+
     public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShift] {
         var carParkingShiftArray: [CarParkingShift] = []
         for itemCore in parkingCoreEntityArray {

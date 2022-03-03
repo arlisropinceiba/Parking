@@ -17,7 +17,7 @@ class VehicleTest: XCTestCase {
         //Assert
         XCTAssertNoThrow(try Vehicle(plate: plate))
     }
-    
+
     func test_init_emptyPlate_error() {
         //Arrange
         let plate = ""
@@ -25,7 +25,7 @@ class VehicleTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try Vehicle(plate: plate))
     }
-    
+
     func test_init_plateWithOnlyNumbers_error() {
         //Arrange
         let plate = "124234"
@@ -33,7 +33,7 @@ class VehicleTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try Vehicle(plate: plate))
     }
-    
+
     func test_init_plateWithOnlyLetters_error() {
         //Arrange
         let plate = "CDEhjk"
@@ -41,7 +41,7 @@ class VehicleTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try Vehicle(plate: plate))
     }
-    
+
     func test_init_longPlate_error() {
         //Arrange
         let plate = "CDEhjk4567890"
@@ -49,7 +49,7 @@ class VehicleTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try Vehicle(plate: plate))
     }
-    
+
     func test_init_shortPlate_error() {
         //Arrange
         let plate = "Ce567"
@@ -57,7 +57,7 @@ class VehicleTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try Vehicle(plate: plate))
     }
-    
+
     func test_getPlate_verifyCurrentPlate_success() {
         //Arrange
         let expectedPlate = "CDE567"

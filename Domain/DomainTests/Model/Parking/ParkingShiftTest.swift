@@ -23,7 +23,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertTrue(date == expectedDate)
     }
-    
+
     func test_getDepartureDate_verifyExistenceDepartureDateWhenItsNil_error() {
         //Arrange
         let plate = "CDE234"
@@ -35,7 +35,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try shift.getDepartureDate())
     }
-    
+
     func test_getDepartureDate_verifyDepartureDateGreaterThanAdmissionDate_success() {
         //Arrange
         let plate = "CDE234"
@@ -48,7 +48,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertNoThrow(try shift.setDepartureDate(date))
     }
-    
+
     func test_getDepartureDate_verifyDepartureDateLowerThanAdmissionDate_error() {
         //Arrange
         let plate = "CDE234"
@@ -60,7 +60,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertThrowsError(try shift.setDepartureDate(date))
     }
-    
+
     func test_getDepartureDate_verifyExistenceDepartureDate_success() {
         //Arrange
         let plate = "CDE234"
@@ -75,7 +75,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertTrue(date == expectedDate)
     }
-    
+
     func test_getDepartureDate_verifyExistenceVehicle_error() {
         //Arrange
         let plate = "CDE234"
@@ -88,7 +88,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertTrue(vehicle.getPlate() == expectedVehicle.getPlate())
     }
-    
+
     func test_init_plateBeginningWithAOnAMonday_success() {
         //Arrange
         let plate = "ADE234"
@@ -99,7 +99,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertNoThrow(try ParkingShift(admissionDate: supposedDate, vehicle: car))
     }
-    
+
     func test_init_plateBeginningWithAOnASunday_success() {
         //Arrange
         let plate = "ADE234"
@@ -110,7 +110,7 @@ class ParkingShiftTest: XCTestCase {
         //Assert
         XCTAssertNoThrow(try ParkingShift(admissionDate: supposedDate, vehicle: car))
     }
-    
+
     func test_init_plateBeginningWithAOnAWednesday_error() {
         //Arrange
         let plate = "ADE234"

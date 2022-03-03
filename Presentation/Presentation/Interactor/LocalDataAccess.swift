@@ -9,10 +9,10 @@ import Infrastructure
 import Domain
 
 class LocalService {
-    
+
     private var translator: VehicleVisibleTranslator
     private var service: ParkingShiftService
-    
+
     init(type: VehicleType) {
         switch type {
         case .car:
@@ -23,11 +23,11 @@ class LocalService {
             service = MotorcycleParkingShiftService(motorcycleParkingShiftRepository: MotorcycleParkingCoreDataRepository.shared)
         }
     }
-    
+
     func getTranslator() -> VehicleVisibleTranslator {
         return translator
     }
-    
+
     func getService() -> ParkingShiftService {
         return service
     }

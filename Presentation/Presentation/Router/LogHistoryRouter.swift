@@ -28,9 +28,8 @@ class LogHistoryRouter: LogHistoryRouterProtocol {
         }
         return UIViewController()
     }
-    
+
     static var mainStoryboard: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
-    
 }

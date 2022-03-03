@@ -7,7 +7,7 @@
 import Foundation
 
 class HomePresenter  { // Arreglar
-    
+
     // MARK: Properties
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
@@ -22,7 +22,7 @@ class HomePresenter  { // Arreglar
             }
         }
     }
-    
+
     func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
         Task {
             do {
@@ -33,7 +33,7 @@ class HomePresenter  { // Arreglar
             }
         }
     }
-    
+
     func loadData(_ date: String, withThisType type: VehicleType) {
         view?.setTimeLabelText(text: date)
         do {
@@ -42,17 +42,17 @@ class HomePresenter  { // Arreglar
             view?.showAlert(message: error.messageDescription())
         }
     }
-    
+
     func refreshData(in date: String, with data: [VehicleVisible]) {
         view?.setTimeLabelText(text: date)
     }
-    
+
     func refreshData(with data: [VehicleVisible]) {
         DispatchQueue.main.async { [self] in
             view?.setCounterLabelText(text:"\(data.count)")
             view?.refreshCollection(with: data)}
     }
-    
+
     func searchBy(plate: String, withThisType type: VehicleType) {
         do {
             try interactor?.fetchData(withThisType: type, andThisPlate: plate)
@@ -60,7 +60,7 @@ class HomePresenter  { // Arreglar
             view?.showAlert(message: error.messageDescription())
         }
     }
-    
+
     func showLogHistory() {
         wireFrame?.showLogHistory(from: view!)
     }
@@ -68,7 +68,7 @@ class HomePresenter  { // Arreglar
 
 extension HomePresenter: HomePresenterProtocol {
 
-    
+
     // TODO: implement presenter methods
 }
 

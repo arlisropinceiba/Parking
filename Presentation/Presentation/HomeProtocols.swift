@@ -10,7 +10,7 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: HomePresenterProtocol? { get set }
-    
+
     func setTimeLabelText(text: String)
     func setCounterLabelText(text: String)
     func refreshCollection(with data: [VehicleVisible])
@@ -29,7 +29,7 @@ protocol HomePresenterProtocol: AnyObject {
     var view: HomeViewProtocol? { get set }
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeRouterProtocol? { get set }
-    
+
     func loadData(_ date: String, withThisType type: VehicleType)
     func refreshData(in date: String, with data: [VehicleVisible])
     func createShift(vehicle: VehicleVisible, withThisType type: VehicleType)
@@ -46,7 +46,7 @@ protocol HomeInteractorOutputProtocol: AnyObject {
 protocol HomeInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: HomeInteractorOutputProtocol? { get set }
-    
+
     func createParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws
     func fetchData(withThisType type: VehicleType) throws
     func fetchData(withThisType type: VehicleType, andThisPlate: String) throws

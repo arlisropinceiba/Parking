@@ -8,7 +8,7 @@
 import UIKit
 
 class CarVisible: VehicleVisible {
-    
+
     public init(uid: UUID, plate: String, admissionDate: Date) {
         super.init(uid: uid,
                    plate: plate,
@@ -17,7 +17,7 @@ class CarVisible: VehicleVisible {
                    departureDate: nil,
                    valor: "")
     }
-    
+
     public init(uid: UUID, plate: String, admissionDate: Date, departureDate: Date?, valor: String) {
         super.init(uid: uid,
                    plate: plate,
@@ -26,7 +26,7 @@ class CarVisible: VehicleVisible {
                    departureDate: departureDate,
                    valor: valor)
     }
-    
+
     convenience public init(plate: String, admissionDate: Date) {
         self.init(uid: UUID(), plate: plate, admissionDate: admissionDate)
     }

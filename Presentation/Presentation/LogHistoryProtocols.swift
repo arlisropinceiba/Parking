@@ -26,7 +26,7 @@ protocol LogHistoryPresenterProtocol: AnyObject {
     var view: LogHistoryViewProtocol? { get set }
     var interactor: LogHistoryInteractorInputProtocol? { get set }
     var wireFrame: LogHistoryRouterProtocol? { get set }
-    
+
     func viewDidLoad()
     func loadData(withThisType type: VehicleType)
     func searchBy(plate: String, withThisType type: VehicleType)

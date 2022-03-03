@@ -9,7 +9,7 @@ import CoreData
 import Domain
 
 class VehicleParkingShiftTranslator {
-    
+
     public func fromDomainToCoreUpdate(_ manager: CoreDataManager, _ parkingDomain: ParkingShiftPayment, _ parkingCore: [ParkingShiftCoreEntity]) throws -> NSManagedObject? {
         if parkingCore.count == 1 {
             parkingCore[0].departureDate = try parkingDomain.getParkingShift().getDepartureDate()
@@ -33,11 +33,11 @@ class VehicleParkingShiftTranslator {
         return nil
     }
 
-    public func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShift]{
+    public func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShift] {
         return []
     }
 
-    public func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShiftPayment]{
+    public func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShiftPayment] {
         return []
     }
 }

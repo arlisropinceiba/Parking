@@ -6,16 +6,16 @@
 //
 
 public class MotorcycleParkingShiftService: ParkingShiftService {
-    
+
     public init(motorcycleParkingShiftRepository: MotorcycleParkingShiftRepository) {
         super.init(parkingShitRepository: motorcycleParkingShiftRepository)
     }
-    
+
     public override func saveThis(shift: ParkingShift) async throws {
         try areThereParkingSpaces()
         try await super.saveThis(shift: shift)
     }
-    
+
     private func areThereParkingSpaces() throws {
         let minimumNumberAllowed = 10
         let motorcycleParkingShiftRepository = parkingShitRepository as? MotorcycleParkingShiftRepository

@@ -8,9 +8,9 @@
 import XCTest
 
 class PresentationUITestsHomeScreen: XCTestCase {
-    
+
     let app = XCUIApplication()
-    
+
     func test_HomeWindow_AddCarParkingShift_success() {
         // Given
         app.launch()
@@ -30,7 +30,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         //// And finilized shift for quantity control
         let _ = HomeScreen(app: app).finishShift(plate: plate)
     }
-    
+
     func test_HomeWindow_AddMotorcycleParkingShift_success() {
         // Given
         app.launch()
@@ -54,7 +54,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         //// And finilized shift for quantity control
         _ = HomeScreen(app: app).finishShift(plate: plate)
     }
-    
+
     func test_tappingPlateInFinder_searchForCarPlate_success() {
         // Given
         app.launch()
@@ -66,7 +66,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // Then
         XCTAssertTrue(HomeScreen(app: app).searchingPlate(withThisLetter: letter))
     }
-    
+
     func test_tappingPlateInFinder_searchForMotorcyclePlate_success() {
         // Given
         app.launch()
@@ -80,7 +80,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // Then
         XCTAssertTrue(HomeScreen(app: app).searchingPlate(withThisLetter: letter))
     }
-    
+
     func test_tappingPlateInFinder_showAllParkingShiftsWhenFinderIsEmpty_success() {
         // Given
         app.launch()
@@ -92,7 +92,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // Then
         XCTAssertTrue(app.collectionViews.cells.count == cellsCount)
     }
-    
+
     func test_tappingFinishCarParkingShiftButton_finishService_success() {
         // Given
         app.launch()
@@ -109,7 +109,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // Then
         XCTAssertTrue(!HomeScreen(app: app).verifyTheExistenceInCollectionView(ofThisPlate: plate))
     }
-    
+
     func test_tappingFinishMotorcycleParkingShiftButton_finishService_success() {
         // Given
         app.launch()
@@ -131,7 +131,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // Then
         XCTAssertTrue(!HomeScreen(app: app).verifyTheExistenceInCollectionView(ofThisPlate: plate))
     }
-    
+
     func test_tappingFinishParkingShiftButton_showValue_success() {
         // Given
         app.launch()
@@ -151,15 +151,15 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // Then
         XCTAssertTrue(valueLabel.label.count >= 1 )
     }
-    
+
     // MARK: Functions
-    
+
     func randomString(withLength length: Int) -> String {
         // sin la A para evitar error de ingreso de autos con placa Axxxxx el día lunes o domingo
       let letters = "BCDEFGHIJKLMNOPQRSTUVWXYZ"
       return String((0..<length).map{ _ in letters.randomElement()! })
     }
-    
+
     func randomNumber(withLength length: Int) -> String {
       let letters = "0123456789"
       return String((0..<length).map{ _ in letters.randomElement()! })

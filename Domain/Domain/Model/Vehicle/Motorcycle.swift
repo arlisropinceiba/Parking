@@ -7,7 +7,7 @@
 
 public class Motorcycle: Vehicle {
     private var cylinderCapacity: Int
-    
+
     public init(plate: String, cylinderCapacity: Int) throws {
         self.cylinderCapacity = cylinderCapacity
         try super.init(plate: plate)
@@ -15,13 +15,13 @@ public class Motorcycle: Vehicle {
             throw DomainErrors.InvalidCylinderCapacity()
         }
     }
-    
-    public func getCylinderCapacity() -> Int{
+
+    public func getCylinderCapacity() -> Int {
         return self.cylinderCapacity
     }
-    
+
     private func isTheCylinderCapacityValid(_ cylinderCapacity: Int) -> Bool {
-        let minimumPossibleCylinderCapacityOnAMotorcycle = 50
-        return cylinderCapacity >= minimumPossibleCylinderCapacityOnAMotorcycle
+        let minimumPossibleCapacityOnAMotorcycle = 50
+        return cylinderCapacity >= minimumPossibleCapacityOnAMotorcycle
     }
 }

@@ -14,11 +14,11 @@ class VehicleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var widthImage: NSLayoutConstraint!
     @IBOutlet weak var timeLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     func setData(ofThis vehicle: VehicleVisible, withThisDate departureDate: Date, inWindowWidth widthView: CGFloat) {
         setSize(widthView)
         self.image.image = vehicle.getImage()

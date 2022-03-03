@@ -12,7 +12,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: HomeInteractorOutputProtocol?
-    
+
     func createParkingShift(withThisType type: VehicleType,
                             andThisVehicle vehicle: VehicleVisible) async throws {
         let localAccess = LocalService(type: type)
@@ -23,7 +23,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         try await localAccess.getService().saveThis(shift: parkingShift)
         try fetchData(withThisType: type)
     }
-    
+
     func finishParkingShift(withThisType type: VehicleType,
                             andThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible {
         vehicle.setDepartureDate(Date())
@@ -40,7 +40,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         try fetchData(withThisType: type)
         return vehicleVisible
     }
-    
+
     func fetchData(withThisType type: VehicleType,
                    andThisPlate plate: String) throws {
         let localAccess = LocalService(type: type)
@@ -50,7 +50,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }
-    
+
     func fetchData(withThisType type: VehicleType) throws  {
         let localAccess = LocalService(type: type)
         let parkingShifts = try localAccess.getService().getParkingShift()

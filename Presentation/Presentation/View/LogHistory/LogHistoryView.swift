@@ -14,7 +14,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var vehiclesListButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
-    
+
     // MARK: Properties
     var presenter: LogHistoryPresenterProtocol?
     var currentType: VehicleType = .car
@@ -28,17 +28,17 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
                        forCellReuseIdentifier: "LogItemTableViewCell")
         presenter?.loadData(withThisType: currentType)
     }
-    
+
     @IBAction func comeBack(_ sender: UIButton) {
         _ = self.navigationController?.popViewController(animated: true)
     }
-    
+
     // MARK: TableView
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vehicles.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vehicle = vehicles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogItemTableViewCell",
@@ -47,33 +47,33 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
-    
-    //MARK: Action button
+
+    // MARK: Action button
     @IBAction func searchByPlate(_ sender: UIButton) {
         presenter?.searchBy(plate: searchTextField.text ?? "", withThisType: currentType)
     }
-    
+
     // MARK: Refresh
-    
+
     func refreshTable(with data: [VehicleVisible]) {
         vehicles = data
         table.reloadData()
     }
-    
+
     // MARK: Vehicle menu
-    
+
     func configureListButton() {
         vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in
             actionItemVehicleType(with: vehicleType)
         })
     }
-    
+
     func actionItemVehicleType(with vehicleType: VehicleType) {
         vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
         presenter?.loadData(withThisType: currentType)
     }
-    
+
     // MARK: Alert
     func showAlert(message: String) {
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {

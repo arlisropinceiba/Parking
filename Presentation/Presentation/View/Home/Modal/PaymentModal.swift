@@ -14,9 +14,9 @@ class PaymentModal: UIViewController {
     @IBOutlet weak var descrptionLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var box: UIView!
-    
+
     var vehicle: VehicleVisible?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         box.layer.cornerRadius = 20
@@ -27,7 +27,7 @@ class PaymentModal: UIViewController {
             ""
         valueLabel.text = vehicle?.getValor()
     }
-    
+
     @IBAction func confirmProcess(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

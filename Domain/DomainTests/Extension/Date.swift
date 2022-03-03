@@ -13,11 +13,11 @@ extension Date {
     func advanceDate(thisHours hours: Int) -> Date {
         return Calendar.current.date(byAdding: .hour, value: hours, to: self) ?? Date()
     }
-    
+
     func lateDate(thisHours hours: Int) -> Date {
         return Calendar.current.date(byAdding: .hour, value: -hours, to: self) ?? Date()
     }
-    
+
     func advanceDate(toThisDay day: DayOfWeek) -> Date {
         let date = Calendar.current.dateComponents([.weekday], from: self).weekday ?? 0
         return Calendar.current.date(byAdding: .day, value: (7 - date) + day.rawValue, to: self) ?? Date()

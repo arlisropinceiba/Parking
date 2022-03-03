@@ -10,12 +10,12 @@ public class CarParkingShiftService: ParkingShiftService {
     public init(carParkingShiftRepository: CarParkingShiftRepository) {
         super.init(parkingShitRepository: carParkingShiftRepository)
     }
-    
+
     public override func saveThis(shift: ParkingShift) async throws {
         try areThereParkingSpaces()
         try await super.saveThis(shift: shift)
     }
-    
+
     private func areThereParkingSpaces() throws {
         let minimumNumberOfCarsAllowed = 20
         let carParkingShiftRepository = parkingShitRepository as? CarParkingShiftRepository

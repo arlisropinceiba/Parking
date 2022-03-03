@@ -12,7 +12,7 @@ public class CoreDataManager {
 
     let bundleIdentifier: String  = "Ceiba.Infrastructure"
     let xcdatamodeld: String = "ParkingCoreData"
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
         let messageKitBundle = Bundle(identifier: bundleIdentifier)
         let modelURL = messageKitBundle!.url(forResource: xcdatamodeld, withExtension: "momd")!
@@ -25,7 +25,7 @@ public class CoreDataManager {
         }
         return container
     }()
-    
+
     func getFetchCurrentParking() throws -> [ParkingShiftCoreEntity] {
         return try getFetch(withPredicate: NSPredicate(format: "departureDate == nil"))
     }
@@ -33,11 +33,11 @@ public class CoreDataManager {
     func getFetchHistoricalParking() throws -> [ParkingShiftCoreEntity] {
         return try getFetch(withPredicate: NSPredicate(format: "departureDate != nil"))
     }
-    
+
     func getFetchById(_ uid: UUID) throws -> [ParkingShiftCoreEntity] {
         return try getFetch(withPredicate: NSPredicate(format: "uid == %@", uid as CVarArg))
     }
-    
+
     private func getFetch(withPredicate predicate: NSPredicate) throws -> [ParkingShiftCoreEntity]  {
         let context = persistentContainer.viewContext
         let fetchRequest = ParkingShiftCoreEntity.fetchRequest(withPredicate: predicate)

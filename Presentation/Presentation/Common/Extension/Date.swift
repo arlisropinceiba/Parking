@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    
+
     func inHourDateFormat() -> String {
         let dateFormatterHour = DateFormatter()
         dateFormatterHour.dateFormat = "hh:mm:ss a"
@@ -21,7 +21,7 @@ extension Date {
         let month = dateFormatterMonth.string(from: self)
         return "\(hour)\n\(day.capitalized) de \(month)"
     }
-    
+
     func inDateHourFormat() -> String {
         let dateFormatterHour = DateFormatter()
         dateFormatterHour.dateFormat = "hh:mm:ss a"
@@ -34,5 +34,4 @@ extension Date {
         let month = dateFormatterMonth.string(from: self)
         return "\(day.capitalized) de \(month) a las \(hour)"
     }
-    
 }

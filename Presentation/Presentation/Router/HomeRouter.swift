@@ -26,11 +26,11 @@ class HomeRouter: HomeRouterProtocol {
         }
         return UIViewController()
     }
-    
+
     static var homeStoryboard: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
-    
+
     func showLogHistory(from view: HomeViewProtocol) {
         let new = LogHistoryRouter.createLogHistoryModule()
         if let newView = view as? UIViewController{

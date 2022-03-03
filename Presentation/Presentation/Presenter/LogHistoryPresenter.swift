@@ -9,16 +9,16 @@
 import Foundation
 
 class LogHistoryPresenter  {
-    
+
     // MARK: Properties
     weak var view: LogHistoryViewProtocol?
     var interactor: LogHistoryInteractorInputProtocol?
     var wireFrame: LogHistoryRouterProtocol?
-    
+
     func refreshData(with data: [VehicleVisible]) {
         view?.refreshTable(with: data)
     }
-    
+
     func loadData(withThisType type: VehicleType) {
         do {
             try interactor?.fetchData(withThisType: type)
@@ -26,7 +26,7 @@ class LogHistoryPresenter  {
             view?.showAlert(message: error.messageDescription())
         }
     }
-    
+
     func searchBy(plate: String, withThisType type: VehicleType) {
         do {
             try interactor?.fetchData(withThisType: type, andThisPlate: plate)
@@ -34,7 +34,6 @@ class LogHistoryPresenter  {
             view?.showAlert(message: error.messageDescription())
         }
     }
-    
 }
 
 extension LogHistoryPresenter: LogHistoryPresenterProtocol {

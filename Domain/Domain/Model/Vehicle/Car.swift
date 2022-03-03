@@ -6,9 +6,8 @@
 //
 
 public class Car: Vehicle {
-    
+
     public override init (plate: String) throws {
         try super.init(plate: plate)
     }
-    
 }

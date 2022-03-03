@@ -6,11 +6,10 @@
 //
 
 extension Error{
-    
+
     func messageDescription() -> String{
         let errorString = String(describing: self)
         let arrString = errorString.split(separator: "\"")
         return String(arrString[1])
     }
-    
 }

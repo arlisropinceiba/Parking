@@ -54,7 +54,7 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
         let parkingShiftDomainArray: [ParkingShift] = try translator.fromCoreToDomainEntity(coreDataManager, parkingShiftSaved)
         return parkingShiftDomainArray
     }
-    
+
     public func searchFinalizedParkingShift(withPlate plate: String) throws -> [ParkingShiftPayment] {
         let parkingShiftsSaved = try fetchFinalizedParkingShift(withPlate: plate)
         let parkingShiftDomainArray: [ParkingShiftPayment] = try translator.fromCoreToDomainEntity(coreDataManager, parkingShiftsSaved)
@@ -84,7 +84,7 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
         let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.vehicle?.plate?.contains(plate) ?? false})
         return parkingSavedWithSamePlate
     }
-    
+
     private func fetchFinalizedParkingShift(withPlate plate: String) throws -> [ParkingShiftCoreEntity] {
         let parkingShiftsSaved = try coreDataManager.getFetchHistoricalParking()
         let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.vehicle?.plate?.contains(plate) ?? false})

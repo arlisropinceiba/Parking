@@ -26,7 +26,7 @@ class ParkingShiftPaymentTest: XCTestCase {
         XCTAssertTrue(value == 11000)
         
     }
-    
+
     func test_calculateParkingShiftPriceAt10H_calculateParkingValue_success() {
         // Arrange
         guard let car = try? Car(plate: "DSA123")

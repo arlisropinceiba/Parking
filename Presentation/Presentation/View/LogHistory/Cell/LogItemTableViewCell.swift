@@ -13,7 +13,7 @@ class LogItemTableViewCell: UITableViewCell {
     @IBOutlet weak var plateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var vehicleImage: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,5 +38,4 @@ class LogItemTableViewCell: UITableViewCell {
         """
         descriptionLabel.text = text
     }
-    
 }

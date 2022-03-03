@@ -8,9 +8,9 @@
 import UIKit
 
 class MotorcycleVisible: VehicleVisible {
-    
+
     var cylinderCapacity: Int
-    
+
     public init(uid: UUID,
                 plate: String,
                 admissionDate: Date,
@@ -23,7 +23,7 @@ class MotorcycleVisible: VehicleVisible {
                    departureDate: nil,
                    valor: "")
     }
-    
+
     public init(uid: UUID,
                 plate: String,
                 admissionDate: Date,
@@ -38,7 +38,7 @@ class MotorcycleVisible: VehicleVisible {
                    departureDate: departureDate,
                    valor: valor)
     }
-    
+
     convenience public init(uid: UUID,
                             plate: String,
                             admissionDate: Date) {
@@ -47,7 +47,7 @@ class MotorcycleVisible: VehicleVisible {
                   admissionDate: admissionDate,
                   cylinderCapacity: 0)
     }
-    
+
     convenience public init(plate: String,
                             admissionDate: Date,
                             cylinderCapacity: Int) {
@@ -56,7 +56,7 @@ class MotorcycleVisible: VehicleVisible {
                   admissionDate: admissionDate,
                   cylinderCapacity: cylinderCapacity)
     }
-    
+
     func getCylinderCapacity() -> Int {
         return cylinderCapacity
     }

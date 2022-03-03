@@ -6,7 +6,7 @@
 //
 
 public class CarParkingShiftPayment: ParkingShiftPayment {
-    
+
     public init(parkingShift: ParkingShift) {
         super.init(parkingShift: parkingShift, priceDay: 8000, priceHour: 1000)
     }

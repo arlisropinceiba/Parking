@@ -8,11 +8,11 @@
 import Foundation
 
 public class MotorcycleParkingShiftPayment: ParkingShiftPayment {
-    
+
     public init(parkingShift: ParkingShift) {
         super.init(parkingShift: parkingShift, priceDay: 4000, priceHour: 500)
     }
-    
+
     public override func calculateParkingShiftPrice() throws -> Int {
         let extraChargeValueForHighCapacity = 2000
         let minimumCapacityToChargeExtra = 500

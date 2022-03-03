@@ -6,12 +6,12 @@
 //
 
 public class ParkingShiftPayment {
-    
+
     private var parkingShift: ParkingShift
     private var priceDay: Int
     private var priceHour: Int
     private var value: Int = 0
-    
+
     public init(
         parkingShift: ParkingShift,
         priceDay: Int,
@@ -21,7 +21,7 @@ public class ParkingShiftPayment {
         self.priceDay = priceDay
         self.priceHour = priceHour
     }
-    
+
     public func getParkingShift() -> ParkingShift {
         return parkingShift
     }
@@ -35,7 +35,7 @@ public class ParkingShiftPayment {
         value += hours * priceHour
         return value
     }
-    
+
     private func getTheShiftDaysAndHours(between beginDate: Date, and endDate: Date) -> (days: Int, hours: Int) {
         let minimumHoursToChargeAsADay = 9
         let dayHours = 24
@@ -49,5 +49,4 @@ public class ParkingShiftPayment {
         }
         return (daysInt, restHours)
     }
-    
 }

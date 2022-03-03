@@ -20,7 +20,7 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
         let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }
-    
+
     func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws {
         let localAccess = LocalService(type: type)
         let parkingShifts = (plate == "" ?

@@ -26,7 +26,7 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         XCTAssertTrue(value == 5500)
         
     }
-    
+
     func test_calculateParkingShiftPriceAt10HAndLowCapacity_calculateParkingValue_success() {
         // Arrange
         guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 200)
@@ -43,7 +43,7 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         XCTAssertTrue(value == 4000)
         
     }
-    
+
     func test_calculateParkingShiftPriceAt27HAndHighCapacity_calculateParkingValue_success() {
         // Arrange
         guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 650)
@@ -60,7 +60,7 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         XCTAssertTrue(value == 7500)
         
     }
-    
+
     func test_calculateParkingShiftPriceAt10HAndHighCapacity_calculateParkingValue_success() {
         // Arrange
         guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 650)
