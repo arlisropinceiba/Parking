@@ -157,11 +157,11 @@ class PresentationUITestsHomeScreen: XCTestCase {
     func randomString(withLength length: Int) -> String {
         // sin la A para evitar error de ingreso de autos con placa Axxxxx el día lunes o domingo
       let letters = "BCDEFGHIJKLMNOPQRSTUVWXYZ"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+      return String((0..<length).map{_ in letters.randomElement()!})
     }
 
     func randomNumber(withLength length: Int) -> String {
       let letters = "0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+      return String((0..<length).map{_ in letters.randomElement()!})
     }
 }

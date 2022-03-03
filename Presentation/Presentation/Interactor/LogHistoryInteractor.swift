@@ -30,4 +30,3 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
         presenter?.refreshData(with: vehicles)
     }
 }
-

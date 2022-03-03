@@ -146,4 +146,3 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
 
 extension HomeView: HomeViewProtocol {
 }
-

@@ -255,7 +255,6 @@
 				1C1732C327BBF33F00B3350F /* Extension */,
 				1C1732D827BC723900B3350F /* Storyboards */,
 				1C1732C627BC447D00B3350F /* BaseController.swift */,
-				1CEA199C27B4662400865244 /* SceneDelegate.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -386,6 +385,7 @@
 			children = (
 				1CEA19A827B4662700865244 /* Info.plist */,
 				1CEA199A27B4662400865244 /* AppDelegate.swift */,
+				1CEA199C27B4662400865244 /* SceneDelegate.swift */,
 				1CEA19A327B4662700865244 /* Assets.xcassets */,
 				1C6BB03827C543F5001858BE /* Common */,
 				1C6BB03D27C549A0001858BE /* Interactor */,
