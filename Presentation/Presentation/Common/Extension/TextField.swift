@@ -12,10 +12,10 @@ private var maxLengths = [UITextField: Int]()
 extension UITextField {
     @IBInspectable var maxLength: Int {
         get {
-            guard let l = maxLengths[self] else {
+            guard let lenght = maxLengths[self] else {
                return 150 // (global default-limit. or just, Int.max)
             }
-            return l
+            return lenght
         }
         set {
             maxLengths[self] = newValue

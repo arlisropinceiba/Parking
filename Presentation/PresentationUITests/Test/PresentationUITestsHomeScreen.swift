@@ -161,7 +161,11 @@ class PresentationUITestsHomeScreen: XCTestCase {
     }
 
     func randomNumber(withLength length: Int) -> String {
-      let letters = "0123456789"
-      return String((0..<length).map{_ in letters.randomElement()!})
+        let letters = "0123456789"
+        let arrayLength = (0..<length)
+        let arrayChar = arrayLength.map{number in
+            letters.randomElement()!
+        }
+        return String(arrayChar)
     }
 }

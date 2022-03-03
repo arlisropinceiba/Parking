@@ -34,7 +34,7 @@ protocol HomePresenterProtocol: AnyObject {
     func refreshData(in date: String, with data: [VehicleVisible])
     func createShift(vehicle: VehicleVisible, withThisType type: VehicleType)
     func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType)
-    func searchBy(plate: String, withThisType type: VehicleType) 
+    func searchBy(plate: String, withThisType type: VehicleType)
     func showLogHistory()
 }
 

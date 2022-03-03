@@ -40,7 +40,7 @@ class AddVehicleModal: UIViewController {
 
     @IBAction func addWithRandomValues(_ sender: UIButton) {
         let cylinderCapacity: Int = Int.random(in: 200...1000)
-        let plate: String = randomString(length: 3) + randomNumber(length: 3)
+        let plate: String = randomString(withLength: 3) + randomNumber(withLength: 3)
         returnValues(plate: plate, cylinderCapacity: cylinderCapacity)
     }
 
@@ -60,13 +60,21 @@ class AddVehicleModal: UIViewController {
         }
     }
 
-    func randomString(length: Int) -> String {
-      let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-      return String((0..<length).map{_ in letters.randomElement()!})
+    func randomString(withLength length: Int) -> String {
+        let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let arrayLength = (0..<length)
+        let arrayChar = arrayLength.map{number in
+            letters.randomElement()!
+        }
+        return String(arrayChar)
     }
 
-    func randomNumber(length: Int) -> String {
-      let letters = "0123456789"
-      return String((0..<length).map{_ in letters.randomElement()!})
+    func randomNumber(withLength length: Int) -> String {
+        let letters = "0123456789"
+        let arrayLength = (0..<length)
+        let arrayChar = arrayLength.map{number in
+            letters.randomElement()!
+        }
+        return String(arrayChar)
     }
 }
