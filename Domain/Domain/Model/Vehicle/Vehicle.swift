@@ -28,7 +28,7 @@ public class Vehicle {
     
     private func isThePlateValid(_ plate: String) -> Bool {
         let plateRegularExpression = "[A-Za-z]{3}[0-9]{3}"
-        let plateEvaluation = NSPredicate(format:"SELF MATCHES %@", plateRegularExpression)
+        let plateEvaluation = NSPredicate(format: "SELF MATCHES %@", plateRegularExpression)
         return plateEvaluation.evaluate(with: plate)
     }
 

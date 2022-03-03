@@ -34,8 +34,8 @@ public class CoreDataManager {
         return try getFetch(withPredicate: NSPredicate(format: "departureDate != nil"))
     }
     
-    func getFetchById(_ id: UUID) throws -> [ParkingShiftCoreEntity] {
-        return try getFetch(withPredicate: NSPredicate(format: "id == %@", id as CVarArg))
+    func getFetchById(_ uid: UUID) throws -> [ParkingShiftCoreEntity] {
+        return try getFetch(withPredicate: NSPredicate(format: "id == %@", uid as CVarArg))
     }
     
     private func getFetch(withPredicate predicate: NSPredicate) throws -> [ParkingShiftCoreEntity]  {
@@ -45,7 +45,7 @@ public class CoreDataManager {
         do{
             let parkings = try context.fetch(fetchRequest)
             for (index, parking) in parkings.enumerated() {
-                print("Parking \(index) - Id: \(String(describing: parking.id)) - Admission date: \(parking.admissonDate?.description ?? "N/A") - Departure date:  \(parking.departureDate?.description ?? "N/A") - Plate vehicle: \(parking.vehicle?.plate ?? "N/A") - Cylinder capacity: \((parking.vehicle as? MotorcycleCoreEntity)?.cylinderCapacity ?? 0)")
+                print("Parking \(index) - Id: \(String(describing: parking.uid)) - Admission date: \(parking.admissonDate?.description ?? "N/A") - Departure date:  \(parking.departureDate?.description ?? "N/A") - Plate vehicle: \(parking.vehicle?.plate ?? "N/A") - Cylinder capacity: \((parking.vehicle as? MotorcycleCoreEntity)?.cylinderCapacity ?? 0)")
             }
             return parkings
         } catch {

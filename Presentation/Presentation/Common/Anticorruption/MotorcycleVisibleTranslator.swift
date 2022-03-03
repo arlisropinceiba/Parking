@@ -9,7 +9,8 @@ import Domain
 
 class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
     
-    public override func fromVisibleToDomainEntity(_ vehicleVisible: VehicleVisible) throws -> ParkingShiftPayment? {
+    public override func fromVisibleToDomainEntity(
+        _ vehicleVisible: VehicleVisible) throws -> ParkingShiftPayment? {
         guard let motorcycleVisible = vehicleVisible as? MotorcycleVisible else {
             return nil
         }
@@ -17,7 +18,7 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
             plate: motorcycleVisible.getPlate(),
             cylinderCapacity: motorcycleVisible.getCylinderCapacity())
         let shift = try MotorcycleParkingShift(
-            id: vehicleVisible.getId(),
+            uid: vehicleVisible.getId(),
             admissionDate: vehicleVisible.getAdmissionDate(),
             departureDate: vehicleVisible.getDepartureDate(),
             motorcycle: motorcycle)
@@ -25,7 +26,8 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
         return payment
     }
     
-    public override func fromVisibleToDomainEntity(_ vehicleVisible: VehicleVisible) throws -> ParkingShift? {
+    public override func fromVisibleToDomainEntity(
+        _ vehicleVisible: VehicleVisible) throws -> ParkingShift? {
         guard let motorcycleVisible = vehicleVisible as? MotorcycleVisible else {
             return nil
         }
@@ -33,15 +35,17 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
             plate: motorcycleVisible.getPlate(),
             cylinderCapacity: motorcycleVisible.getCylinderCapacity())
         return try MotorcycleParkingShift(
-            id: vehicleVisible.getId(),
+            uid: vehicleVisible.getId(),
             admissionDate: Date(),
             motorcycle: motorcycle)
     }
     
-    public override func fromDomainToVisibleEntity(_ parkingShiftPayment: ParkingShiftPayment) throws -> VehicleVisible? {
-        if let motorcycleParkingShiftPayment = parkingShiftPayment as? MotorcycleParkingShiftPayment, let motorcycleParkingShift = motorcycleParkingShiftPayment.getParkingShift() as? MotorcycleParkingShift {
+    public override func fromDomainToVisibleEntity(
+        _ parkingShiftPayment: ParkingShiftPayment) throws -> VehicleVisible? {
+        if let motorcycleParkingShiftPayment = parkingShiftPayment as? MotorcycleParkingShiftPayment,
+            let motorcycleParkingShift = motorcycleParkingShiftPayment.getParkingShift() as? MotorcycleParkingShift {
             return MotorcycleVisible(
-                id: motorcycleParkingShift.getId(),
+                uid: motorcycleParkingShift.getId(),
                 plate: motorcycleParkingShift.getMotorcycle()?.getPlate() ?? "...",
                 admissionDate: motorcycleParkingShift.getAdmissionDate(),
                 cylinderCapacity: motorcycleParkingShift.getMotorcycle()?.getCylinderCapacity() ?? 0 ,
@@ -51,19 +55,21 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
         return nil
     }
     
-    public override func fromDomainToVisibleEntity(_ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {
+    public override func fromDomainToVisibleEntity(
+        _ parkingDomainEntity: ParkingShift) throws -> VehicleVisible? {
         if let motorcycleParkingShift = parkingDomainEntity as? MotorcycleParkingShift {
             return MotorcycleVisible(
-                id: motorcycleParkingShift.getId(),
+                uid: motorcycleParkingShift.getId(),
                 plate: motorcycleParkingShift.getMotorcycle()?.getPlate() ?? "",
                 admissionDate: motorcycleParkingShift.getAdmissionDate(),
                 cylinderCapacity: motorcycleParkingShift.getMotorcycle()?.getCylinderCapacity() ?? 0)}
         return nil
     }
 
-    public override func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShift]) throws -> [VehicleVisible] {
+    public override func fromDomainToVisibleEntity(
+        _ parkingDomainEntityArray: [ParkingShift]) throws -> [VehicleVisible] {
         var motorcycleParkingShiftArray: [VehicleVisible] = []
-        for itemCore in parkingCoreEntityArray {
+        for itemCore in parkingDomainEntityArray {
             if let itemDomain = try fromDomainToVisibleEntity(itemCore) {
                 motorcycleParkingShiftArray.append(itemDomain)
             }
@@ -71,9 +77,10 @@ class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
         return motorcycleParkingShiftArray
     }
     
-    public override func fromDomainToVisibleEntity(_ parkingCoreEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
+    public override func fromDomainToVisibleEntity(
+        _ paymentDomainEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
         var motorcycleParkingShiftArray: [VehicleVisible] = []
-        for itemCore in parkingCoreEntityArray {
+        for itemCore in paymentDomainEntityArray {
             if let itemDomain = try fromDomainToVisibleEntity(itemCore) {
                 motorcycleParkingShiftArray.append(itemDomain)
             }

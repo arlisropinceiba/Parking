@@ -6,9 +6,7 @@
 //
 //
 
-import Foundation
 import CoreData
-
 
 extension MotorcycleCoreEntity {
 
@@ -17,5 +15,4 @@ extension MotorcycleCoreEntity {
     }
 
     @NSManaged public var cylinderCapacity: Int32
-
 }

@@ -26,7 +26,9 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collection.register(UINib(nibName: "VehicleCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "VehicleCollectionViewCell")
+        collection.register(UINib(nibName: "VehicleCollectionViewCell",
+                                  bundle: Bundle.main),
+                            forCellWithReuseIdentifier: "VehicleCollectionViewCell")
         configureListButton()
         setWatch()
         let dateWithFormat = DateFormat.inHourDateFormat(date)
@@ -36,13 +38,16 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     //MARK: Collection
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return vehicles.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let vehicle = vehicles[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCollectionViewCell", for: indexPath) as! VehicleCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCollectionViewCell",
+                                                      for: indexPath) as! VehicleCollectionViewCell
         cell.setData(ofThis: vehicle, withThisDate: date, inWindowWidth: view.frame.width)
         return cell
     }
@@ -77,7 +82,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // MARK: Refresh
-    func refreshCollection(with data: [VehicleVisible]){
+    func refreshCollection(with data: [VehicleVisible]) {
         vehicles = data
         collection.reloadData()
     }
@@ -92,9 +97,11 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     // MARK: Alert
-    func showAlert(message: String){
+    func showAlert(message: String) {
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-            let alert = UIAlertController(title: "¡Lo sentimos!", message: message, preferredStyle:  UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "¡Lo sentimos!",
+                                          message: message,
+                                          preferredStyle:  UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -102,11 +109,11 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // MARK: Clock
     
-    func setWatch(){
+    func setWatch() {
         updateTimer.start {[self] _ in addSecondToWatch ()}
     }
     
-    func addSecondToWatch(){
+    func addSecondToWatch() {
         date = Calendar.current.date(byAdding: .second, value: 1, to: self.date) ?? Date()
         let dateWithFormat = DateFormat.inHourDateFormat(date)
         setTimeLabelText(text: dateWithFormat)
@@ -117,10 +124,12 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Vehicle menu
     
     func configureListButton() {
-        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in actionItemVehicleType(with: vehicleType)})
+        vehiclesListButton.configureVehicleListButton(handler: {
+            [self] vehicleType in actionItemVehicleType(with: vehicleType)
+        })
     }
     
-    func actionItemVehicleType(with vehicleType: VehicleType){
+    func actionItemVehicleType(with vehicleType: VehicleType) {
         vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
         let dateWithFormat = DateFormat.inHourDateFormat(date)
@@ -129,7 +138,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     // MARK: PaymentModal
     
-    func showPayment(vehicle: VehicleVisible){
+    func showPayment(vehicle: VehicleVisible) {
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
             let modal = PaymentModal(nibName: "PaymentModal", bundle: nil)
             modal.vehicle = vehicle

@@ -50,5 +50,6 @@ protocol HomeInteractorInputProtocol: AnyObject {
     func createParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws
     func fetchData(withThisType type: VehicleType) throws
     func fetchData(withThisType type: VehicleType, andThisPlate: String) throws
-    func finishParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible
+    func finishParkingShift(withThisType type: VehicleType,
+                            andThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible
 }

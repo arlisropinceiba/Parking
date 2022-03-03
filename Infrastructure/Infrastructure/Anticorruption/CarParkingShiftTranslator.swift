@@ -8,7 +8,7 @@
 import CoreData
 import Domain
 
-class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
+class CarParkingShiftTranslator: VehicleParkingShiftTranslator {
     
     public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingShiftPayment: ParkingShiftPayment) throws -> NSManagedObject {
         let context = manager.persistentContainer.viewContext
@@ -18,7 +18,7 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
         guard let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment else { throw InfrastructureErrors.ErrorSavingParking()}
         guard let carParkingShift = carParkingShiftPayment.getParkingShift() as? CarParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
         car.plate = carParkingShift.getCar()?.getPlate()
-        parking.id = carParkingShift.getId()
+        parking.uid = carParkingShift.getId()
         parking.admissonDate = carParkingShift.getAdmissionDate()
         parking.vehicle = car
         do {
@@ -37,7 +37,7 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
     
         guard let carParkingDomain = parkingDomain as? CarParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
         car.plate = carParkingDomain.getCar()?.getPlate()
-        parking.id = carParkingDomain.getId()
+        parking.uid = carParkingDomain.getId()
         parking.admissonDate = carParkingDomain.getAdmissionDate()
         parking.vehicle = car
         do {
@@ -51,15 +51,15 @@ class CarParkingShiftTranslator : VehicleParkingShiftTranslator {
     public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntity: ParkingShiftCoreEntity) throws -> CarParkingShift? {
         guard let plate = parkingCoreEntity.vehicle?.plate,
               let admissionDate = parkingCoreEntity.admissonDate,
-              let id = parkingCoreEntity.id,
+              let uid = parkingCoreEntity.uid,
                 parkingCoreEntity.vehicle is CarCoreEntity else {
             return nil
         }
         let car = try Car(plate: plate)
         if let departureDate = parkingCoreEntity.departureDate {
-            return try CarParkingShift(id: id, admissionDate: admissionDate, departureDate: departureDate, car: car)
+            return try CarParkingShift(uid: uid, admissionDate: admissionDate, departureDate: departureDate, car: car)
         } else {
-            return try CarParkingShift(id: id, admissionDate: admissionDate, car: car)
+            return try CarParkingShift(uid: uid, admissionDate: admissionDate, car: car)
         }
     }
     

@@ -22,13 +22,20 @@ class LogItemTableViewCell: UITableViewCell {
         box.layer.borderColor = #colorLiteral(red: 0.001902872347, green: 0.2908241451, blue: 0.32291466, alpha: 1)
     }
 
-    func initWithData(vehicle: VehicleVisible){
+    func initWithData(vehicle: VehicleVisible) {
         vehicleImage.image = vehicle.getImage()
         let addmissionDate = DateFormat.inDateHourFormat(vehicle.getAdmissionDate())
         let departureDate = DateFormat.inDateHourFormat(vehicle.getDepartureDate() ?? Date())
-        let descriptionVehicle = vehicle is MotorcycleVisible ? "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":""
+        let descriptionVehicle = vehicle is MotorcycleVisible ?
+            "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":
+            ""
         plateLabel.text = vehicle.getPlate() + "\n" + descriptionVehicle
-        let text = "🗓 Fecha de ingreso: \(addmissionDate) \n🗓 Fecha de salida: \(departureDate) \n🕗 Total tiempo: \(vehicle.getLenghtOfStay()) \n💲 Valor total: \(vehicle.getValor())"
+        let text = """
+        🗓 Fecha de ingreso: \(addmissionDate)
+        🗓 Fecha de salida: \(departureDate)
+        🕗 Total tiempo: \(vehicle.getLenghtOfStay())
+        💲 Valor total: \(vehicle.getValor())
+        """
         descriptionLabel.text = text
     }
     

@@ -19,7 +19,7 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         guard let motorcycleParkingShift = motorcycleParkingShiftPayment.getParkingShift() as? MotorcycleParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
         motorcycle.plate = motorcycleParkingShift.getMotorcycle()?.getPlate()
         motorcycle.cylinderCapacity = Int32(motorcycleParkingShift.getMotorcycle()?.getCylinderCapacity() ?? 0)
-        parking.id = motorcycleParkingShift.getId()
+        parking.uid = motorcycleParkingShift.getId()
         parking.admissonDate = motorcycleParkingShift.getAdmissionDate()
         do {
             parking.departureDate = try motorcycleParkingShift.getDepartureDate()
@@ -39,7 +39,7 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         guard let motorcycleParkingDomain = parkingDomain as? MotorcycleParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
         motorcycle.plate = motorcycleParkingDomain.getMotorcycle()?.getPlate()
         motorcycle.cylinderCapacity = Int32(motorcycleParkingDomain.getMotorcycle()?.getCylinderCapacity() ?? 0)
-        parking.id = motorcycleParkingDomain.getId()
+        parking.uid = motorcycleParkingDomain.getId()
         parking.admissonDate = motorcycleParkingDomain.getAdmissionDate()
         do {
             parking.departureDate = try motorcycleParkingDomain.getDepartureDate()
@@ -55,7 +55,7 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
             return nil}
         guard let plate = motorcycleCoreEntity.plate,
               let admissionDate = parkingCoreEntity.admissonDate,
-              let id = parkingCoreEntity.id else {
+              let uid = parkingCoreEntity.uid else {
             return nil
         }
         
@@ -63,9 +63,9 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
         
         let motorcycle = try Motorcycle(plate: plate, cylinderCapacity: capacity)
         if let departureDate = parkingCoreEntity.departureDate {
-            return try MotorcycleParkingShift(id: id, admissionDate: admissionDate, departureDate: departureDate, motorcycle: motorcycle)
+            return try MotorcycleParkingShift(uid: uid, admissionDate: admissionDate, departureDate: departureDate, motorcycle: motorcycle)
         } else {
-            return try MotorcycleParkingShift(id: id, admissionDate: admissionDate, motorcycle: motorcycle)
+            return try MotorcycleParkingShift(uid: uid, admissionDate: admissionDate, motorcycle: motorcycle)
         }
     }
     

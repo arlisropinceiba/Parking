@@ -15,7 +15,7 @@ class LogHistoryPresenter  {
     var interactor: LogHistoryInteractorInputProtocol?
     var wireFrame: LogHistoryRouterProtocol?
     
-    func refreshData(with data: [VehicleVisible]){
+    func refreshData(with data: [VehicleVisible]) {
         view?.refreshTable(with: data)
     }
     

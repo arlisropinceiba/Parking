@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension VehicleCoreEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<VehicleCoreEntity> {
@@ -18,9 +17,7 @@ extension VehicleCoreEntity {
 
     @NSManaged public var plate: String?
     @NSManaged public var parkingShift: ParkingShiftCoreEntity?
-
 }
 
-extension VehicleCoreEntity : Identifiable {
-
+extension VehicleCoreEntity: Identifiable {
 }

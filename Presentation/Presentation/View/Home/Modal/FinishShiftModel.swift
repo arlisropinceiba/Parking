@@ -23,7 +23,9 @@ class FinishShiftModel: UIViewController {
         image.image = vehicle?.getImage()
         plateLabel.text = vehicle?.getPlate()
         let addmissionDate = DateFormat.inDateHourFormat(vehicle?.getAdmissionDate() ?? Date()) 
-        let text = "Ingreso el día \(addmissionDate) para un total de \(vehicle?.getLenghtOfStayfromAdmissionDateToNow() ?? "...")"
+        let text = """
+        Ingreso el día \(addmissionDate) para un total de \(vehicle?.getLenghtOfStayfromAdmissionDateToNow() ?? "...")
+        """
         
         descriptionLabel.text = text
         descriptionLabel.accessibilityIdentifier = "ValueLabel"

@@ -17,7 +17,8 @@ class PresentationUITestsHomeScreen: XCTestCase {
         //// A random plate
         let lettersNumberOnThePlate = 3
         let numbersNumberOnThePlate = 3
-        let plate = randomString(withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
+        let plate = randomString(
+            withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .addVehicleButton)
@@ -37,7 +38,8 @@ class PresentationUITestsHomeScreen: XCTestCase {
         let numbersNumberOnThePlate = 3
         let numberOfDigitsForAPossibleCapacityValue = 3
         let cylinderCapacity = randomNumber(withLength: numberOfDigitsForAPossibleCapacityValue)
-        let plate = randomString(withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
+        let plate = randomString(
+            withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .vehiclesListButton)
@@ -53,7 +55,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         _ = HomeScreen(app: app).finishShift(plate: plate)
     }
     
-    func test_tappingPlateInFinder_searchForCarPlate_success(){
+    func test_tappingPlateInFinder_searchForCarPlate_success() {
         // Given
         app.launch()
         let letter = randomString(withLength: 1)
@@ -65,7 +67,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         XCTAssertTrue(HomeScreen(app: app).searchingPlate(withThisLetter: letter))
     }
     
-    func test_tappingPlateInFinder_searchForMotorcyclePlate_success(){
+    func test_tappingPlateInFinder_searchForMotorcyclePlate_success() {
         // Given
         app.launch()
         let letter = randomString(withLength: 1)
@@ -79,7 +81,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         XCTAssertTrue(HomeScreen(app: app).searchingPlate(withThisLetter: letter))
     }
     
-    func test_tappingPlateInFinder_showAllParkingShiftsWhenFinderIsEmpty_success(){
+    func test_tappingPlateInFinder_showAllParkingShiftsWhenFinderIsEmpty_success() {
         // Given
         app.launch()
         let cellsCount = app.collectionViews.cells.count
@@ -96,7 +98,8 @@ class PresentationUITestsHomeScreen: XCTestCase {
         app.launch()
         let lettersNumberOnThePlate = 3
         let numbersNumberOnThePlate = 3
-        let plate = randomString(withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
+        let plate = randomString(
+            withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .addVehicleButton)
@@ -114,7 +117,8 @@ class PresentationUITestsHomeScreen: XCTestCase {
         let numbersNumberOnThePlate = 3
         let numberOfDigitsForAPossibleCapacityValue = 3
         let cylinderCapacity = randomNumber(withLength: numberOfDigitsForAPossibleCapacityValue)
-        let plate = randomString(withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
+        let plate = randomString(
+            withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .vehiclesListButton)
@@ -133,7 +137,8 @@ class PresentationUITestsHomeScreen: XCTestCase {
         app.launch()
         let lettersNumberOnThePlate = 3
         let numbersNumberOnThePlate = 3
-        let plate = randomString(withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
+        let plate = randomString(
+            withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .addVehicleButton)
@@ -150,7 +155,8 @@ class PresentationUITestsHomeScreen: XCTestCase {
     // MARK: Functions
     
     func randomString(withLength length: Int) -> String {
-      let letters = "BCDEFGHIJKLMNOPQRSTUVWXYZ" // sin la A para evitar error de ingreso de autos con placa Axxxxx el día lunes o domingo
+        // sin la A para evitar error de ingreso de autos con placa Axxxxx el día lunes o domingo
+      let letters = "BCDEFGHIJKLMNOPQRSTUVWXYZ"
       return String((0..<length).map{ _ in letters.randomElement()! })
     }
     

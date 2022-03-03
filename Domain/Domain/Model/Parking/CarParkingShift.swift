@@ -7,12 +7,12 @@
 
 public class CarParkingShift: ParkingShift {
     
-    public init(id: UUID, admissionDate: Date, departureDate: Date?, car: Car) throws {
-        try super.init(id: id, admissionDate: admissionDate, departureDate: departureDate, vehicle: car)
+    public init(uid: UUID, admissionDate: Date, departureDate: Date?, car: Car) throws {
+        try super.init(uid: uid, admissionDate: admissionDate, departureDate: departureDate, vehicle: car)
     }
     
-    convenience public init(id: UUID, admissionDate: Date, car: Car) throws {
-        try self.init(id: id, admissionDate: admissionDate, departureDate: nil, car: car)
+    convenience public init(uid: UUID, admissionDate: Date, car: Car) throws {
+        try self.init(uid: uid, admissionDate: admissionDate, departureDate: nil, car: car)
     }
     
     public func getCar() -> Car? {

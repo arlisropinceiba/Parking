@@ -23,7 +23,9 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
     
     func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws {
         let localAccess = LocalService(type: type)
-        let parkingShifts = (plate == "" ? try localAccess.getService().getFinalizedParkingShifts() : try localAccess.getService().searchFinalizedParkingShift(withPlate: plate.uppercased()))
+        let parkingShifts = (plate == "" ?
+                            try localAccess.getService().getFinalizedParkingShifts() :
+                            try localAccess.getService().searchFinalizedParkingShift(withPlate: plate.uppercased()))
         let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }

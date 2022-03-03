@@ -8,15 +8,15 @@
 import UIKit
 
 class VehicleVisible {
-    private var id: UUID = UUID()
+    private var uid: UUID = UUID()
     private var plate: String
     private var image: UIImage?
     private var admissionDate: Date
     private var departureDate: Date?
     private var valueParkingShift: String
     
-    init(id: UUID, plate: String, image: UIImage?, admissionDate: Date, departureDate: Date?, valor: String) {
-        self.id = id
+    init(uid: UUID, plate: String, image: UIImage?, admissionDate: Date, departureDate: Date?, valor: String) {
+        self.uid = uid
         self.plate = plate
         self.image = image
         self.admissionDate = admissionDate
@@ -25,7 +25,7 @@ class VehicleVisible {
     }
     
     public func getId() -> UUID {
-        return id
+        return uid
     }
     
     public func getPlate() -> String {
@@ -40,7 +40,7 @@ class VehicleVisible {
         return admissionDate
     }
     
-    public func setDepartureDate(_ date: Date){
+    public func setDepartureDate(_ date: Date) {
         self.departureDate = date
     }
     
@@ -77,7 +77,7 @@ class VehicleVisible {
         }
     }
     
-    private func getTheDaysAndHours(between beginDate: Date, and endDate: Date) -> (days: Int, hours: Int){
+    private func getTheDaysAndHours(between beginDate: Date, and endDate: Date) -> (days: Int, hours: Int) {
         let diffComponents = Calendar.current.dateComponents([.hour], from: beginDate, to: endDate)
         let hours = diffComponents.hour ?? 0
         let daysInt = Int(hours / 24)

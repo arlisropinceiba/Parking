@@ -11,22 +11,50 @@ class MotorcycleVisible: VehicleVisible {
     
     var cylinderCapacity: Int
     
-    public init(id: UUID, plate: String, admissionDate: Date, cylinderCapacity: Int) {
+    public init(uid: UUID,
+                plate: String,
+                admissionDate: Date,
+                cylinderCapacity: Int) {
         self.cylinderCapacity = cylinderCapacity
-        super.init(id: id, plate: plate, image: UIImage(named: "motorcycle"), admissionDate: admissionDate, departureDate: nil, valor: "")
+        super.init(uid: uid,
+                   plate: plate,
+                   image: UIImage(named: "motorcycle"),
+                   admissionDate: admissionDate,
+                   departureDate: nil,
+                   valor: "")
     }
     
-    public init(id: UUID, plate: String, admissionDate: Date, cylinderCapacity: Int, departureDate: Date?, valor: String) {
+    public init(uid: UUID,
+                plate: String,
+                admissionDate: Date,
+                cylinderCapacity: Int,
+                departureDate: Date?,
+                valor: String) {
         self.cylinderCapacity = cylinderCapacity
-        super.init(id: id, plate: plate, image: UIImage(named: "motorcycle"), admissionDate: admissionDate, departureDate: departureDate, valor: valor)
+        super.init(uid: uid,
+                   plate: plate,
+                   image: UIImage(named: "motorcycle"),
+                   admissionDate: admissionDate,
+                   departureDate: departureDate,
+                   valor: valor)
     }
     
-    convenience public init(id: UUID, plate: String, admissionDate: Date){
-        self.init(id: id, plate: plate, admissionDate: admissionDate, cylinderCapacity: 0)
+    convenience public init(uid: UUID,
+                plate: String,
+                admissionDate: Date) {
+        self.init(uid: uid,
+                  plate: plate,
+                  admissionDate: admissionDate,
+                  cylinderCapacity: 0)
     }
     
-    convenience public init(plate: String, admissionDate: Date, cylinderCapacity: Int){
-        self.init(id: UUID(), plate: plate, admissionDate: admissionDate, cylinderCapacity: cylinderCapacity)
+    convenience public init(plate: String,
+                admissionDate: Date,
+                cylinderCapacity: Int) {
+        self.init(uid: UUID(),
+                  plate: plate,
+                  admissionDate: admissionDate,
+                  cylinderCapacity: cylinderCapacity)
     }
     
     func getCylinderCapacity() -> Int {

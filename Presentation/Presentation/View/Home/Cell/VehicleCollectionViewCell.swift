@@ -19,7 +19,7 @@ class VehicleCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func setData(ofThis vehicle: VehicleVisible, withThisDate departureDate: Date, inWindowWidth widthView: CGFloat){
+    func setData(ofThis vehicle: VehicleVisible, withThisDate departureDate: Date, inWindowWidth widthView: CGFloat) {
         setSize(widthView)
         self.image.image = vehicle.getImage()
         self.label.text = vehicle.getPlate()

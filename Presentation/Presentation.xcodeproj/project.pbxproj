@@ -48,6 +48,7 @@
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
 		1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */; };
 		1C7ECF6227C936DF00C4821F /* HomeElementsIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */; };
+		1CB5B07D27D0EFB400FF967D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5B07B27D0EF9A00FF967D /* File.swift */; };
 		1CE4E79227C3BF2100FE6FFB /* LocalDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */; };
 		1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199A27B4662400865244 /* AppDelegate.swift */; };
 		1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199C27B4662400865244 /* SceneDelegate.swift */; };
@@ -55,7 +56,6 @@
 		1CEA19A227B4662400865244 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEA19A027B4662400865244 /* Main.storyboard */; };
 		1CEA19A427B4662700865244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CEA19A327B4662700865244 /* Assets.xcassets */; };
 		1CEA19A727B4662700865244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CEA19A527B4662700865244 /* LaunchScreen.storyboard */; };
-		1CEA19B227B4662700865244 /* PresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA19B127B4662700865244 /* PresentationTests.swift */; };
 		1CEA19BC27B4662700865244 /* PresentationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA19BB27B4662700865244 /* PresentationUITests.swift */; };
 		1CEA19BE27B4662700865244 /* PresentationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA19BD27B4662700865244 /* PresentationUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -132,6 +132,7 @@
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeElementsIdentifiers.swift; sourceTree = "<group>"; };
+		1CB5B07B27D0EF9A00FF967D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataAccess.swift; sourceTree = "<group>"; };
 		1CEA199727B4662400865244 /* Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEA199A27B4662400865244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		1CEA19A627B4662700865244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CEA19A827B4662700865244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CEA19AD27B4662700865244 /* PresentationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CEA19B127B4662700865244 /* PresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTests.swift; sourceTree = "<group>"; };
 		1CEA19B727B4662700865244 /* PresentationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEA19BB27B4662700865244 /* PresentationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationUITests.swift; sourceTree = "<group>"; };
 		1CEA19BD27B4662700865244 /* PresentationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -201,7 +201,6 @@
 				1C1732CF27BC4EB200B3350F /* Vehicle.swift */,
 				1C1732E327BC822000B3350F /* Motorcycle.swift */,
 				1C1732E527BC831C00B3350F /* Car.swift */,
-				1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -319,6 +318,7 @@
 		1C6BB03D27C549A0001858BE /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				1CE4E79127C3BF2100FE6FFB /* LocalDataAccess.swift */,
 				1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */,
 				1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */,
 			);
@@ -364,6 +364,7 @@
 		1C7ECF6327C9374B00C4821F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1CB5B07B27D0EF9A00FF967D /* File.swift */,
 				1C6BB04027C56567001858BE /* Screen.swift */,
 				1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */,
 			);
@@ -419,7 +420,6 @@
 		1CEA19B027B4662700865244 /* PresentationTests */ = {
 			isa = PBXGroup;
 			children = (
-				1CEA19B127B4662700865244 /* PresentationTests.swift */,
 			);
 			path = PresentationTests;
 			sourceTree = "<group>";
@@ -610,7 +610,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CEA19B227B4662700865244 /* PresentationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +619,7 @@
 			files = (
 				1C51675727CC596B0063D925 /* PresentationUITestsHomeScreen.swift in Sources */,
 				1CEA19BE27B4662700865244 /* PresentationUITestsLaunchTests.swift in Sources */,
+				1CB5B07D27D0EFB400FF967D /* File.swift in Sources */,
 				1C7ECF6227C936DF00C4821F /* HomeElementsIdentifiers.swift in Sources */,
 				1CEA19BC27B4662700865244 /* PresentationUITests.swift in Sources */,
 				1C6BB04327C565AE001858BE /* HomeScreen.swift in Sources */,

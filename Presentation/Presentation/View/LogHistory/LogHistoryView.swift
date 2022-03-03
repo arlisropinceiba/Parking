@@ -24,7 +24,8 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         configureListButton()
-        table.register(UINib(nibName: "LogItemTableViewCell", bundle: Bundle.main),forCellReuseIdentifier: "LogItemTableViewCell")
+        table.register(UINib(nibName: "LogItemTableViewCell", bundle: Bundle.main),
+                       forCellReuseIdentifier: "LogItemTableViewCell")
         presenter?.loadData(withThisType: currentType)
     }
     
@@ -40,7 +41,8 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vehicle = vehicles[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LogItemTableViewCell", for: indexPath) as! LogItemTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogItemTableViewCell",
+                                                 for: indexPath) as! LogItemTableViewCell
         cell.initWithData(vehicle: vehicle)
         cell.selectionStyle = .none
         return cell
@@ -53,7 +55,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     
     // MARK: Refresh
     
-    func refreshTable(with data: [VehicleVisible]){
+    func refreshTable(with data: [VehicleVisible]) {
         vehicles = data
         table.reloadData()
     }
@@ -61,19 +63,23 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     // MARK: Vehicle menu
     
     func configureListButton() {
-        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in actionItemVehicleType(with: vehicleType)})
+        vehiclesListButton.configureVehicleListButton(handler: {
+            [self] vehicleType in actionItemVehicleType(with: vehicleType)
+        })
     }
     
-    func actionItemVehicleType(with vehicleType: VehicleType){
+    func actionItemVehicleType(with vehicleType: VehicleType) {
         vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
         presenter?.loadData(withThisType: currentType)
     }
     
     // MARK: Alert
-    func showAlert(message: String){
+    func showAlert(message: String) {
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-            let alert = UIAlertController(title: "¡Lo sentimos!", message: message, preferredStyle:  UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "¡Lo sentimos!",
+                                          message: message,
+                                          preferredStyle:  UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

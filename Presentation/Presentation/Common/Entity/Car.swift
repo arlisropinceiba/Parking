@@ -9,15 +9,25 @@ import UIKit
 
 class CarVisible: VehicleVisible {
     
-    public init(id: UUID, plate: String, admissionDate: Date) {
-        super.init(id: id, plate: plate, image: UIImage(named: "car"), admissionDate: admissionDate, departureDate: nil, valor: "")
+    public init(uid: UUID, plate: String, admissionDate: Date) {
+        super.init(uid: uid,
+                   plate: plate,
+                   image: UIImage(named: "car"),
+                   admissionDate: admissionDate,
+                   departureDate: nil,
+                   valor: "")
     }
     
-    public init(id: UUID, plate: String, admissionDate: Date, departureDate: Date?, valor: String) {
-        super.init(id: id, plate: plate, image: UIImage(named: "car"), admissionDate: admissionDate, departureDate: departureDate, valor: valor)
+    public init(uid: UUID, plate: String, admissionDate: Date, departureDate: Date?, valor: String) {
+        super.init(uid: uid,
+                   plate: plate,
+                   image: UIImage(named: "car"),
+                   admissionDate: admissionDate,
+                   departureDate: departureDate,
+                   valor: valor)
     }
     
-    convenience public init(plate: String, admissionDate: Date){
-        self.init(id: UUID(), plate: plate, admissionDate: admissionDate)
+    convenience public init(plate: String, admissionDate: Date) {
+        self.init(uid: UUID(), plate: plate, admissionDate: admissionDate)
     }
 }

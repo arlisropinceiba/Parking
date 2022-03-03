@@ -44,14 +44,17 @@ class AddVehicleModal: UIViewController {
         returnValues(plate: plate, cylinderCapacity: cylinderCapacity)
     }
     
-    func returnValues(plate: String, cylinderCapacity: Int){
+    func returnValues(plate: String, cylinderCapacity: Int) {
         switch vehicleType {
         case .car:
-            let car = CarVisible(plate: plate.uppercased(), admissionDate: admissionDate ?? Date())
+            let car = CarVisible(plate: plate.uppercased(),
+                                 admissionDate: admissionDate ?? Date())
             completionWithValues(car)
             dismiss(animated: true, completion: nil)
         case .motorcycle:
-            let motorcycle = MotorcycleVisible(plate: plate.uppercased(), admissionDate: admissionDate ?? Date(), cylinderCapacity: cylinderCapacity)
+            let motorcycle = MotorcycleVisible(plate: plate.uppercased(),
+                                               admissionDate: admissionDate ?? Date(),
+                                               cylinderCapacity: cylinderCapacity)
             completionWithValues(motorcycle)
             dismiss(animated: true, completion: nil)
         }

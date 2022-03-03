@@ -7,18 +7,18 @@
 
 public class ParkingShift {
    
-    private var id: UUID
+    private var uid: UUID
     private var admissionDate: Date
     private var departureDate: Date?
     private var vehicle: Vehicle
     
     public init(
-        id: UUID,
+        uid: UUID,
         admissionDate: Date,
         departureDate: Date?,
         vehicle: Vehicle
     ) throws {
-        self.id = id
+        self.uid = uid
         self.admissionDate = admissionDate
         self.departureDate = departureDate
         self.vehicle = vehicle
@@ -29,11 +29,11 @@ public class ParkingShift {
         admissionDate: Date,
         vehicle: Vehicle
     ) throws {
-        try self.init(id: UUID(), admissionDate: admissionDate, departureDate: nil, vehicle: vehicle)
+        try self.init(uid: UUID(), admissionDate: admissionDate, departureDate: nil, vehicle: vehicle)
         try itIsNotACarWithPlateAOnMondayOrSunday(admissionDate: admissionDate, plate: vehicle.getPlate())
     }
 
-    //MARK: SET
+    //MARK: Set
     public func setDepartureDate(_ date: Date) throws {
         if date >= admissionDate {
             departureDate = date
@@ -42,9 +42,9 @@ public class ParkingShift {
         }
     }
     
-    //MARK: GET
+    //MARK: Get
     public func getId() -> UUID {
-        return id
+        return uid
     }
     
     public func getAdmissionDate() -> Date {
@@ -72,11 +72,12 @@ public class ParkingShift {
     
     private func getDayOfWeek(of date: Date) -> DayOfWeek {
         let numberOfDay = Calendar.current.dateComponents([.weekday], from: date).weekday
+        var dayOfWeek: DayOfWeek = .none
         for day in DayOfWeek.allCases {
             if numberOfDay == day.rawValue {
-                return day }
+                dayOfWeek = day }
         }
-        return .none
+        return dayOfWeek
     }
     
     func getVehicle() -> Vehicle {

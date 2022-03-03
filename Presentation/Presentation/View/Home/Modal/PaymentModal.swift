@@ -22,7 +22,9 @@ class PaymentModal: UIViewController {
         box.layer.cornerRadius = 20
         image.image = vehicle?.getImage()
         plateLabel.text = vehicle?.getPlate()
-        descrptionLabel.text = vehicle is MotorcycleVisible ? "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC": ""
+        descrptionLabel.text = vehicle is MotorcycleVisible ?
+            "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":
+            ""
         valueLabel.text = vehicle?.getValor()
     }
     

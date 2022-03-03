@@ -17,9 +17,10 @@ public class MotorcycleParkingShiftService: ParkingShiftService {
     }
     
     private func areThereParkingSpaces() throws {
-        let minimumNumberOfMotorcyclesAllowed = 10
-        let motorcyclesCount  = try (parkingShitRepository as? MotorcycleParkingShiftRepository)?.getCountOfMotorcycles() ?? minimumNumberOfMotorcyclesAllowed
-        guard motorcyclesCount < minimumNumberOfMotorcyclesAllowed else {
+        let minimumNumberAllowed = 10
+        let motorcycleParkingShiftRepository = parkingShitRepository as? MotorcycleParkingShiftRepository
+        let motorcyclesCount  = try motorcycleParkingShiftRepository?.getCountOfMotorcycles() ?? minimumNumberAllowed
+        guard motorcyclesCount < minimumNumberAllowed else {
             throw DomainErrors.MotorcycleLimitReached()
         }
     }

@@ -36,7 +36,7 @@ public class ParkingShiftPayment {
         return value
     }
     
-    private func getTheShiftDaysAndHours(between beginDate: Date, and endDate: Date) -> (days: Int, hours: Int){
+    private func getTheShiftDaysAndHours(between beginDate: Date, and endDate: Date) -> (days: Int, hours: Int) {
         let minimumHoursToChargeAsADay = 9
         let dayHours = 24
         let diffComponents = Calendar.current.dateComponents([.hour], from: beginDate, to: endDate)
