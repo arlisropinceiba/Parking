@@ -42,10 +42,10 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vehicle = vehicles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogItemTableViewCell",
-                                                 for: indexPath) as! LogItemTableViewCell
-        cell.initWithData(vehicle: vehicle)
-        cell.selectionStyle = .none
-        return cell
+                                                 for: indexPath) as? LogItemTableViewCell
+        cell?.initWithData(vehicle: vehicle)
+        cell?.selectionStyle = .none
+        return cell ?? UITableViewCell()
     }
     
     //MARK: Action button
@@ -63,8 +63,8 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
     // MARK: Vehicle menu
     
     func configureListButton() {
-        vehiclesListButton.configureVehicleListButton(handler: {
-            [self] vehicleType in actionItemVehicleType(with: vehicleType)
+        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in
+            actionItemVehicleType(with: vehicleType)
         })
     }
     
@@ -79,7 +79,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
             let alert = UIAlertController(title: "¡Lo sentimos!",
                                           message: message,
-                                          preferredStyle:  UIAlertController.Style.alert)
+                                          preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

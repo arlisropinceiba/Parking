@@ -40,8 +40,8 @@ class MotorcycleVisible: VehicleVisible {
     }
     
     convenience public init(uid: UUID,
-                plate: String,
-                admissionDate: Date) {
+                            plate: String,
+                            admissionDate: Date) {
         self.init(uid: uid,
                   plate: plate,
                   admissionDate: admissionDate,
@@ -49,8 +49,8 @@ class MotorcycleVisible: VehicleVisible {
     }
     
     convenience public init(plate: String,
-                admissionDate: Date,
-                cylinderCapacity: Int) {
+                            admissionDate: Date,
+                            cylinderCapacity: Int) {
         self.init(uid: UUID(),
                   plate: plate,
                   admissionDate: admissionDate,

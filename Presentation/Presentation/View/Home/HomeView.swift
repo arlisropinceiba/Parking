@@ -46,9 +46,9 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let vehicle = vehicles[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCollectionViewCell",
-                                                      for: indexPath) as! VehicleCollectionViewCell
-        cell.setData(ofThis: vehicle, withThisDate: date, inWindowWidth: view.frame.width)
-        return cell
+                                                      for: indexPath) as? VehicleCollectionViewCell
+        cell?.setData(ofThis: vehicle, withThisDate: date, inWindowWidth: view.frame.width)
+        return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -100,7 +100,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
             let alert = UIAlertController(title: "¡Lo sentimos!",
                                           message: message,
-                                          preferredStyle:  UIAlertController.Style.alert)
+                                          preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -122,8 +122,8 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Vehicle menu
     
     func configureListButton() {
-        vehiclesListButton.configureVehicleListButton(handler: {
-            [self] vehicleType in actionItemVehicleType(with: vehicleType)
+        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in
+            actionItemVehicleType(with: vehicleType)
         })
     }
     
