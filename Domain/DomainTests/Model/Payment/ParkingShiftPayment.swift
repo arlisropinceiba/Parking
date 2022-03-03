@@ -24,7 +24,6 @@ class ParkingShiftPaymentTest: XCTestCase {
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
         XCTAssertTrue(value == 11000)
-        
     }
 
     func test_calculateParkingShiftPriceAt10H_calculateParkingValue_success() {
@@ -41,6 +40,5 @@ class ParkingShiftPaymentTest: XCTestCase {
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
         XCTAssertTrue(value == 8000)
-        
     }
 }

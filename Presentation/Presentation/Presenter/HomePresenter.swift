@@ -6,13 +6,13 @@
 //
 import Foundation
 
-class HomePresenter  { // Arreglar
+class HomePresenter {
 
     // MARK: Properties
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeRouterProtocol?
- 
+
     func createShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
         Task {
             do {
@@ -49,7 +49,7 @@ class HomePresenter  { // Arreglar
 
     func refreshData(with data: [VehicleVisible]) {
         DispatchQueue.main.async { [self] in
-            view?.setCounterLabelText(text:"\(data.count)")
+            view?.setCounterLabelText(text: "\(data.count)")
             view?.refreshCollection(with: data)}
     }
 
@@ -67,11 +67,7 @@ class HomePresenter  { // Arreglar
 }
 
 extension HomePresenter: HomePresenterProtocol {
-
-
-    // TODO: implement presenter methods
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {
-    // TODO: implement interactor output methods
 }

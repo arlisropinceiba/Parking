@@ -15,13 +15,13 @@ class HomeRouter: HomeRouterProtocol {
             let presenter: HomePresenterProtocol & HomeInteractorOutputProtocol = HomePresenter()
             let interactor: HomeInteractorInputProtocol = HomeInteractor()
             let wireFrame: HomeRouterProtocol = HomeRouter()
-            
+
             view.presenter = presenter
             presenter.view = view
             presenter.wireFrame = wireFrame
             presenter.interactor = interactor
             interactor.presenter = presenter
-            
+
             return navigationController
         }
         return UIViewController()
@@ -33,7 +33,7 @@ class HomeRouter: HomeRouterProtocol {
 
     func showLogHistory(from view: HomeViewProtocol) {
         let new = LogHistoryRouter.createLogHistoryModule()
-        if let newView = view as? UIViewController{
+        if let newView = view as? UIViewController {
             newView.navigationController?.pushViewController(new, animated: true)
         }
     }

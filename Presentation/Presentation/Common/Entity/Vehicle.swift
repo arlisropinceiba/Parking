@@ -54,8 +54,8 @@ class VehicleVisible {
 
     public func getLenghtOfStay() -> String {
         if let date = departureDate {
-            return getLenghtOfStay(fromAdmissionDateTo: date)}
-        else { return ""}
+            return getLenghtOfStay(fromAdmissionDateTo: date)
+        } else { return ""}
     }
 
     public func getLenghtOfStayfromAdmissionDateToNow() -> String {

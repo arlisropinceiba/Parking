@@ -6,7 +6,7 @@
 //
 
 public class CarParkingShiftService: ParkingShiftService {
-        
+
     public init(carParkingShiftRepository: CarParkingShiftRepository) {
         super.init(parkingShitRepository: carParkingShiftRepository)
     }

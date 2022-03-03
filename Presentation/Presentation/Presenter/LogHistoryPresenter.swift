@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LogHistoryPresenter  {
+class LogHistoryPresenter {
 
     // MARK: Properties
     weak var view: LogHistoryViewProtocol?
@@ -37,11 +37,9 @@ class LogHistoryPresenter  {
 }
 
 extension LogHistoryPresenter: LogHistoryPresenterProtocol {
-    // TODO: implement presenter methods
     func viewDidLoad() {
     }
 }
 
 extension LogHistoryPresenter: LogHistoryInteractorOutputProtocol {
-    // TODO: implement interactor output methods
 }

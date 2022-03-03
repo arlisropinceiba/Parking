@@ -15,7 +15,7 @@ public class CarParkingCoreDataRepository: ParkingCoreDataRepository, CarParking
         super.init(translator: CarParkingShiftTranslator())
     }
 
-    public func getCountOfCars () throws -> Int {
+    public func getCountOfCars() throws -> Int {
         let parkingShiftsSaved = try getFetchActiveParkingShifts()
         let carParkingsSaved = parkingShiftsSaved.filter({$0.vehicle is CarCoreEntity})
         return carParkingsSaved.count

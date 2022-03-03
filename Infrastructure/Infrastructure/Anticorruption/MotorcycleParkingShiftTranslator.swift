@@ -58,9 +58,9 @@ class MotorcycleParkingShiftTranslator: VehicleParkingShiftTranslator {
               let uid = parkingCoreEntity.uid else {
             return nil
         }
-        
+
         let capacity = Int(motorcycleCoreEntity.cylinderCapacity)
-        
+
         let motorcycle = try Motorcycle(plate: plate, cylinderCapacity: capacity)
         if let departureDate = parkingCoreEntity.departureDate {
             return try MotorcycleParkingShift(uid: uid, admissionDate: admissionDate, departureDate: departureDate, motorcycle: motorcycle)

@@ -6,7 +6,7 @@
 //
 
 public class ParkingShift {
-   
+
     private var uid: UUID
     private var admissionDate: Date
     private var departureDate: Date?

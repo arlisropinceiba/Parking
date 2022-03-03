@@ -28,7 +28,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         //// Verify the plate existance
         XCTAssertTrue(HomeScreen(app: app).verifyTheExistenceInCollectionView(ofThisPlate: plate))
         //// And finilized shift for quantity control
-        let _ = HomeScreen(app: app).finishShift(plate: plate)
+        _ = HomeScreen(app: app).finishShift(plate: plate)
     }
 
     func test_HomeWindow_AddMotorcycleParkingShift_success() {
@@ -146,7 +146,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
             .makeTap(inThisButton: .confirmAddButton)
             .makeTapInCollectionCell(WithText: plate)
             .makeTap(inThisButton: .finishParkingShifButton)
-        
+
         let valueLabel = app.staticTexts["0"]
         // Then
         XCTAssertTrue(valueLabel.label.count >= 1 )
@@ -165,4 +165,3 @@ class PresentationUITestsHomeScreen: XCTestCase {
       return String((0..<length).map{ _ in letters.randomElement()! })
     }
 }
-

@@ -37,7 +37,7 @@ struct HomeScreen: Screen {
         return app.collectionViews.containing(NSPredicate(format: "label CONTAINS %@", letter)).count >= 0
     }
 
-    func finishShift(plate: String) -> Self{
+    func finishShift(plate: String) -> Self {
         let cell = app.collectionViews.staticTexts[plate]
         cell.tap()
         app.staticTexts[HomeElementsIdentifiers.finishParkingShifButton.rawValue].tap()

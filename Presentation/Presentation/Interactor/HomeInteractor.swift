@@ -8,7 +8,7 @@
 import Infrastructure
 import Domain
 
-class HomeInteractor: HomeInteractorInputProtocol { 
+class HomeInteractor: HomeInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: HomeInteractorOutputProtocol?
@@ -19,7 +19,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         guard let parkingShift: ParkingShift =
                 try localAccess.getTranslator().fromVisibleToDomainEntity(vehicle) else {
             throw PresentationErrors.ErrorSavingParking()}
-        
+
         try await localAccess.getService().saveThis(shift: parkingShift)
         try fetchData(withThisType: type)
     }
@@ -31,9 +31,9 @@ class HomeInteractor: HomeInteractorInputProtocol {
         guard let parkingShiftPayment: ParkingShiftPayment =
                 try localAccess.getTranslator().fromVisibleToDomainEntity(vehicle) else {
             throw PresentationErrors.ErrorSavingParking()}
-        
+
         try await localAccess.getService().finishParkingShift(shift: parkingShiftPayment)
-        
+
         guard let vehicleVisible: VehicleVisible =
                 try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShiftPayment) else {
             return vehicle}
@@ -51,7 +51,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         presenter?.refreshData(with: vehicles)
     }
 
-    func fetchData(withThisType type: VehicleType) throws  {
+    func fetchData(withThisType type: VehicleType) throws {
         let localAccess = LocalService(type: type)
         let parkingShifts = try localAccess.getService().getParkingShift()
         let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)

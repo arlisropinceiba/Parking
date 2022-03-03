@@ -9,12 +9,12 @@ import UIKit
 
 extension UIButton {
 
-    func configureVehicleListButton(handler: @escaping (VehicleType)->Void) {
+    func configureVehicleListButton(handler: @escaping (VehicleType) -> Void) {
         self.menu = setMenu(handler: handler)
         self.showsMenuAsPrimaryAction = true
     }
 
-    private func setVehicleMenuItems(handler: @escaping (VehicleType)->Void) -> [UIAction] {
+    private func setVehicleMenuItems(handler: @escaping (VehicleType) -> Void) -> [UIAction] {
         var itemsMenu: [UIAction] = []
         for type in VehicleType.allCases {
             let item = UIAction(title: type.rawValue,
@@ -24,7 +24,7 @@ extension UIButton {
         return itemsMenu
     }
 
-    private func setMenu(handler: @escaping (VehicleType)->Void) -> UIMenu {
+    private func setMenu(handler: @escaping (VehicleType) -> Void) -> UIMenu {
         return UIMenu(title: "",
                       image: nil,
                       identifier: nil,

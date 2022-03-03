@@ -16,7 +16,7 @@ class AddVehicleModal: UIViewController {
 
     var vehicleType: VehicleType = .car
     var admissionDate: Date?
-    var completionWithValues: (VehicleVisible)->Void = {_ in}
+    var completionWithValues: (VehicleVisible) -> Void = {_ in}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class AddVehicleModal: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     }
-        
+
     func randomString(length: Int) -> String {
       let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
       return String((0..<length).map{ _ in letters.randomElement()! })

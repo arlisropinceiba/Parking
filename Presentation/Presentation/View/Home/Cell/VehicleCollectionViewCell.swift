@@ -29,7 +29,7 @@ class VehicleCollectionViewCell: UICollectionViewCell {
     func setSize(_ widthView: CGFloat) {
         let numberOfVehiclesToShowByRow: CGFloat = UIDevice.current.orientation.isLandscape ? 8.0:4.0
         let widthCell = ((widthView - 20) / numberOfVehiclesToShowByRow)
-        
+
         width.constant = widthCell
         widthImage.constant = widthCell - 10
     }

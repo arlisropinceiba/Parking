@@ -15,7 +15,7 @@ class FinishShiftModel: UIViewController {
     @IBOutlet weak var plateLabel: UILabel!
 
     var vehicle: VehicleVisible?
-    var completion: ()->Void = {}
+    var completion: () -> Void = {}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class FinishShiftModel: UIViewController {
         let text = """
         Ingreso el día \(addmissionDate) para un total de \(vehicle?.getLenghtOfStayfromAdmissionDateToNow() ?? "...")
         """
-        
+
         descriptionLabel.text = text
         descriptionLabel.accessibilityIdentifier = "ValueLabel"
     }
@@ -35,7 +35,7 @@ class FinishShiftModel: UIViewController {
         dismiss(animated: true, completion: nil)
         completion()
     }
-        
+
     @IBAction func cancelProcess(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

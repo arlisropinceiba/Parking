@@ -27,7 +27,7 @@ class PresentationUITests: XCTestCase {
 
     func testExample() throws {
         // UI tests must launch the application that they test.
-        
+
         app.launch()
 
         // Use recording to get started writing UI tests.

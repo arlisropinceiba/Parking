@@ -25,7 +25,7 @@ public class ParkingShiftPayment {
     public func getParkingShift() -> ParkingShift {
         return parkingShift
     }
-        
+
     public func calculateParkingShiftPrice() throws -> Int {
         var days: Int = 0
         var hours: Int = 0

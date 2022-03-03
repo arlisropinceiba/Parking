@@ -19,7 +19,7 @@ public class CoreDataManager {
         let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
         let container = NSPersistentContainer(name: xcdatamodeld, managedObjectModel: managedObjectModel!)
         container.loadPersistentStores { (storeDescription, error) in
-            if let err = error{
+            if let err = error {
                 fatalError("Loading of store failed:\(err)")
             }
         }

@@ -109,7 +109,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: Clock
 
     func setWatch() {
-        updateTimer.start {[self] _ in addSecondToWatch ()}
+        updateTimer.start {[self] _ in addSecondToWatch()}
     }
 
     func addSecondToWatch() {
@@ -145,6 +145,5 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 extension HomeView: HomeViewProtocol {
-    // TODO: implement view output methods
 }
 

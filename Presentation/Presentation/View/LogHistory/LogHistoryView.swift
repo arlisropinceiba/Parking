@@ -87,5 +87,4 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 }
 
 extension LogHistoryView: LogHistoryViewProtocol {
-    // TODO: implement view output methods
 }

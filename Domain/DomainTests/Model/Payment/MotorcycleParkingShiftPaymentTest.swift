@@ -24,7 +24,6 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
         XCTAssertTrue(value == 5500)
-        
     }
 
     func test_calculateParkingShiftPriceAt10HAndLowCapacity_calculateParkingValue_success() {
@@ -41,7 +40,6 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
         XCTAssertTrue(value == 4000)
-        
     }
 
     func test_calculateParkingShiftPriceAt27HAndHighCapacity_calculateParkingValue_success() {
@@ -58,7 +56,6 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
         XCTAssertTrue(value == 7500)
-        
     }
 
     func test_calculateParkingShiftPriceAt10HAndHighCapacity_calculateParkingValue_success() {
@@ -75,7 +72,6 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
         XCTAssertTrue(value == 6000)
-        
     }
 
 }

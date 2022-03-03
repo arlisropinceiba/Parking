@@ -17,13 +17,13 @@ class LogHistoryRouter: LogHistoryRouterProtocol {
             let presenter: LogHistoryPresenterProtocol & LogHistoryInteractorOutputProtocol = LogHistoryPresenter()
             let interactor: LogHistoryInteractorInputProtocol = LogHistoryInteractor()
             let wireFrame: LogHistoryRouterProtocol = LogHistoryRouter()
-            
+
             view.presenter = presenter
             presenter.view = view
             presenter.wireFrame = wireFrame
             presenter.interactor = interactor
             interactor.presenter = presenter
-            
+
             return navController
         }
         return UIViewController()

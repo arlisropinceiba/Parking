@@ -13,7 +13,7 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: LogHistoryInteractorOutputProtocol?
-        
+
     func fetchData(withThisType type: VehicleType) throws {
         let localAccess = LocalService(type: type)
         let parkingShifts = try  localAccess.getService().getFinalizedParkingShifts()

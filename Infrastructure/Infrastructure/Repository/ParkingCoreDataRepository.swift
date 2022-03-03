@@ -23,7 +23,7 @@ public class ParkingCoreDataRepository: ParkingShiftRepository {
         try await saveData(of: parkingShiftCore)
     }
 
-    func saveData(of shift: NSManagedObject)  async throws  {
+    func saveData(of shift: NSManagedObject)  async throws {
         let context = coreDataManager.persistentContainer.viewContext
         context.automaticallyMergesChangesFromParent = true
         try await context.perform {
