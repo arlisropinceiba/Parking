@@ -7,31 +7,31 @@
 
 import Foundation
 
-class DateFormat {
+extension Date {
     
-    class func inHourDateFormat(_ date: Date) -> String {
+    func inHourDateFormat() -> String {
         let dateFormatterHour = DateFormatter()
         dateFormatterHour.dateFormat = "hh:mm:ss a"
         let dateFormatterDay = DateFormatter()
         dateFormatterDay.dateFormat = "EEEE, d"
         let dateFormatterMonth = DateFormatter()
         dateFormatterMonth.dateFormat = "MMMM"
-        let hour = dateFormatterHour.string(from: date)
-        let day = dateFormatterDay.string(from: date)
-        let month = dateFormatterMonth.string(from: date)
+        let hour = dateFormatterHour.string(from: self)
+        let day = dateFormatterDay.string(from: self)
+        let month = dateFormatterMonth.string(from: self)
         return "\(hour)\n\(day.capitalized) de \(month)"
     }
     
-    class func inDateHourFormat(_ date: Date) -> String {
+    func inDateHourFormat() -> String {
         let dateFormatterHour = DateFormatter()
         dateFormatterHour.dateFormat = "hh:mm:ss a"
         let dateFormatterDay = DateFormatter()
         dateFormatterDay.dateFormat = "EEEE, d"
         let dateFormatterMonth = DateFormatter()
         dateFormatterMonth.dateFormat = "MMMM"
-        let hour = dateFormatterHour.string(from: date)
-        let day = dateFormatterDay.string(from: date)
-        let month = dateFormatterMonth.string(from: date)
+        let hour = dateFormatterHour.string(from: self)
+        let day = dateFormatterDay.string(from: self)
+        let month = dateFormatterMonth.string(from: self)
         return "\(day.capitalized) de \(month) a las \(hour)"
     }
     

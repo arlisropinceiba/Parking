@@ -22,7 +22,7 @@ class FinishShiftModel: UIViewController {
         box.layer.cornerRadius = 20
         image.image = vehicle?.getImage()
         plateLabel.text = vehicle?.getPlate()
-        let addmissionDate = DateFormat.inDateHourFormat(vehicle?.getAdmissionDate() ?? Date()) 
+        let addmissionDate = (vehicle?.getAdmissionDate() ?? Date()).inDateHourFormat()
         let text = """
         Ingreso el día \(addmissionDate) para un total de \(vehicle?.getLenghtOfStayfromAdmissionDateToNow() ?? "...")
         """

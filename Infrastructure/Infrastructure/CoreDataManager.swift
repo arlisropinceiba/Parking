@@ -35,7 +35,7 @@ public class CoreDataManager {
     }
     
     func getFetchById(_ uid: UUID) throws -> [ParkingShiftCoreEntity] {
-        return try getFetch(withPredicate: NSPredicate(format: "id == %@", uid as CVarArg))
+        return try getFetch(withPredicate: NSPredicate(format: "uid == %@", uid as CVarArg))
     }
     
     private func getFetch(withPredicate predicate: NSPredicate) throws -> [ParkingShiftCoreEntity]  {

@@ -24,8 +24,8 @@ class LogItemTableViewCell: UITableViewCell {
 
     func initWithData(vehicle: VehicleVisible) {
         vehicleImage.image = vehicle.getImage()
-        let addmissionDate = DateFormat.inDateHourFormat(vehicle.getAdmissionDate())
-        let departureDate = DateFormat.inDateHourFormat(vehicle.getDepartureDate() ?? Date())
+        let addmissionDate = vehicle.getAdmissionDate().inDateHourFormat()
+        let departureDate = (vehicle.getDepartureDate() ?? Date()).inDateHourFormat()
         let descriptionVehicle = vehicle is MotorcycleVisible ?
             "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":
             ""

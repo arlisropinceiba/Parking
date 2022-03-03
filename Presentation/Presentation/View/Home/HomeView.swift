@@ -31,8 +31,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
                             forCellWithReuseIdentifier: "VehicleCollectionViewCell")
         configureListButton()
         setWatch()
-        let dateWithFormat = DateFormat.inHourDateFormat(date)
-        presenter?.loadData(dateWithFormat, withThisType: .car)
+        presenter?.loadData(date.inHourDateFormat(), withThisType: .car)
         plateTextfield.accessibilityIdentifier = "PlateFinder"
         vehiclesListButton.accessibilityIdentifier = "VehiclesListButton"
     }
@@ -115,8 +114,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func addSecondToWatch() {
         date = Calendar.current.date(byAdding: .second, value: 1, to: self.date) ?? Date()
-        let dateWithFormat = DateFormat.inHourDateFormat(date)
-        setTimeLabelText(text: dateWithFormat)
+        setTimeLabelText(text: date.inHourDateFormat())
         collection.reloadData()
         view.layoutIfNeeded()
     }
@@ -132,8 +130,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     func actionItemVehicleType(with vehicleType: VehicleType) {
         vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
         currentType = vehicleType
-        let dateWithFormat = DateFormat.inHourDateFormat(date)
-        presenter?.loadData(dateWithFormat, withThisType: currentType)
+        presenter?.loadData(date.inHourDateFormat(), withThisType: currentType)
     }
     
     // MARK: PaymentModal
