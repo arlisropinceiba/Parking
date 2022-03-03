@@ -61,9 +61,9 @@ class VehicleTest: XCTestCase {
     func test_getPlate_verifyCurrentPlate_success() {
         //Arrange
         let expectedPlate = "CDE567"
-        let vehicle = try! Vehicle(plate: expectedPlate)
+        let vehicle = try? Vehicle(plate: expectedPlate)
         //Act
-        let plate = vehicle.getPlate()
+        let plate = vehicle?.getPlate()
         //Assert
         XCTAssertTrue(plate == expectedPlate)
     }

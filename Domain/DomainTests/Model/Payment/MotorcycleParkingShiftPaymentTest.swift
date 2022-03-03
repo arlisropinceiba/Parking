@@ -12,12 +12,14 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
 
     func test_calculateParkingShiftPriceAl27HAndLowCapacity_calculateParkingValue_success() {
         // Arrange
-        let motorcycle = try! Motorcycle(plate: "DSA123", cylinderCapacity: 200)
-        let shift = try! ParkingShift(uid: UUID(),
+        guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 200)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(uid: UUID(),
                                       admissionDate: Date().localDate,
                                       departureDate: Date().localDate.advanceDate(thisHours: 27),
-                                      vehicle: motorcycle)
-        let payment = MotorcycleParkingShiftPayment(parkingShift: shift)
+                                    vehicle: motorcycle)
+        else { return XCTAssertTrue(false) }
+        let payment = MotorcycleParkingShiftPayment(parkingShift: shift )
         // Act
         let value = try? payment.calculateParkingShiftPrice()
         //Assert
@@ -27,11 +29,13 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
     
     func test_calculateParkingShiftPriceAt10HAndLowCapacity_calculateParkingValue_success() {
         // Arrange
-        let motorcycle = try! Motorcycle(plate: "DSA123", cylinderCapacity: 200)
-        let shift = try! ParkingShift(uid: UUID(),
+        guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 200)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(uid: UUID(),
                                       admissionDate: Date().localDate,
                                       departureDate: Date().localDate.advanceDate(thisHours: 10),
                                       vehicle: motorcycle)
+        else { return XCTAssertTrue(false) }
         let payment = MotorcycleParkingShiftPayment(parkingShift: shift)
         // Act
         let value = try? payment.calculateParkingShiftPrice()
@@ -42,11 +46,13 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
     
     func test_calculateParkingShiftPriceAt27HAndHighCapacity_calculateParkingValue_success() {
         // Arrange
-        let motorcycle = try! Motorcycle(plate: "DSA123", cylinderCapacity: 650)
-        let shift = try! ParkingShift(uid: UUID(),
+        guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 650)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(uid: UUID(),
                                       admissionDate: Date().localDate,
                                       departureDate: Date().localDate.advanceDate(thisHours: 27),
                                       vehicle: motorcycle)
+        else { return XCTAssertTrue(false) }
         let payment = MotorcycleParkingShiftPayment(parkingShift: shift)
         // Act
         let value = try? payment.calculateParkingShiftPrice()
@@ -57,11 +63,13 @@ class MotorcycleParkingShiftPaymentTest: XCTestCase {
     
     func test_calculateParkingShiftPriceAt10HAndHighCapacity_calculateParkingValue_success() {
         // Arrange
-        let motorcycle = try! Motorcycle(plate: "DSA123", cylinderCapacity: 650)
-        let shift = try! ParkingShift(uid: UUID(),
+        guard let motorcycle = try? Motorcycle(plate: "DSA123", cylinderCapacity: 650)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(uid: UUID(),
                                       admissionDate: Date().localDate,
                                       departureDate: Date().localDate.advanceDate(thisHours: 10),
                                       vehicle: motorcycle)
+        else { return XCTAssertTrue(false) }
         let payment = MotorcycleParkingShiftPayment(parkingShift: shift)
         // Act
         let value = try? payment.calculateParkingShiftPrice()

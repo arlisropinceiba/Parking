@@ -14,8 +14,10 @@ class ParkingShiftTest: XCTestCase {
         //Arrange
         let plate = "CDE234"
         let expectedDate = Date().localDate
-        let car = try! Car(plate: plate)
-        let shift = try! ParkingShift(admissionDate: expectedDate, vehicle: car)
+        guard let car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(admissionDate: expectedDate, vehicle: car)
+        else { return XCTAssertTrue(false) }
         //Act
         let date = shift.getAdmissionDate()
         //Assert
@@ -25,8 +27,10 @@ class ParkingShiftTest: XCTestCase {
     func test_getDepartureDate_verifyExistenceDepartureDateWhenItsNil_error() {
         //Arrange
         let plate = "CDE234"
-        let car = try! Car(plate: plate)
-        let shift = try! ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        guard let car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        else { return XCTAssertTrue(false) }
         //Act
         //Assert
         XCTAssertThrowsError(try shift.getDepartureDate())
@@ -35,8 +39,10 @@ class ParkingShiftTest: XCTestCase {
     func test_getDepartureDate_verifyDepartureDateGreaterThanAdmissionDate_success() {
         //Arrange
         let plate = "CDE234"
-        let car = try! Car(plate: plate)
-        let shift = try! ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        guard let car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        else { return XCTAssertTrue(false) }
         let date = Date().localDate.advanceDate(thisHours: 1)
         //Act
         //Assert
@@ -46,8 +52,10 @@ class ParkingShiftTest: XCTestCase {
     func test_getDepartureDate_verifyDepartureDateLowerThanAdmissionDate_error() {
         //Arrange
         let plate = "CDE234"
-        let car = try! Car(plate: plate)
-        let shift = try! ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        guard let car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        else { return XCTAssertTrue(false) }
         let date = Date().localDate.lateDate(thisHours: 1)
         //Assert
         XCTAssertThrowsError(try shift.setDepartureDate(date))
@@ -56,12 +64,14 @@ class ParkingShiftTest: XCTestCase {
     func test_getDepartureDate_verifyExistenceDepartureDate_success() {
         //Arrange
         let plate = "CDE234"
-        let car = try! Car(plate: plate)
-        let shift = try! ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        guard let car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(admissionDate: Date().localDate, vehicle: car)
+        else { return XCTAssertTrue(false) }
         let expectedDate = Date().localDate.advanceDate(thisHours: 1)
-        try! shift.setDepartureDate(expectedDate)
+        try? shift.setDepartureDate(expectedDate)
         //Act
-        let date = try! shift.getDepartureDate()
+        let date = try? shift.getDepartureDate()
         //Assert
         XCTAssertTrue(date == expectedDate)
     }
@@ -69,8 +79,10 @@ class ParkingShiftTest: XCTestCase {
     func test_getDepartureDate_verifyExistenceVehicle_error() {
         //Arrange
         let plate = "CDE234"
-        let expectedVehicle: Vehicle = try! Car(plate: plate)
-        let shift = try! ParkingShift(admissionDate: Date().localDate, vehicle: expectedVehicle)
+        guard let expectedVehicle: Vehicle = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
+        guard let shift = try? ParkingShift(admissionDate: Date().localDate, vehicle: expectedVehicle)
+        else { return XCTAssertTrue(false) }
         //Act
         let vehicle = shift.getVehicle()
         //Assert
@@ -80,7 +92,8 @@ class ParkingShiftTest: XCTestCase {
     func test_init_plateBeginningWithAOnAMonday_success() {
         //Arrange
         let plate = "ADE234"
-        let car: Car = try! Car(plate: plate)
+        guard let car: Car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
         let supposedDate = Date().localDate.advanceDate(toThisDay: .Monday)
         //Act
         //Assert
@@ -90,7 +103,8 @@ class ParkingShiftTest: XCTestCase {
     func test_init_plateBeginningWithAOnASunday_success() {
         //Arrange
         let plate = "ADE234"
-        let car: Car = try! Car(plate: plate)
+        guard let car: Car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
         let supposedDate = Date().localDate.advanceDate(toThisDay: .Sunday)
         //Act
         //Assert
@@ -100,7 +114,8 @@ class ParkingShiftTest: XCTestCase {
     func test_init_plateBeginningWithAOnAWednesday_error() {
         //Arrange
         let plate = "ADE234"
-        let car: Car = try! Car(plate: plate)
+        guard let car: Car = try? Car(plate: plate)
+        else { return XCTAssertTrue(false) }
         let supposedDate = Date().localDate.advanceDate(toThisDay: .Wednesday)
         //Act
         //Assert
