@@ -22,7 +22,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     var presenter: HomePresenterProtocol?
     var date: Date = Date()
     var vehicles: [VehicleVisible] = []
-    var currentType: VehicleType = .car
+    var currentType: VehicleTypeElements = CarElements()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
                             forCellWithReuseIdentifier: "VehicleCollectionViewCell")
         configureListButton()
         setWatch()
-        presenter?.loadData(date.inHourDateFormat(), withThisType: .car)
+        presenter?.loadData(date.inHourDateFormat())
         plateTextfield.accessibilityIdentifier = "PlateFinder"
         vehiclesListButton.accessibilityIdentifier = "VehiclesListButton"
     }
@@ -56,20 +56,20 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         let modal = FinishShiftModel(nibName: "FinishShiftModel", bundle: nil)
         modal.vehicle = vehicle
         modal.completion = { [self] in
-            presenter?.finishShift(vehicle: vehicle, withThisType: currentType)
+            presenter?.loadVehicleType(currentType)
+            presenter?.finishShift(vehicle: vehicle)
         }
         self.present(modal, animated: true)
     }
 
     // MARK: Action buttons
     @IBAction func addVehicle(_ sender: UIButton) {
-        let modal = AddVehicleModal(nibName: "AddVehicleModal", bundle: nil)
-        modal.vehicleType = currentType
-        modal.admissionDate = date
+        var modal = currentType.getModal()
         modal.completionWithValues = { [self] vehicle in
-            presenter?.createShift(vehicle: vehicle, withThisType: currentType)
+            presenter?.loadVehicleType(currentType)
+            presenter?.createShift(vehicle: vehicle)
         }
-        self.present(modal, animated: true)
+        self.present(modal as! UIViewController, animated: true)
     }
 
     @IBAction func showLogHistory(_ sender: UIButton) {
@@ -77,7 +77,8 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     @IBAction func searchByPlate(_ sender: UIButton) {
-        presenter?.searchBy(plate: plateTextfield.text ?? "", withThisType: currentType)
+        presenter?.loadVehicleType(currentType)
+        presenter?.searchBy(plate: plateTextfield.text ?? "")
     }
 
     // MARK: Refresh
@@ -92,7 +93,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func setCounterLabelText(text: String) {
-        counterLabel.text = currentType.rawValue + ": " + text
+        counterLabel.text = currentType.getType() + ": " + text
     }
 
     // MARK: Alert
@@ -127,10 +128,11 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         })
     }
 
-    func actionItemVehicleType(with vehicleType: VehicleType) {
-        vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
+    func actionItemVehicleType(with vehicleType: VehicleTypeElements) {
+        vehiclesListButton.setTitle("  \(vehicleType.getType())", for: .normal)
         currentType = vehicleType
-        presenter?.loadData(date.inHourDateFormat(), withThisType: currentType)
+        presenter?.loadVehicleType(currentType)
+        presenter?.loadData(date.inHourDateFormat())
     }
 
     // MARK: PaymentModal

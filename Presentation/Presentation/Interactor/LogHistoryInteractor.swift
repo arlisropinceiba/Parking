@@ -13,20 +13,32 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: LogHistoryInteractorOutputProtocol?
+    var currentType: VehicleTypeElements = CarElements()
+    private var translator: VehicleVisibleTranslator
+    private var service: ParkingShiftService
 
-    func fetchData(withThisType type: VehicleType) throws {
-        let localAccess = LocalService(type: type)
-        let parkingShifts = try  localAccess.getService().getFinalizedParkingShifts()
-        let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
+    init() {
+        (translator, service) = currentType.getElements()
+    }
+        
+    func loadVehicleType(_ type: VehicleTypeElements) {
+        currentType = type
+        (translator, service) = currentType.getElements()
+    }
+    
+    func fetchData(withThisType type: VehicleTypeElements) throws {
+        loadVehicleType(type)
+        let parkingShifts = try service.getFinalizedParkingShifts()
+        let vehicles: [VehicleVisible] = try translator.fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }
 
-    func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws {
-        let localAccess = LocalService(type: type)
+    func fetchData(withThisType type: VehicleTypeElements, andThisPlate plate: String) throws {
+        loadVehicleType(type)
         let parkingShifts = (plate == "" ?
-                            try localAccess.getService().getFinalizedParkingShifts() :
-                            try localAccess.getService().searchFinalizedParkingShift(withPlate: plate.uppercased()))
-        let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
+                            try service.getFinalizedParkingShifts() :
+                            try service.searchFinalizedParkingShift(withPlate: plate.uppercased()))
+        let vehicles: [VehicleVisible] = try translator.fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }
 }

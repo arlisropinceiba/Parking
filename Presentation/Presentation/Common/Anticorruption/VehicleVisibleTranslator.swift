@@ -7,7 +7,7 @@
 
 import Domain
 
-class VehicleVisibleTranslator {
+public class VehicleVisibleTranslator {
 
     func fromVisibleToDomainEntity(_ vehicleVisible: VehicleVisible) throws -> ParkingShiftPayment? {
         return nil

@@ -7,54 +7,61 @@
 
 import Infrastructure
 import Domain
+import Foundation
+import Combine
 
 class HomeInteractor: HomeInteractorInputProtocol {
 
     // MARK: Properties
     weak var presenter: HomeInteractorOutputProtocol?
-
-    func createParkingShift(withThisType type: VehicleType,
-                            andThisVehicle vehicle: VehicleVisible) async throws {
-        let localAccess = LocalService(type: type)
+    var currentType: VehicleTypeElements = CarElements()
+    private var translator: VehicleVisibleTranslator
+    private var service: ParkingShiftService
+    
+    init() {
+        (translator, service) = currentType.getElements()
+    }
+        
+    func loadVehicleType(_ type: VehicleTypeElements) {
+        currentType = type
+        (translator, service) = currentType.getElements()
+    }
+    
+    func createParkingShift(withThisVehicle vehicle: VehicleVisible) async throws {
         guard let parkingShift: ParkingShift =
-                try localAccess.getTranslator().fromVisibleToDomainEntity(vehicle) else {
+                try translator.fromVisibleToDomainEntity(vehicle) else {
             throw PresentationErrors.ErrorSavingParking()}
 
-        try await localAccess.getService().saveThis(shift: parkingShift)
-        try fetchData(withThisType: type)
+        try await service.saveThis(shift: parkingShift)
+        try fetchData()
     }
 
-    func finishParkingShift(withThisType type: VehicleType,
-                            andThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible {
+    func finishParkingShift(withThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible {
         vehicle.setDepartureDate(Date())
-        let localAccess = LocalService(type: type)
         guard let parkingShiftPayment: ParkingShiftPayment =
-                try localAccess.getTranslator().fromVisibleToDomainEntity(vehicle) else {
+                try translator.fromVisibleToDomainEntity(vehicle) else {
             throw PresentationErrors.ErrorSavingParking()}
 
-        try await localAccess.getService().finishParkingShift(shift: parkingShiftPayment)
+        try await service.finishParkingShift(shift: parkingShiftPayment)
 
         guard let vehicleVisible: VehicleVisible =
-                try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShiftPayment) else {
+                try translator.fromDomainToVisibleEntity(parkingShiftPayment) else {
             return vehicle}
-        try fetchData(withThisType: type)
+        try fetchData()
         return vehicleVisible
     }
 
-    func fetchData(withThisType type: VehicleType,
-                   andThisPlate plate: String) throws {
-        let localAccess = LocalService(type: type)
+    func fetchData(withThisPlate plate: String) throws {
         let parkingShifts = (plate == "" ?
-                            try localAccess.getService().getParkingShift() :
-                            try localAccess.getService().searchParkingShift(withPlate: plate.uppercased()))
-        let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
+                            try service.getParkingShift() :
+                            try service.searchParkingShift(withPlate: plate.uppercased()))
+        let vehicles: [VehicleVisible] = try translator.fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }
 
-    func fetchData(withThisType type: VehicleType) throws {
-        let localAccess = LocalService(type: type)
-        let parkingShifts = try localAccess.getService().getParkingShift()
-        let vehicles: [VehicleVisible] = try localAccess.getTranslator().fromDomainToVisibleEntity(parkingShifts)
+    func fetchData() throws {
+        let parkingShifts = try service.getParkingShift()
+        let vehicles: [VehicleVisible] = try translator.fromDomainToVisibleEntity(parkingShifts)
         presenter?.refreshData(with: vehicles)
     }
 }

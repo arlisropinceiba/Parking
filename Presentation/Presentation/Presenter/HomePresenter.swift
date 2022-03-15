@@ -5,6 +5,7 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 14/02/22.
 //
 import Foundation
+import Combine
 
 class HomePresenter {
 
@@ -12,21 +13,21 @@ class HomePresenter {
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeRouterProtocol?
-
-    func createShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
+    
+    func createShift(vehicle: VehicleVisible) {
         Task {
             do {
-                try await interactor?.createParkingShift(withThisType: type, andThisVehicle: vehicle)
+                try await interactor?.createParkingShift(withThisVehicle: vehicle)
             } catch let error {
                 view?.showAlert(message: error.messageDescription())
             }
         }
     }
 
-    func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType) {
+    func finishShift(vehicle: VehicleVisible) {
         Task {
             do {
-                let newVehicle = try await interactor?.finishParkingShift(withThisType: type, andThisVehicle: vehicle)
+                let newVehicle = try await interactor?.finishParkingShift(withThisVehicle: vehicle)
                 view?.showPayment(vehicle: newVehicle!)
             } catch let error {
                 view?.showAlert(message: error.messageDescription())
@@ -34,10 +35,10 @@ class HomePresenter {
         }
     }
 
-    func loadData(_ date: String, withThisType type: VehicleType) {
+    func loadData(_ date: String) {
         view?.setTimeLabelText(text: date)
         do {
-            try interactor?.fetchData(withThisType: type)
+            try interactor?.fetchData()
         } catch let error {
             view?.showAlert(message: error.messageDescription())
         }
@@ -53,9 +54,9 @@ class HomePresenter {
             view?.refreshCollection(with: data)}
     }
 
-    func searchBy(plate: String, withThisType type: VehicleType) {
+    func searchBy(plate: String) {
         do {
-            try interactor?.fetchData(withThisType: type, andThisPlate: plate)
+            try interactor?.fetchData(withThisPlate: plate)
         } catch let error {
             view?.showAlert(message: error.messageDescription())
         }
@@ -67,6 +68,11 @@ class HomePresenter {
 }
 
 extension HomePresenter: HomePresenterProtocol {
+    
+    func loadVehicleType(_ type: VehicleTypeElements) {
+        interactor?.loadVehicleType(type)
+    }
+    
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {

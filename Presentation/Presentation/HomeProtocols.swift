@@ -10,7 +10,6 @@ import UIKit
 protocol HomeViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: HomePresenterProtocol? { get set }
-
     func setTimeLabelText(text: String)
     func setCounterLabelText(text: String)
     func refreshCollection(with data: [VehicleVisible])
@@ -30,12 +29,13 @@ protocol HomePresenterProtocol: AnyObject {
     var interactor: HomeInteractorInputProtocol? { get set }
     var wireFrame: HomeRouterProtocol? { get set }
 
-    func loadData(_ date: String, withThisType type: VehicleType)
+    func loadData(_ date: String)
     func refreshData(in date: String, with data: [VehicleVisible])
-    func createShift(vehicle: VehicleVisible, withThisType type: VehicleType)
-    func finishShift(vehicle: VehicleVisible, withThisType type: VehicleType)
-    func searchBy(plate: String, withThisType type: VehicleType)
+    func createShift(vehicle: VehicleVisible)
+    func finishShift(vehicle: VehicleVisible)
+    func searchBy(plate: String)
     func showLogHistory()
+    func loadVehicleType(_ type: VehicleTypeElements)
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {
@@ -47,9 +47,9 @@ protocol HomeInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: HomeInteractorOutputProtocol? { get set }
 
-    func createParkingShift(withThisType type: VehicleType, andThisVehicle vehicle: VehicleVisible) async throws
-    func fetchData(withThisType type: VehicleType) throws
-    func fetchData(withThisType type: VehicleType, andThisPlate: String) throws
-    func finishParkingShift(withThisType type: VehicleType,
-                            andThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible
+    func createParkingShift(withThisVehicle vehicle: VehicleVisible) async throws
+    func fetchData() throws
+    func fetchData(withThisPlate: String) throws
+    func finishParkingShift(withThisVehicle vehicle: VehicleVisible) async throws -> VehicleVisible
+    func loadVehicleType(_ type: VehicleTypeElements)
 }

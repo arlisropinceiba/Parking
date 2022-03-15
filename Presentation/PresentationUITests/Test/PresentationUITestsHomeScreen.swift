@@ -36,8 +36,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         app.launch()
         let lettersNumberOnThePlate = 3
         let numbersNumberOnThePlate = 3
-        let numberOfDigitsForAPossibleCapacityValue = 3
-        let cylinderCapacity = randomNumber(withLength: numberOfDigitsForAPossibleCapacityValue)
+        let cylinderCapacity = "\(Int.random(in: 51...1000))"
         let plate = randomString(
             withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
@@ -115,8 +114,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         app.launch()
         let lettersNumberOnThePlate = 3
         let numbersNumberOnThePlate = 3
-        let numberOfDigitsForAPossibleCapacityValue = 3
-        let cylinderCapacity = randomNumber(withLength: numberOfDigitsForAPossibleCapacityValue)
+        let cylinderCapacity = "\(Int.random(in: 51...1000))"
         let plate = randomString(
             withLength: lettersNumberOnThePlate) + randomNumber(withLength: numbersNumberOnThePlate)
         // When
@@ -163,7 +161,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
     func randomNumber(withLength length: Int) -> String {
         let letters = "0123456789"
         let arrayLength = (0..<length)
-        let arrayChar = arrayLength.map{number in
+        let arrayChar = arrayLength.map{_ in
             letters.randomElement()!
         }
         return String(arrayChar)

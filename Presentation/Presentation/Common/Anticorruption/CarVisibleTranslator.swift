@@ -7,7 +7,7 @@
 
 import Domain
 
-class CarVisibleTranslator: VehicleVisibleTranslator {
+public class CarVisibleTranslator: VehicleVisibleTranslator {
 
     public override func fromVisibleToDomainEntity(
         _ vehicleVisible: VehicleVisible) throws -> ParkingShiftPayment? {

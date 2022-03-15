@@ -17,7 +17,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     // MARK: Properties
     var presenter: LogHistoryPresenterProtocol?
-    var currentType: VehicleType = .car
+    var currentType: VehicleTypeElements = CarElements()
     var vehicles: [VehicleVisible] = []
     // MARK: Lifecycle
 
@@ -68,8 +68,8 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         })
     }
 
-    func actionItemVehicleType(with vehicleType: VehicleType) {
-        vehiclesListButton.setTitle("  \(vehicleType.rawValue)", for: .normal)
+    func actionItemVehicleType(with vehicleType: VehicleTypeElements) {
+        vehiclesListButton.setTitle("  \(vehicleType.getType())", for: .normal)
         currentType = vehicleType
         presenter?.loadData(withThisType: currentType)
     }

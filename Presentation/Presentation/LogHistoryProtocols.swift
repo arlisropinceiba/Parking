@@ -28,8 +28,8 @@ protocol LogHistoryPresenterProtocol: AnyObject {
     var wireFrame: LogHistoryRouterProtocol? { get set }
 
     func viewDidLoad()
-    func loadData(withThisType type: VehicleType)
-    func searchBy(plate: String, withThisType type: VehicleType)
+    func loadData(withThisType type: VehicleTypeElements)
+    func searchBy(plate: String, withThisType type: VehicleTypeElements)
 }
 
 protocol LogHistoryInteractorOutputProtocol: AnyObject {
@@ -40,6 +40,6 @@ protocol LogHistoryInteractorOutputProtocol: AnyObject {
 protocol LogHistoryInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: LogHistoryInteractorOutputProtocol? { get set }
-    func fetchData(withThisType type: VehicleType) throws
-    func fetchData(withThisType type: VehicleType, andThisPlate plate: String) throws
+    func fetchData(withThisType type: VehicleTypeElements) throws
+    func fetchData(withThisType type: VehicleTypeElements, andThisPlate plate: String) throws
 }

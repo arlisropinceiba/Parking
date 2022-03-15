@@ -19,7 +19,7 @@ class LogHistoryPresenter {
         view?.refreshTable(with: data)
     }
 
-    func loadData(withThisType type: VehicleType) {
+    func loadData(withThisType type: VehicleTypeElements) {
         do {
             try interactor?.fetchData(withThisType: type)
         } catch let error {
@@ -27,7 +27,7 @@ class LogHistoryPresenter {
         }
     }
 
-    func searchBy(plate: String, withThisType type: VehicleType) {
+    func searchBy(plate: String, withThisType type: VehicleTypeElements) {
         do {
             try interactor?.fetchData(withThisType: type, andThisPlate: plate)
         } catch let error {
