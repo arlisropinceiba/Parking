@@ -16,7 +16,7 @@ class CarElements: VehicleTypeElements {
             translator: CarVisibleTranslator(),
             service: CarParkingShiftService(carParkingShiftRepository:
                                             CarParkingCoreDataRepository.shared),
-            modal: AddCarModal(nibName: "AddCarModal", bundle: nil)
+            modal: AddCarModal()
         )
     }
 }
@@ -28,7 +28,7 @@ class MotorcycleElements: VehicleTypeElements {
             translator: MotorcycleVisibleTranslator(),
             service: MotorcycleParkingShiftService(motorcycleParkingShiftRepository:
                                                     MotorcycleParkingCoreDataRepository.shared),
-            modal: AddMotorcycleModal(nibName: "AddMotorcycleModal", bundle: nil))
+            modal: AddMotorcycleModal())
     }
 }
 

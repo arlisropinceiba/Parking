@@ -23,13 +23,11 @@
 		1C17331C27BCC4F600B3350F /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C17331B27BCC4F600B3350F /* Infrastructure.framework */; };
 		1C17331D27BCC4F600B3350F /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C17331B27BCC4F600B3350F /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C2ADB9527E13B8500492106 /* AddCarModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9327E13B8500492106 /* AddCarModal.swift */; };
-		1C2ADB9627E13B8500492106 /* AddCarModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9427E13B8500492106 /* AddCarModal.xib */; };
 		1C2ADB9827E13E3900492106 /* AddVehicleModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */; };
 		1C2E212227BD1A6900BCBBFE /* VehicleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */; };
 		1C2E212327BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212027BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift */; };
 		1C2E212427BD1A6900BCBBFE /* CarVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212127BD1A6900BCBBFE /* CarVisibleTranslator.swift */; };
 		1C2E212B27BD805600BCBBFE /* AddMotorcycleModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E212927BD805600BCBBFE /* AddMotorcycleModal.swift */; };
-		1C2E212C27BD805600BCBBFE /* AddMotorcycleModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2E212A27BD805600BCBBFE /* AddMotorcycleModal.xib */; };
 		1C2E213627BDAB1400BCBBFE /* LogHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213127BDAB1400BCBBFE /* LogHistoryPresenter.swift */; };
 		1C2E213727BDAB1400BCBBFE /* LogHistoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213227BDAB1400BCBBFE /* LogHistoryProtocols.swift */; };
 		1C2E213827BDAB1400BCBBFE /* LogHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */; };
@@ -103,13 +101,11 @@
 		1C17331727BCBC0600B3350F /* VehicleTypeElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypeElements.swift; sourceTree = "<group>"; };
 		1C17331B27BCC4F600B3350F /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2ADB9327E13B8500492106 /* AddCarModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarModal.swift; sourceTree = "<group>"; };
-		1C2ADB9427E13B8500492106 /* AddCarModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCarModal.xib; sourceTree = "<group>"; };
 		1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleModal.swift; sourceTree = "<group>"; };
 		1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleVisibleTranslator.swift; sourceTree = "<group>"; };
 		1C2E212027BD1A6900BCBBFE /* MotorcycleVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotorcycleVisibleTranslator.swift; sourceTree = "<group>"; };
 		1C2E212127BD1A6900BCBBFE /* CarVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarVisibleTranslator.swift; sourceTree = "<group>"; };
 		1C2E212927BD805600BCBBFE /* AddMotorcycleModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMotorcycleModal.swift; sourceTree = "<group>"; };
-		1C2E212A27BD805600BCBBFE /* AddMotorcycleModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMotorcycleModal.xib; sourceTree = "<group>"; };
 		1C2E213127BDAB1400BCBBFE /* LogHistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryPresenter.swift; sourceTree = "<group>"; };
 		1C2E213227BDAB1400BCBBFE /* LogHistoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryProtocols.swift; sourceTree = "<group>"; };
 		1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryInteractor.swift; sourceTree = "<group>"; };
@@ -242,9 +238,7 @@
 			children = (
 				1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */,
 				1C2E212927BD805600BCBBFE /* AddMotorcycleModal.swift */,
-				1C2E212A27BD805600BCBBFE /* AddMotorcycleModal.xib */,
 				1C2ADB9327E13B8500492106 /* AddCarModal.swift */,
-				1C2ADB9427E13B8500492106 /* AddCarModal.xib */,
 				1C2E214127BDD6E500BCBBFE /* FinishShiftModel.swift */,
 				1C2E214227BDD6E500BCBBFE /* FinishShiftModel.xib */,
 				1C0C69D227BE6FC200CF288E /* PaymentModal.swift */,
@@ -499,9 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CEA19A727B4662700865244 /* LaunchScreen.storyboard in Resources */,
-				1C2E212C27BD805600BCBBFE /* AddMotorcycleModal.xib in Resources */,
 				1C1732CB27BC4C9D00B3350F /* VehicleCollectionViewCell.xib in Resources */,
-				1C2ADB9627E13B8500492106 /* AddCarModal.xib in Resources */,
 				1C2E214027BDC8AC00BCBBFE /* LogItemTableViewCell.xib in Resources */,
 				1C0C69D527BE6FC200CF288E /* PaymentModal.xib in Resources */,
 				1CEA19A427B4662700865244 /* Assets.xcassets in Resources */,
