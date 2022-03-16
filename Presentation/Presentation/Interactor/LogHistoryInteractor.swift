@@ -20,7 +20,7 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
     init() {
         (translator, service) = currentType.getElements()
     }
-        
+
     func loadVehicleType(_ type: VehicleTypeElements) {
         currentType = type
         (translator, service) = currentType.getElements()

@@ -72,7 +72,6 @@ extension HomePresenter: HomePresenterProtocol {
     func loadVehicleType(_ type: VehicleTypeElements) {
         interactor?.loadVehicleType(type)
     }
-    
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {
