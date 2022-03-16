@@ -13,7 +13,7 @@ class HomePresenter {
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeRouterProtocol?
-    
+
     func createShift(vehicle: VehicleVisible) {
         Task {
             do {
@@ -68,7 +68,7 @@ class HomePresenter {
 }
 
 extension HomePresenter: HomePresenterProtocol {
-    
+
     func loadVehicleType(_ type: VehicleTypeElements) {
         interactor?.loadVehicleType(type)
     }

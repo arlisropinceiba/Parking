@@ -69,7 +69,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
             presenter?.loadVehicleType(currentType)
             presenter?.createShift(vehicle: vehicle)
         }
-        self.present(modal as! UIViewController, animated: true)
+        self.present(modal, animated: true)
     }
 
     @IBAction func showLogHistory(_ sender: UIButton) {

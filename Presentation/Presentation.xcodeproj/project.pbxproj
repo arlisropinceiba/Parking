@@ -22,7 +22,6 @@
 		1C17331827BCBC0600B3350F /* VehicleTypeElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17331727BCBC0600B3350F /* VehicleTypeElements.swift */; };
 		1C17331C27BCC4F600B3350F /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C17331B27BCC4F600B3350F /* Infrastructure.framework */; };
 		1C17331D27BCC4F600B3350F /* Infrastructure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C17331B27BCC4F600B3350F /* Infrastructure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1C202ABB27D8F80C00997F18 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C202ABA27D8F80C00997F18 /* File.swift */; };
 		1C2ADB9527E13B8500492106 /* AddCarModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9327E13B8500492106 /* AddCarModal.swift */; };
 		1C2ADB9627E13B8500492106 /* AddCarModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9427E13B8500492106 /* AddCarModal.xib */; };
 		1C2ADB9827E13E3900492106 /* AddVehicleModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */; };
@@ -52,7 +51,6 @@
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
 		1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */; };
 		1C7ECF6227C936DF00C4821F /* HomeElementsIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */; };
-		1CE4E79227C3BF2100FE6FFB /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4E79127C3BF2100FE6FFB /* DataAccess.swift */; };
 		1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199A27B4662400865244 /* AppDelegate.swift */; };
 		1CEA199D27B4662400865244 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199C27B4662400865244 /* SceneDelegate.swift */; };
 		1CEA199F27B4662400865244 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199E27B4662400865244 /* HomeView.swift */; };
@@ -103,7 +101,6 @@
 		1C1732F127BCA27400B3350F /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1C17331727BCBC0600B3350F /* VehicleTypeElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTypeElements.swift; sourceTree = "<group>"; };
 		1C17331B27BCC4F600B3350F /* Infrastructure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Infrastructure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C202ABA27D8F80C00997F18 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1C2ADB9327E13B8500492106 /* AddCarModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarModal.swift; sourceTree = "<group>"; };
 		1C2ADB9427E13B8500492106 /* AddCarModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCarModal.xib; sourceTree = "<group>"; };
 		1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleModal.swift; sourceTree = "<group>"; };
@@ -132,7 +129,6 @@
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeElementsIdentifiers.swift; sourceTree = "<group>"; };
-		1CE4E79127C3BF2100FE6FFB /* DataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
 		1CEA199727B4662400865244 /* Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CEA199A27B4662400865244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CEA199C27B4662400865244 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,12 +209,12 @@
 			path = Exception;
 			sourceTree = "<group>";
 		};
-		1C17331927BCBC0E00B3350F /* Enum */ = {
+		1C17331927BCBC0E00B3350F /* Strategy */ = {
 			isa = PBXGroup;
 			children = (
 				1C17331727BCBC0600B3350F /* VehicleTypeElements.swift */,
 			);
-			path = Enum;
+			path = Strategy;
 			sourceTree = "<group>";
 		};
 		1C17331A27BCC4F600B3350F /* Frameworks */ = {
@@ -260,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				1C1732CE27BC4CF000B3350F /* Entity */,
-				1C17331927BCBC0E00B3350F /* Enum */,
+				1C17331927BCBC0E00B3350F /* Strategy */,
 				1C2E211E27BD1A4A00BCBBFE /* Anticorruption */,
 				1C1732EE27BC9EC800B3350F /* Exception */,
 				1C1732C327BBF33F00B3350F /* Extension */,
@@ -286,7 +282,6 @@
 				1CE4E79527C4150000FE6FFB /* Cell */,
 				1C0AB6F027B6F91500D8B8BD /* Clock.swift */,
 				1CEA199E27B4662400865244 /* HomeView.swift */,
-				1C202ABA27D8F80C00997F18 /* File.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -312,7 +307,6 @@
 		1C6BB03D27C549A0001858BE /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				1CE4E79127C3BF2100FE6FFB /* DataAccess.swift */,
 				1C2E213327BDAB1400BCBBFE /* LogHistoryInteractor.swift */,
 				1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */,
 			);
@@ -544,7 +538,6 @@
 				1C1732C727BC447D00B3350F /* BaseController.swift in Sources */,
 				1C2E213F27BDC8AC00BCBBFE /* LogItemTableViewCell.swift in Sources */,
 				1C0AB6F127B6F91500D8B8BD /* Clock.swift in Sources */,
-				1CE4E79227C3BF2100FE6FFB /* DataAccess.swift in Sources */,
 				1C2E212B27BD805600BCBBFE /* AddMotorcycleModal.swift in Sources */,
 				1C6EE0E327BAF4690033D15C /* HomePresenter.swift in Sources */,
 				1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */,
@@ -560,7 +553,6 @@
 				1C1732C527BBF34B00B3350F /* Date.swift in Sources */,
 				1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */,
 				1C17331827BCBC0600B3350F /* VehicleTypeElements.swift in Sources */,
-				1C202ABB27D8F80C00997F18 /* File.swift in Sources */,
 				1C1732F227BCA27400B3350F /* Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

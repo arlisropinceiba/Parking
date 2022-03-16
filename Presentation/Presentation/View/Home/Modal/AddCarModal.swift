@@ -13,7 +13,7 @@ class AddCarModal: UIViewController, AddVehicleModal {
     @IBOutlet weak var plateLabel: UITextField!
 
     var completionWithValues: ((VehicleVisible) -> Void) = {_ in}
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         box.layer.cornerRadius = 20

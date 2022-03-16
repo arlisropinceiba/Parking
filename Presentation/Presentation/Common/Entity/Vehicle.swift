@@ -14,7 +14,7 @@ public class VehicleVisible {
     private var admissionDate: Date
     private var departureDate: Date?
     private var valueParkingShift: String
-    
+
     init(uid: UUID, plate: String, image: UIImage?, admissionDate: Date, departureDate: Date?, valor: String) {
         self.uid = uid
         self.plate = plate

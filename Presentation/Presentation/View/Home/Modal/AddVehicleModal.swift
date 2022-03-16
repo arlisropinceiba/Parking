@@ -4,6 +4,9 @@
 //
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 15/03/22.
 //
+import UIKit
+
+typealias UIViewModal = UIViewController & AddVehicleModal
 
 protocol AddVehicleModal {
     var completionWithValues: ((VehicleVisible) -> Void) { get set }
@@ -22,7 +25,7 @@ extension AddVehicleModal {
     func randomNumber(withLength length: Int) -> String {
         let letters = "0123456789"
         let arrayLength = (0..<length)
-        let arrayChar = arrayLength.map{_ in
+        let arrayChar = arrayLength.map{number in
             letters.randomElement()!
         }
         return String(arrayChar)

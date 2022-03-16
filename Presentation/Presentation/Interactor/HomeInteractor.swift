@@ -17,7 +17,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
     var currentType: VehicleTypeElements = CarElements()
     private var translator: VehicleVisibleTranslator
     private var service: ParkingShiftService
-    
+        
     init() {
         (translator, service) = currentType.getElements()
     }
@@ -26,7 +26,7 @@ class HomeInteractor: HomeInteractorInputProtocol {
         currentType = type
         (translator, service) = currentType.getElements()
     }
-    
+        
     func createParkingShift(withThisVehicle vehicle: VehicleVisible) async throws {
         guard let parkingShift: ParkingShift =
                 try translator.fromVisibleToDomainEntity(vehicle) else {

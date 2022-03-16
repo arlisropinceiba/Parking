@@ -12,7 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var globalNavigationController: UINavigationController?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
+               options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window`
         // to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -34,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {
 //        La escena que UIKit desconectó de tu aplicación.
-        
+
 //        Utilice este método para realizar cualquier limpieza final antes de que la escena se elimine de la memoria.
 //        Por ejemplo, utilícelo para liberar referencias a archivos o
 //        recursos compartidos y para guardar datos de usuario.
@@ -45,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        UIKit no desconecta automáticamente una escena cuando el usuario cambia a otra aplicación.
 //
 //        UIKit también publica una notificación además de llamar a este método. didDisconnectNotification
-        
+
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
@@ -69,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //        Para obtener más información sobre qué hacer cuando su aplicación se activa,
 //        consulte Preparar su interfaz de usuario para que se ejecute en primer plano .
-        
+
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
@@ -102,7 +104,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //        Para obtener más información sobre qué hacer cuando su aplicación renuncia al estado activo,
 //        consulte Preparar su IU para ejecutarse en segundo plano .
-        
+
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
@@ -124,7 +126,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //        Para obtener más información sobre qué hacer cuando su aplicación está a punto de pasar al primer plano,
 //        consulte Preparación de la interfaz de usuario para que se ejecute en primer plano .
-        
+
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
@@ -146,7 +148,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //        Para obtener más información sobre qué hacer cuando su aplicación pasa a segundo plano,
 //        consulte Preparar la interfaz de usuario para que se ejecute en segundo plano.
-        
+
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.

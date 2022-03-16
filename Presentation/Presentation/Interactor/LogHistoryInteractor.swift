@@ -25,7 +25,7 @@ class LogHistoryInteractor: LogHistoryInteractorInputProtocol {
         currentType = type
         (translator, service) = currentType.getElements()
     }
-    
+
     func fetchData(withThisType type: VehicleTypeElements) throws {
         loadVehicleType(type)
         let parkingShifts = try service.getFinalizedParkingShifts()

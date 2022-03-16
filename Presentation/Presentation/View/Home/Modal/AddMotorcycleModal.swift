@@ -15,7 +15,7 @@ class AddMotorcycleModal: UIViewController, AddVehicleModal {
     @IBOutlet weak var capacityLabel: UITextField!
 
     var completionWithValues: ((VehicleVisible) -> Void) = {_ in}
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         box.layer.cornerRadius = 20
@@ -40,7 +40,7 @@ class AddMotorcycleModal: UIViewController, AddVehicleModal {
         let plate: String = randomString(withLength: 3) + randomNumber(withLength: 3)
         returnValues(plate: plate, cylinderCapacity: cylinderCapacity)
     }
-    
+
     func returnValues(plate: String, cylinderCapacity: Int) {
         let motorcycle = MotorcycleVisible(plate: plate.uppercased(),
                                             admissionDate: Date(),

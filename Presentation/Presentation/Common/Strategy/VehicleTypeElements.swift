@@ -36,15 +36,15 @@ class VehicleTypeElements {
     private var name: String
     private var translator: VehicleVisibleTranslator
     private var service: ParkingShiftService
-    private var modal: AddVehicleModal
+    private var modal: UIViewModal
     public lazy var allCases: [VehicleTypeElements] = {
        return [CarElements(), MotorcycleElements()]
     }()
-    
+
     init(name: String,
          translator: VehicleVisibleTranslator,
          service: ParkingShiftService,
-         modal: AddVehicleModal
+         modal: UIViewModal
     ) {
         self.name = name
         self.translator = translator
@@ -65,8 +65,7 @@ class VehicleTypeElements {
     func getElements() -> (translator: VehicleVisibleTranslator, service: ParkingShiftService) {
         return(translator, service)
     }
-    func getModal() -> AddVehicleModal {
+    func getModal() -> UIViewModal {
         return modal
     }
-    
 }
