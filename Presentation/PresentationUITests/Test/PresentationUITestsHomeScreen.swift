@@ -23,6 +23,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .addVehicleButton)
             .type(inThisTextField: .plateTextField, thatText: plate)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .confirmAddButton)
         // Then
         //// Verify the plate existance
@@ -45,7 +46,9 @@ class PresentationUITestsHomeScreen: XCTestCase {
             .makeTap(inThisButton: .motorcycleItemList)
             .makeTap(inThisButton: .addVehicleButton)
             .type(inThisTextField: .plateTextField, thatText: plate)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .type(inThisTextField: .cylinderCapacityTextField, thatText: cylinderCapacity)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .confirmAddButton)
         // Then
         //// Verify the plate existance
@@ -61,6 +64,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // When
         _ = HomeScreen(app: app)
             .type(inThisTextField: .plateFinderTextField, thatText: letter)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .finderButton)
         // Then
         XCTAssertTrue(HomeScreen(app: app).searchingPlate(withThisLetter: letter))
@@ -75,6 +79,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
             .makeTap(inThisButton: .vehiclesListButton)
             .makeTap(inThisButton: .motorcycleItemList)
             .type(inThisTextField: .plateFinderTextField, thatText: letter)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .finderButton)
         // Then
         XCTAssertTrue(HomeScreen(app: app).searchingPlate(withThisLetter: letter))
@@ -87,6 +92,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         // When
         _ = HomeScreen(app: app)
             .type(inThisTextField: .plateFinderTextField, thatText: "")
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .finderButton)
         // Then
         XCTAssertTrue(app.collectionViews.cells.count == cellsCount)
@@ -103,6 +109,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .addVehicleButton)
             .type(inThisTextField: .plateTextField, thatText: plate)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .confirmAddButton)
             .finishShift(plate: plate)
         // Then
@@ -123,7 +130,9 @@ class PresentationUITestsHomeScreen: XCTestCase {
             .makeTap(inThisButton: .motorcycleItemList)
             .makeTap(inThisButton: .addVehicleButton)
             .type(inThisTextField: .plateTextField, thatText: plate)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .type(inThisTextField: .cylinderCapacityTextField, thatText: cylinderCapacity)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .confirmAddButton)
             .finishShift(plate: plate)
         // Then
@@ -141,6 +150,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
         _ = HomeScreen(app: app)
             .makeTap(inThisButton: .addVehicleButton)
             .type(inThisTextField: .plateTextField, thatText: plate)
+            .makeTap(inThisButton: .doneButtonKeyboard)
             .makeTap(inThisButton: .confirmAddButton)
             .makeTapInCollectionCell(WithText: plate)
             .makeTap(inThisButton: .finishParkingShifButton)

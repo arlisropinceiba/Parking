@@ -138,7 +138,7 @@ class AddMotorcycleModal: UIViewController, AddVehicleModal {
     var box: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 20
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
