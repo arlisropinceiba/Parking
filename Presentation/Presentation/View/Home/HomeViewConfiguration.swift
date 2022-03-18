@@ -66,9 +66,11 @@ extension HomeView {
         searchVehiclesButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
 
         // MARK: Collection
+        let widthCell = CellSize.shared
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.itemSize = CGSize(width: widthCell, height: widthCell)
+//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         let frame = CGRect(x: line.frame.minX, y: line.frame.maxY, width: view.frame.width, height: 0.0)

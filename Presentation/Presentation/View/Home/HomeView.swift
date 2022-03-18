@@ -22,8 +22,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         setView()
         collection?.delegate = self
         collection?.dataSource = self
-        collection?.register(UINib(nibName: "VehicleCollectionViewCell",
-                                  bundle: Bundle.main),
+        collection?.register(VehicleCollectionViewCell.self,
                             forCellWithReuseIdentifier: "VehicleCollectionViewCell")
         plateTextfield.delegate = self
         configureListButton()
@@ -42,14 +41,13 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         let vehicle = vehicles[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCollectionViewCell",
                                                       for: indexPath) as? VehicleCollectionViewCell
-        cell?.setData(ofThis: vehicle, withThisDate: date, inWindowWidth: view.frame.width)
+        cell?.setData(ofThis: vehicle, withThisDate: date)
         return cell ?? UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vehicle = vehicles[indexPath.row]
-        let modal = FinishShiftModel(nibName: "FinishShiftModel", bundle: nil)
-        modal.vehicle = vehicle
+        let modal = FinishShiftModel(vehicle: vehicle)
         modal.completion = { [self] in
             presenter?.loadVehicleType(currentType)
             presenter?.finishShift(vehicle: vehicle)
@@ -58,7 +56,9 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     // MARK: TextField
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let count = text.count + string.count - range.length
         return count <= 6
@@ -66,7 +66,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
 
     // MARK: Action buttons
     @objc func addVehicle(_ sender: UIButton) {
-        var modal = currentType.getModal()
+        var modal = currentType.getAddVehicleModal()
         modal.completionWithValues = { [self] vehicle in
             presenter?.loadVehicleType(currentType)
             presenter?.createShift(vehicle: vehicle)
@@ -140,9 +140,9 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
     // MARK: PaymentModal
 
     func showPayment(vehicle: VehicleVisible) {
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-            let modal = PaymentModal(nibName: "PaymentModal", bundle: nil)
-            modal.vehicle = vehicle
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { [self] in
+            currentType.setPaymentModal(vehicle: vehicle)
+            guard let modal = currentType.getPaymentModal() else { return }
             self.present(modal, animated: true)
         }
     }
@@ -236,6 +236,7 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         button.setTitle("  Carros", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "VehiclesListButton"
         return button
     }()
 
@@ -253,7 +254,6 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         button.configuration = .filled()
         button.setTitle("+", for: .normal)
         button.addTarget(self, action: #selector(addVehicle(_:)), for: .touchUpInside)
-        button.accessibilityIdentifier = "VehiclesListButton"
         return button
     }()
 

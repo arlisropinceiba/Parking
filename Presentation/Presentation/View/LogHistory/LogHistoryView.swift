@@ -23,8 +23,9 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         configureListButton()
         table.delegate = self
         table.dataSource = self
-        table.register(UINib(nibName: "LogItemTableViewCell", bundle: Bundle.main),
-                       forCellReuseIdentifier: "LogItemTableViewCell")
+        VehicleTypeElements().allLogTableCell.forEach { cellType in
+            table.register(cellType, forCellReuseIdentifier: cellType.debugDescription())
+        }
         plateTextfield.delegate = self
         presenter?.loadData(withThisType: currentType)
     }
@@ -37,8 +38,8 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let vehicle = vehicles[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LogItemTableViewCell",
-                                                 for: indexPath) as? LogItemTableViewCell
+        currentType.setLogTableCell(tableView, indexPath)
+        let cell = currentType.getLogTableCell()
         cell?.initWithData(vehicle: vehicle)
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
@@ -109,7 +110,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         view.backgroundColor = UIColor.systemGray
         return view
     }()
-    
+
     var blank: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +126,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     var titleButtonStack: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill

@@ -7,35 +7,8 @@
 
 import UIKit
 
-class LogItemTableViewCell: UITableViewCell {
+typealias UITableLogCell = UITableViewCell & LogItemTableViewCell
 
-    @IBOutlet weak var box: UIView!
-    @IBOutlet weak var plateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var vehicleImage: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        box.layer.cornerRadius = 10
-        box.layer.borderWidth = 1
-        box.layer.borderColor = #colorLiteral(red: 0.001902872347, green: 0.2908241451, blue: 0.32291466, alpha: 1)
-    }
-
-    func initWithData(vehicle: VehicleVisible) {
-        vehicleImage.image = vehicle.getImage()
-        let addmissionDate = vehicle.getAdmissionDate().inDateHourFormat()
-        let departureDate = (vehicle.getDepartureDate() ?? Date()).inDateHourFormat()
-        let descriptionVehicle = vehicle is MotorcycleVisible ?
-            "\((vehicle as! MotorcycleVisible).getCylinderCapacity()) CC":
-            ""
-        plateLabel.text = vehicle.getPlate() + "\n" + descriptionVehicle
-        let text = """
-        🗓 Fecha de ingreso: \(addmissionDate)
-        🗓 Fecha de salida: \(departureDate)
-        🕗 Total tiempo: \(vehicle.getLenghtOfStay())
-        💲 Valor total: \(vehicle.getValor())
-        """
-        descriptionLabel.text = text
-    }
+protocol LogItemTableViewCell {
+    func initWithData(vehicle: VehicleVisible)
 }

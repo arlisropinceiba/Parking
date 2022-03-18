@@ -30,4 +30,8 @@ class CarVisible: VehicleVisible {
     convenience public init(plate: String, admissionDate: Date) {
         self.init(uid: UUID(), plate: plate, admissionDate: admissionDate)
     }
+
+    convenience public init() {
+        self.init(uid: UUID(), plate: "", admissionDate: Date())
+    }
 }

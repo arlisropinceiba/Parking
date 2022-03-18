@@ -21,7 +21,7 @@ class AddCarModal: UIViewController, AddVehicleModal {
     }
 
     @IBAction func add(_ sender: UIButton) {
-        let plate = plateLabel.text
+        let plate = plateTextfield.text
         returnValues(plate: plate ?? "")
     }
 
@@ -112,14 +112,14 @@ class AddCarModal: UIViewController, AddVehicleModal {
     var box: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 20
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = "Agregar vehículo"
         label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false

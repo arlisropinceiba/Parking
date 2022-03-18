@@ -27,16 +27,16 @@ extension LogHistoryView {
         titleStack.addArrangedSubview(backButton)
         backButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        
+
         // MARK: Title Label
         titleStack.addArrangedSubview(titleLabel)
-        
+
         // MARK: Blank
         titleButtonStack.addArrangedSubview(blank)
-        
+
         // MARK: List Button
         titleButtonStack.addArrangedSubview(vehiclesListButton)
-        
+
         // MARK: Finder Stack
         mainStack.addArrangedSubview(finderStack)
 
@@ -47,16 +47,17 @@ extension LogHistoryView {
         finderStack.addArrangedSubview(searchVehiclesButton)
         searchVehiclesButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         searchVehiclesButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        
+
         // MARK: Line
         view.addSubview(line)
         line.heightAnchor.constraint(equalToConstant: 1).isActive = true
         line.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         line.topAnchor.constraint(equalTo: mainStack.bottomAnchor, constant: 20).isActive = true
         line.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        
+
         // MARK: Table
         table = UITableView()
+        table.separatorColor = .clear
         table.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(table)
         table.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true

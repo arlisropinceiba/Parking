@@ -16,7 +16,7 @@ extension UIButton {
 
     private func setVehicleMenuItems(handler: @escaping (VehicleTypeElements) -> Void) -> [UIAction] {
         var itemsMenu: [UIAction] = []
-        for type in VehicleTypeElements().allCases {
+        for type in VehicleTypeElements().allVehicleTypeCases {
             print(type.getType())
             let item = UIAction(title: type.getType(),
                                 handler: {_ in handler(type)})

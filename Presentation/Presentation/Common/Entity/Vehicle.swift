@@ -24,6 +24,16 @@ public class VehicleVisible {
         self.valueParkingShift = valor
     }
 
+    convenience init() {
+        self.init(
+            uid: UUID(),
+            plate: "",
+            image: UIImage(),
+            admissionDate: Date(),
+            departureDate: Date(),
+            valor: "")
+    }
+
     public func getId() -> UUID {
         return uid
     }

@@ -145,7 +145,7 @@ class PresentationUITestsHomeScreen: XCTestCase {
             .makeTapInCollectionCell(WithText: plate)
             .makeTap(inThisButton: .finishParkingShifButton)
 
-        let valueLabel = app.staticTexts["0"]
+        let valueLabel = app.staticTexts["$0.0"]
         // Then
         XCTAssertTrue(valueLabel.label.count >= 1 )
     }

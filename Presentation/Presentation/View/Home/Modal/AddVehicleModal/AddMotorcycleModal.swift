@@ -21,10 +21,8 @@ class AddMotorcycleModal: UIViewController, AddVehicleModal {
     }
 
     @objc func add(_ sender: UIButton) {
-        let cylinderCapacity: Int = Int(capacityTextfield
-        .text ?? "0") ?? 0
-        let plate = plateTextfield
-        .text
+        let cylinderCapacity: Int = Int(capacityTextfield.text ?? "0") ?? 0
+        let plate = plateTextfield.text
         returnValues(plate: plate ?? "", cylinderCapacity: cylinderCapacity)
     }
 

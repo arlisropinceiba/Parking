@@ -16,8 +16,17 @@ class CarElements: VehicleTypeElements {
             translator: CarVisibleTranslator(),
             service: CarParkingShiftService(carParkingShiftRepository:
                                             CarParkingCoreDataRepository.shared),
-            modal: AddCarModal()
+            addVehiclemodal: AddCarModal()
         )
+    }
+    override func setPaymentModal(vehicle: VehicleVisible) {
+        let modal = CarPaymentModal(vehicle: vehicle)
+        setPaymentModalWithVehicle(modal: modal)
+    }
+    override func setLogTableCell(_ tableView: UITableView, _ indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CarLogItemTableViewCell.self.debugDescription(),
+                                                 for: indexPath) as? CarLogItemTableViewCell
+        setLogTableCellWithTableView(cell: cell)
     }
 }
 
@@ -28,7 +37,17 @@ class MotorcycleElements: VehicleTypeElements {
             translator: MotorcycleVisibleTranslator(),
             service: MotorcycleParkingShiftService(motorcycleParkingShiftRepository:
                                                     MotorcycleParkingCoreDataRepository.shared),
-            modal: AddMotorcycleModal())
+            addVehiclemodal: AddMotorcycleModal()
+        )
+    }
+    override func setPaymentModal(vehicle: VehicleVisible) {
+        let modal = MotorcyclePaymentModal(vehicle: vehicle)
+        setPaymentModalWithVehicle(modal: modal)
+    }
+    override func setLogTableCell(_ tableView: UITableView, _ indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MotorcycleLogItemTableViewCell.self.debugDescription(),
+                                                 for: indexPath) as? MotorcycleLogItemTableViewCell
+        setLogTableCellWithTableView(cell: cell)
     }
 }
 
@@ -36,27 +55,34 @@ class VehicleTypeElements {
     private var name: String
     private var translator: VehicleVisibleTranslator
     private var service: ParkingShiftService
-    private var modal: UIViewModal
-    public lazy var allCases: [VehicleTypeElements] = {
+    private var addVehiclemodal: UIViewModal
+    private var paymentModal: UIViewPaymentModal?
+    private var logTableCell: UITableLogCell?
+
+    public lazy var allLogTableCell: [UITableViewCell.Type] = {
+        return [CarLogItemTableViewCell.self, MotorcycleLogItemTableViewCell.self]
+    }()
+
+    public lazy var allVehicleTypeCases: [VehicleTypeElements] = {
        return [CarElements(), MotorcycleElements()]
     }()
 
     init(name: String,
          translator: VehicleVisibleTranslator,
          service: ParkingShiftService,
-         modal: UIViewModal
+         addVehiclemodal: UIViewModal
     ) {
         self.name = name
         self.translator = translator
         self.service = service
-        self.modal = modal
+        self.addVehiclemodal = addVehiclemodal
     }
     convenience init() {
         self.init(
             name: "",
             translator: VehicleVisibleTranslator(),
             service: ParkingShiftService(parkingShitRepository: CarParkingCoreDataRepository.shared),
-            modal: AddMotorcycleModal(nibName: "AddMotorcycleModal", bundle: nil)
+            addVehiclemodal: AddMotorcycleModal()
         )
     }
     func getType() -> String {
@@ -65,7 +91,21 @@ class VehicleTypeElements {
     func getElements() -> (translator: VehicleVisibleTranslator, service: ParkingShiftService) {
         return(translator, service)
     }
-    func getModal() -> UIViewModal {
-        return modal
+    func getAddVehicleModal() -> UIViewModal {
+        return addVehiclemodal
+    }
+    func setPaymentModal(vehicle: VehicleVisible) { }
+    func setPaymentModalWithVehicle(modal: UIViewPaymentModal) {
+        paymentModal = modal
+    }
+    func getPaymentModal() -> UIViewPaymentModal? {
+        return paymentModal
+    }
+    func setLogTableCell(_ tableView: UITableView, _ indexPath: IndexPath) { }
+    func setLogTableCellWithTableView(cell: UITableLogCell?) {
+        logTableCell = cell
+    }
+    func getLogTableCell() -> UITableLogCell? {
+        return logTableCell
     }
 }
