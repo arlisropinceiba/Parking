@@ -7,12 +7,13 @@
 
 import UIKit
 
-class AddMotorcycleModal: UIViewController, AddVehicleModal {
+class AddMotorcycleModal: UIViewController, UITextFieldDelegate, AddVehicleModal{
 
     var completionWithValues: ((VehicleVisible) -> Void) = {_ in}
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        plateTextfield.delegate = self
         setView()
     }
 
@@ -38,6 +39,15 @@ class AddMotorcycleModal: UIViewController, AddVehicleModal {
                                             cylinderCapacity: cylinderCapacity)
         completionWithValues(motorcycle)
         dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: TextField
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let count = text.count + string.count - range.length
+        return count <= 6
     }
 
     func setView() {

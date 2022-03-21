@@ -26,21 +26,27 @@ extension String {
         if self.contains("-") {
             symbol = "-"
         }
-        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
-        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, amountWithPrefix.count), withTemplate: "")
+        let options = NSRegularExpression.MatchingOptions(rawValue: 0)
+        let range = NSMakeRange(0, amountWithPrefix.count)
+        guard let regex = try? NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive) else { return "..." }
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix,
+                                                          options: options,
+                                                          range: range,
+                                                          withTemplate: "")
 
         let value = (amountWithPrefix as NSString).integerValue
         number = NSNumber(value: (value))
 
         // if first number is 0 or all numbers were deleted
         guard number != 0 as NSNumber else {
-            return (Locale(identifier: "es_CO").currencySymbol ?? "$") + "0" + (Locale(identifier: "es_CO").groupingSeparator ?? ".") + "0"
+            return (Locale(identifier: "es_CO").currencySymbol ?? "$") + "0" +
+            (Locale(identifier: "es_CO").groupingSeparator ?? ".") + "0"
         }
 
         return symbol + formatter.string(from: number)!
     }
 
-    func cleanNumberFormat()->String{
+    func cleanNumberFormat() -> String {
         var number: NSNumber!
         let formatter = NumberFormatter()
         formatter.numberStyle = .none

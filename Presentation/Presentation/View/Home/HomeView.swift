@@ -275,9 +275,9 @@ class HomeView: BaseController, UICollectionViewDelegate, UICollectionViewDataSo
         return field
     }()
 
-
     var collection: UICollectionView?
 }
 
 extension HomeView: HomeViewProtocol {
+
 }

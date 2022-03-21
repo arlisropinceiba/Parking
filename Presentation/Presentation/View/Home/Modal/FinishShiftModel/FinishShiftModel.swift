@@ -12,7 +12,7 @@ class FinishShiftModel: UIViewController {
     var vehicle: VehicleVisible
     var completion: () -> Void = {}
 
-    init(vehicle: VehicleVisible){
+    init(vehicle: VehicleVisible) {
         self.vehicle = vehicle
         super.init(nibName: nil, bundle: nil)
     }

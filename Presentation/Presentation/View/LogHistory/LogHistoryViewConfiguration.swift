@@ -9,7 +9,7 @@ import UIKit
 
 extension LogHistoryView {
 
-    func setView(){
+    func setView() {
 
         // MARK: Main Stack
         view.addSubview(mainStack)

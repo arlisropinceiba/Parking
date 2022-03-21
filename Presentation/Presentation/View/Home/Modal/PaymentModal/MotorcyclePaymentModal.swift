@@ -11,7 +11,7 @@ class MotorcyclePaymentModal: UIViewController, PaymentModal {
 
     var vehicle: VehicleVisible
 
-    init(vehicle: VehicleVisible){
+    init(vehicle: VehicleVisible) {
         self.vehicle = vehicle
         super.init(nibName: nil, bundle: nil)
     }
@@ -196,4 +196,3 @@ class MotorcyclePaymentModal: UIViewController, PaymentModal {
         return button
     }()
 }
-

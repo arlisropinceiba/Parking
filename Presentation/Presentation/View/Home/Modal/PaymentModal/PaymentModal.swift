@@ -12,5 +12,3 @@ typealias UIViewPaymentModal = UIViewController & PaymentModal
 protocol PaymentModal {
     var vehicle: VehicleVisible { get set }
 }
-
-

@@ -29,7 +29,7 @@ class CarLogItemTableViewCell: UITableViewCell, LogItemTableViewCell {
         descriptionLabel.text = text
     }
 
-    func setView(){
+    func setView() {
         // Box
         contentView.addSubview(box)
         box.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true

@@ -20,7 +20,7 @@ class VehicleCollectionViewCell: UICollectionViewCell {
         timeLabel.text = vehicle.getLenghtOfStay(fromAdmissionDateTo: departureDate)
     }
 
-    func setView(){
+    func setView() {
         // Image
         let widthCell = CellSize.shared
         contentView.addSubview(image)

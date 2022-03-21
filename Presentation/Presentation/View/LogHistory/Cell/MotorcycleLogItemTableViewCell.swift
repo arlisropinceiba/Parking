@@ -30,21 +30,21 @@ class MotorcycleLogItemTableViewCell: UITableViewCell, LogItemTableViewCell {
         descriptionLabel.text = text
     }
 
-    func setView(){
+    func setView() {
         // Box
         contentView.addSubview(box)
         box.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
         box.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 0).isActive = true
         box.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         box.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 30).isActive = true
-    
+
         // Main Stack
         box.addSubview(mainStack)
         mainStack.centerXAnchor.constraint(equalTo: box.centerXAnchor, constant: 0).isActive = true
         mainStack.centerYAnchor.constraint(equalTo: box.centerYAnchor, constant: 0).isActive = true
         mainStack.topAnchor.constraint(equalTo: box.topAnchor, constant: 15).isActive = true
         mainStack.leadingAnchor.constraint(greaterThanOrEqualTo: box.leadingAnchor, constant: 15).isActive = true
-    
+
         // Info Vehicle Modal
         mainStack.addArrangedSubview(vehicleInfoStack)
 
@@ -66,7 +66,7 @@ class MotorcycleLogItemTableViewCell: UITableViewCell, LogItemTableViewCell {
 
         // Description Label
         mainStack.addArrangedSubview(descriptionLabel)
-    
+
         // Line
         box.addSubview(line)
         line.heightAnchor.constraint(equalToConstant: 1).isActive = true
