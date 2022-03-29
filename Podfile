@@ -1,26 +1,34 @@
-# Uncomment the next line to define a global platform for your project
+# ----------------- Platform -----------------
 platform :ios, '15.2'
 
 use_frameworks!
 
 workspace 'Parking'
 
+# ----------------- Vars -----------------
+def podRealmSwift
+  pod 'RealmSwift'
+end
+
+# ----------------- Presentation -----------------
 target 'Presentation' do
   xcodeproj 'Presentation/Presentation.xcodeproj'
   # Pods for Presentation
   pod 'IQKeyboardManager'
-  pod 'RealmSwift'
+  podRealmSwift
   target 'PresentationUITests' do
     # Pods for testing
   end
 end
 
+# ----------------- Infrastructure -----------------
 target 'Infrastructure' do
   xcodeproj 'Infrastructure/Infrastructure.xcodeproj'
   # Pods for Infrastructure
-  pod 'RealmSwift'
+  podRealmSwift
 end
 
+# ----------------- Domain -----------------
 target 'Domain' do
   xcodeproj 'Domain/Domain.xcodeproj'
   # Pods for Domain

@@ -10,25 +10,18 @@ import UIKit
 class HomeRouter: HomeRouterProtocol {
 
     class func createHomeModule() -> UIViewController {
-        let navigationController = homeStoryboard.instantiateViewController(withIdentifier: "HomeView")
-        if let view = navigationController as? HomeView {
-            let presenter: HomePresenterProtocol & HomeInteractorOutputProtocol = HomePresenter()
-            let interactor: HomeInteractorInputProtocol = HomeInteractor()
-            let wireFrame: HomeRouterProtocol = HomeRouter()
+        let view = HomeView()
+        let presenter: HomePresenterProtocol & HomeInteractorOutputProtocol = HomePresenter()
+        let interactor: HomeInteractorInputProtocol = HomeInteractor()
+        let wireFrame: HomeRouterProtocol = HomeRouter()
 
-            view.presenter = presenter
-            presenter.view = view
-            presenter.wireFrame = wireFrame
-            presenter.interactor = interactor
-            interactor.presenter = presenter
+        view.presenter = presenter
+        presenter.view = view
+        presenter.wireFrame = wireFrame
+        presenter.interactor = interactor
+        interactor.presenter = presenter
 
-            return navigationController
-        }
-        return UIViewController()
-    }
-
-    static var homeStoryboard: UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: Bundle.main)
+        return view
     }
 
     func showLogHistory(from view: HomeViewProtocol) {

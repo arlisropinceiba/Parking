@@ -12,24 +12,17 @@ import UIKit
 class LogHistoryRouter: LogHistoryRouterProtocol {
 
     class func createLogHistoryModule() -> UIViewController {
-        let navController = mainStoryboard.instantiateViewController(withIdentifier: "LogHistoryView")
-        if let view = navController as? LogHistoryView {
-            let presenter: LogHistoryPresenterProtocol & LogHistoryInteractorOutputProtocol = LogHistoryPresenter()
-            let interactor: LogHistoryInteractorInputProtocol = LogHistoryInteractor()
-            let wireFrame: LogHistoryRouterProtocol = LogHistoryRouter()
-
-            view.presenter = presenter
-            presenter.view = view
-            presenter.wireFrame = wireFrame
-            presenter.interactor = interactor
-            interactor.presenter = presenter
-
-            return navController
-        }
-        return UIViewController()
-    }
-
-    static var mainStoryboard: UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: Bundle.main)
+        let view = LogHistoryView()
+        let presenter: LogHistoryPresenterProtocol & LogHistoryInteractorOutputProtocol = LogHistoryPresenter()
+        let interactor: LogHistoryInteractorInputProtocol = LogHistoryInteractor()
+        let wireFrame: LogHistoryRouterProtocol = LogHistoryRouter()
+        
+        view.presenter = presenter
+        presenter.view = view
+        presenter.wireFrame = wireFrame
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        return view
     }
 }
