@@ -25,7 +25,7 @@ class MotorcycleLogItemTableViewCell: UITableViewCell, LogItemTableViewCell {
         🗓 Fecha de ingreso: \(addmissionDate)
         🗓 Fecha de salida: \(departureDate)
         🕗 Total tiempo: \(motorcycle.getLenghtOfStay())
-        💲 Valor total: \(motorcycle.getValor())
+        💲 Valor total: \(motorcycle.getValor().currencyInputFormatting())
         """
         descriptionLabel.text = text
     }

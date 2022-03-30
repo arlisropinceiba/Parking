@@ -52,6 +52,7 @@
 		1C6EE0E527BAF4C50033D15C /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */; };
 		1C6EE0E727BAF4EF0033D15C /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */; };
 		1C7ECF6227C936DF00C4821F /* HomeElementsIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */; };
+		1CC5328027F3CB4B003E36D5 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5327F27F3CB4B003E36D5 /* ViewConfiguration.swift */; };
 		1CC862B927E237900087F05D /* HomeViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC862B827E237900087F05D /* HomeViewConfiguration.swift */; };
 		1CC862BB27E2626A0087F05D /* LogHistoryViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC862BA27E2626A0087F05D /* LogHistoryViewConfiguration.swift */; };
 		1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEA199A27B4662400865244 /* AppDelegate.swift */; };
@@ -132,6 +133,7 @@
 		1C6EE0E427BAF4C50033D15C /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		1C6EE0E627BAF4EF0033D15C /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeElementsIdentifiers.swift; sourceTree = "<group>"; };
+		1CC5327F27F3CB4B003E36D5 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		1CC862B827E237900087F05D /* HomeViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewConfiguration.swift; sourceTree = "<group>"; };
 		1CC862BA27E2626A0087F05D /* LogHistoryViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryViewConfiguration.swift; sourceTree = "<group>"; };
 		1CEA199727B4662400865244 /* Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Presentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +308,7 @@
 		1C6BB03927C5493C001858BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1CC5328127F3CDCF003E36D5 /* Elements */,
 				1C6BB03A27C54957001858BE /* Home */,
 				1C6BB03B27C54970001858BE /* LogHistory */,
 			);
@@ -395,6 +398,14 @@
 				1C7ECF6127C936DF00C4821F /* HomeElementsIdentifiers.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		1CC5328127F3CDCF003E36D5 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				1CC5327F27F3CB4B003E36D5 /* ViewConfiguration.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		1CE4E79527C4150000FE6FFB /* Cell */ = {
@@ -656,6 +667,7 @@
 				1C0EB67027E4D19F00EE7B29 /* MotorcycleLogItemTableViewCell.swift in Sources */,
 				1C2E214327BDD6E500BCBBFE /* FinishShiftModel.swift in Sources */,
 				1C2ADB9527E13B8500492106 /* AddCarModal.swift in Sources */,
+				1CC5328027F3CB4B003E36D5 /* ViewConfiguration.swift in Sources */,
 				1CEA199F27B4662400865244 /* HomeView.swift in Sources */,
 				1C2E214927BDF1DE00BCBBFE /* Button.swift in Sources */,
 				1CEA199B27B4662400865244 /* AppDelegate.swift in Sources */,

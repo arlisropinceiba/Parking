@@ -24,7 +24,7 @@ class CarLogItemTableViewCell: UITableViewCell, LogItemTableViewCell {
         🗓 Fecha de ingreso: \(addmissionDate)
         🗓 Fecha de salida: \(departureDate)
         🕗 Total tiempo: \(car.getLenghtOfStay())
-        💲 Valor total: \(car.getValor())
+        💲 Valor total: \(car.getValor().currencyInputFormatting())
         """
         descriptionLabel.text = text
     }

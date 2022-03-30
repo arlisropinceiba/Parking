@@ -12,6 +12,7 @@ import UIKit
 class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     // MARK: Properties
+    var viewConfiguration: LogHistoryViewConfiguration = LogHistoryViewConfiguration()
     var presenter: LogHistoryPresenterProtocol?
     var currentType: VehicleTypeElements = CarElements()
     var vehicles: [VehicleVisible] = []
@@ -19,15 +20,23 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
+        view.backgroundColor = .systemBackground
+        view.addSubview(viewConfiguration.getView())
+        viewConfiguration.searchVehiclesButton.addTarget(self, action: #selector(searchByPlate(_:)), for: .touchUpInside)
+        viewConfiguration.backButton.addTarget(self, action: #selector(comeBack(_:)), for: .touchUpInside)
         configureListButton()
-        table.delegate = self
-        table.dataSource = self
+        viewConfiguration.table.delegate = self
+        viewConfiguration.table.dataSource = self
         VehicleTypeElements().allLogTableCell.forEach { cellType in
-            table.register(cellType, forCellReuseIdentifier: cellType.debugDescription())
+            viewConfiguration.table.register(cellType, forCellReuseIdentifier: cellType.debugDescription())
         }
-        plateTextfield.delegate = self
+        viewConfiguration.plateTextfield.delegate = self
         presenter?.loadData(withThisType: currentType)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        viewConfiguration.frame = view.safeAreaLayoutGuide.layoutFrame
     }
 
     // MARK: TableView
@@ -56,7 +65,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     // MARK: Action button
     @objc func searchByPlate(_ sender: UIButton) {
-        presenter?.searchBy(plate: plateTextfield.text ?? "", withThisType: currentType)
+        presenter?.searchBy(plate: viewConfiguration.plateTextfield.text ?? "", withThisType: currentType)
     }
 
     @objc func comeBack(_ sender: UIButton) {
@@ -67,19 +76,19 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     func refreshTable(with data: [VehicleVisible]) {
         vehicles = data
-        table.reloadData()
+        viewConfiguration.table.reloadData()
     }
 
     // MARK: Vehicle menu
 
     func configureListButton() {
-        vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in
+        viewConfiguration.vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in
             actionItemVehicleType(with: vehicleType)
         })
     }
 
     func actionItemVehicleType(with vehicleType: VehicleTypeElements) {
-        vehiclesListButton.setTitle("  \(vehicleType.getType())", for: .normal)
+        viewConfiguration.vehiclesListButton.setTitle("  \(vehicleType.getType())", for: .normal)
         currentType = vehicleType
         presenter?.loadData(withThisType: currentType)
     }
@@ -95,107 +104,6 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         }
     }
 
-        // MARK: ELements
-
-    var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.numberOfLines = 0
-        label.text = "Historial"
-        return label
-    }()
-
-    var line: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.systemGray
-        return view
-    }()
-
-    var blank: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    var mainStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 15.0
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    var titleButtonStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 15.0
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    var titleStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 10.0
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    var finderStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 10.0
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    var vehiclesListButton: UIButton = {
-        let button = UIButton(type: UIButton.ButtonType.custom) as UIButton
-        button.setImage(UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
-        button.setTitle("  Carros", for: .normal)
-        button.setTitleColor(UIColor.label, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
-    var backButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration = .filled()
-        button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.fill"), for: .normal)
-        button.addTarget(self, action: #selector(comeBack(_:)), for: .touchUpInside)
-        return button
-    }()
-
-    var searchVehiclesButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration = .filled()
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        button.addTarget(self, action: #selector(searchByPlate(_:)), for: .touchUpInside)
-        return button
-    }()
-
-    var plateTextfield: UITextField = {
-        let field = UITextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
-        field.borderStyle = .roundedRect
-        field.placeholder = "ABC123"
-        field.accessibilityIdentifier = "PlateFinder"
-        return field
-    }()
-
-    var table: UITableView = UITableView()
 }
 
 extension LogHistoryView: LogHistoryViewProtocol {
