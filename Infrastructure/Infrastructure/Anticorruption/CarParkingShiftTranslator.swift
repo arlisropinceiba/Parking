@@ -5,78 +5,80 @@
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 7/02/22.
 //
 
-import CoreData
+import RealmSwift
 import Domain
 
 class CarParkingShiftTranslator: VehicleParkingShiftTranslator {
 
-    public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingShiftPayment: ParkingShiftPayment) throws -> NSManagedObject {
-        let context = manager.persistentContainer.viewContext
-        let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
-        let car = NSEntityDescription.insertNewObject(forEntityName: "CarCoreEntity", into: context) as! CarCoreEntity
-
-        guard let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment else { throw InfrastructureErrors.ErrorSavingParking()}
-        guard let carParkingShift = carParkingShiftPayment.getParkingShift() as? CarParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
-        car.plate = carParkingShift.getCar()?.getPlate()
-        parking.uid = carParkingShift.getId()
-        parking.admissonDate = carParkingShift.getAdmissionDate()
-        parking.vehicle = car
+    public override func fromDomainToDataBaseEntity(_ parkingShiftPayment: ParkingShiftPayment) throws -> ParkingShiftDataBaseEntity {
+        
+        guard let carParkingShiftPayment = parkingShiftPayment as? CarParkingShiftPayment
+        else { throw InfrastructureErrors.ErrorSavingParking()}
+        guard let carParkingShift = carParkingShiftPayment.getParkingShift() as? CarParkingShift
+        else { throw InfrastructureErrors.ErrorSavingParking()}
+        var departureDate: Date?
         do {
-            parking.departureDate = try carParkingShift.getDepartureDate()
+            departureDate = try carParkingShift.getDepartureDate()
         } catch {
-            parking.departureDate = nil
+            departureDate = nil
         }
-        parking.value = "\(try carParkingShiftPayment.calculateParkingShiftPrice())"
+        let parking = ParkingShiftDataBaseEntity(
+            uid: carParkingShift.getId(),
+            admissionDate: carParkingShift.getAdmissionDate(),
+            departureDate: departureDate,
+            value: "\(try carParkingShiftPayment.calculateParkingShiftPrice())",
+            type: VehicleType.car.rawValue, plate: carParkingShift.getCar()?.getPlate()
+        )
         return parking
     }
 
-    public override func fromDomainToCoreEntity(_ manager: CoreDataManager, _ parkingDomain: ParkingShift) throws -> NSManagedObject {
-        let context = manager.persistentContainer.viewContext
-        let parking = NSEntityDescription.insertNewObject(forEntityName: "ParkingShiftCoreEntity", into: context) as! ParkingShiftCoreEntity
-        let car = NSEntityDescription.insertNewObject(forEntityName: "CarCoreEntity", into: context) as! CarCoreEntity
-
+    public override func fromDomainToDataBaseEntity(_ parkingDomain: ParkingShift) throws -> ParkingShiftDataBaseEntity {
         guard let carParkingDomain = parkingDomain as? CarParkingShift else { throw InfrastructureErrors.ErrorSavingParking()}
-        car.plate = carParkingDomain.getCar()?.getPlate()
-        parking.uid = carParkingDomain.getId()
-        parking.admissonDate = carParkingDomain.getAdmissionDate()
-        parking.vehicle = car
+        var departureDate: Date?
         do {
-            parking.departureDate = try carParkingDomain.getDepartureDate()
+            departureDate = try carParkingDomain.getDepartureDate()
         } catch {
-            parking.departureDate = nil
+            departureDate = nil
         }
+        let parking = ParkingShiftDataBaseEntity(
+            uid: carParkingDomain.getId(),
+            admissionDate: carParkingDomain.getAdmissionDate(),
+            departureDate: departureDate,
+            type: VehicleType.car.rawValue,
+            plate: carParkingDomain.getCar()?.getPlate()
+        )
         return parking
     }
 
-    public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntity: ParkingShiftCoreEntity) throws -> CarParkingShift? {
-        guard let plate = parkingCoreEntity.vehicle?.plate,
-              let admissionDate = parkingCoreEntity.admissonDate,
-              let uid = parkingCoreEntity.uid,
-                parkingCoreEntity.vehicle is CarCoreEntity else {
+    public override func fromDataBaseToDomainEntity(_ parkingDataBaseEntity: ParkingShiftDataBaseEntity) throws -> CarParkingShift? {
+        guard let plate = parkingDataBaseEntity.plate,
+              let admissionDate = parkingDataBaseEntity.admissionDate,
+              let uid = parkingDataBaseEntity.uid,
+              parkingDataBaseEntity.type == VehicleType.car.rawValue else {
             return nil
         }
         let car = try Car(plate: plate)
-        if let departureDate = parkingCoreEntity.departureDate {
+        if let departureDate = parkingDataBaseEntity.departureDate {
             return try CarParkingShift(uid: uid, admissionDate: admissionDate, departureDate: departureDate, car: car)
         } else {
             return try CarParkingShift(uid: uid, admissionDate: admissionDate, car: car)
         }
     }
 
-    public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShift] {
+    public override func fromDataBaseToDomainEntity(_ parkingDataBaseEntityArray: [ParkingShiftDataBaseEntity]) throws -> [ParkingShift] {
         var carParkingShiftArray: [CarParkingShift] = []
-        for itemCore in parkingCoreEntityArray {
-            if let itemDomain: CarParkingShift = try fromCoreToDomainEntity(manager, itemCore) {
+        for itemDataBase in parkingDataBaseEntityArray {
+            if let itemDomain: CarParkingShift = try fromDataBaseToDomainEntity(itemDataBase) {
                 carParkingShiftArray.append(itemDomain)
             }
         }
         return carParkingShiftArray
     }
 
-    public override func fromCoreToDomainEntity(_ manager: CoreDataManager, _ parkingCoreEntityArray: [ParkingShiftCoreEntity]) throws -> [ParkingShiftPayment] {
+    public override func fromDataBaseToDomainEntity(_ parkingDataBaseEntityArray: [ParkingShiftDataBaseEntity]) throws -> [ParkingShiftPayment] {
         var carParkingShiftArrayPayments: [ParkingShiftPayment] = []
-        for itemCore in parkingCoreEntityArray {
-            if let itemDomain: CarParkingShift = try fromCoreToDomainEntity(manager, itemCore) {
+        for itemDataBase in parkingDataBaseEntityArray {
+            if let itemDomain: CarParkingShift = try fromDataBaseToDomainEntity(itemDataBase) {
                 let payment = CarParkingShiftPayment(parkingShift: itemDomain)
                 carParkingShiftArrayPayments.append(payment)
             }

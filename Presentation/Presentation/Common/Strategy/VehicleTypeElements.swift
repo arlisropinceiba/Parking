@@ -15,7 +15,7 @@ class CarElements: VehicleTypeElements {
             name: "Carros",
             translator: CarVisibleTranslator(),
             service: CarParkingShiftService(carParkingShiftRepository:
-                                            CarParkingCoreDataRepository.shared),
+                                            CarParkingDataBaseRepository.shared),
             addVehiclemodal: AddCarModal()
         )
     }
@@ -36,7 +36,7 @@ class MotorcycleElements: VehicleTypeElements {
             name: "Motos",
             translator: MotorcycleVisibleTranslator(),
             service: MotorcycleParkingShiftService(motorcycleParkingShiftRepository:
-                                                    MotorcycleParkingCoreDataRepository.shared),
+                                                    MotorcycleParkingDataBaseRepository.shared),
             addVehiclemodal: AddMotorcycleModal()
         )
     }
@@ -81,7 +81,7 @@ class VehicleTypeElements {
         self.init(
             name: "",
             translator: VehicleVisibleTranslator(),
-            service: ParkingShiftService(parkingShitRepository: CarParkingCoreDataRepository.shared),
+            service: ParkingShiftService(parkingShitRepository: CarParkingDataBaseRepository.shared),
             addVehiclemodal: AddMotorcycleModal()
         )
     }

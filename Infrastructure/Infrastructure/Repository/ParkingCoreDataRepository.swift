@@ -1,93 +1,80 @@
 //
-//  ParkingCoreDataRepository.swift
+//  ParkingDataBaseRepository.swift
 //  Infrastructure
 //
 //  Created by Arlin Lisette Ropero Infante - Ceiba Software on 9/02/22.
 //
 
 import Domain
-import CoreData
+import RealmSwift
 
-public class ParkingCoreDataRepository: ParkingShiftRepository {
+public class ParkingDataBaseRepository: ParkingShiftRepository {
 
-    var coreDataManager = CoreDataManager()
+    var dataBaseManager = DataBaseManager()
     var translator: VehicleParkingShiftTranslator = VehicleParkingShiftTranslator()
 
     init (translator: VehicleParkingShiftTranslator) {
         self.translator = translator
     }
 
-    public func saveParkingShift(shift: ParkingShift) async throws {
-        let parkingShiftCore = try translator.fromDomainToCoreEntity(coreDataManager, shift)
-        print(parkingShiftCore)
-        try await saveData(of: parkingShiftCore)
-    }
-
-    func saveData(of shift: NSManagedObject)  async throws {
-        let context = coreDataManager.persistentContainer.viewContext
-        context.automaticallyMergesChangesFromParent = true
-        try await context.perform {
-            do {
-                try context.save()
-                print("Parking saved succesfuly")
-            } catch let error {
-                print("\nError saving context: \(error.localizedDescription)\n")
-                throw InfrastructureErrors.ErrorSavingParking()
-            }
-        }
+    public func saveParkingShift(shift: ParkingShift) throws {
+        let parkingShiftDataBase = try translator.fromDomainToDataBaseEntity(shift)
+        print(parkingShiftDataBase)
+        try dataBaseManager.saveObject(parkingShiftDataBase)
     }
 
     public func getParkingShift() throws -> [ParkingShift] {
         let parkingShiftsSaved = try getFetchActiveParkingShifts()
-        let parkingShiftDomainArray: [ParkingShift] = try translator.fromCoreToDomainEntity(coreDataManager, parkingShiftsSaved)
+        let parkingShiftDomainArray: [ParkingShift] = try translator.fromDataBaseToDomainEntity(parkingShiftsSaved)
         return parkingShiftDomainArray
     }
 
     public func getFinalizedParkingShifts() throws -> [ParkingShiftPayment] {
-        let parkingShiftsSaved = try coreDataManager.getFetchHistoricalParking()
-        let parkingShiftDomainArray: [ParkingShiftPayment] = try translator.fromCoreToDomainEntity(coreDataManager, parkingShiftsSaved)
+        let parkingShiftsSaved = try dataBaseManager.getFetchHistoricalParking()
+        let parkingShiftDomainArray: [ParkingShiftPayment] = try translator.fromDataBaseToDomainEntity(parkingShiftsSaved)
         return parkingShiftDomainArray
     }
 
     public func searchParkingShift(withPlate plate: String) throws -> [ParkingShift] {
         let parkingShiftSaved = try fetchParkingShift(withPlate: plate)
-        let parkingShiftDomainArray: [ParkingShift] = try translator.fromCoreToDomainEntity(coreDataManager, parkingShiftSaved)
+        let parkingShiftDomainArray: [ParkingShift] = try translator.fromDataBaseToDomainEntity(parkingShiftSaved)
         return parkingShiftDomainArray
     }
 
     public func searchFinalizedParkingShift(withPlate plate: String) throws -> [ParkingShiftPayment] {
         let parkingShiftsSaved = try fetchFinalizedParkingShift(withPlate: plate)
-        let parkingShiftDomainArray: [ParkingShiftPayment] = try translator.fromCoreToDomainEntity(coreDataManager, parkingShiftsSaved)
+        let parkingShiftDomainArray: [ParkingShiftPayment] = try translator.fromDataBaseToDomainEntity(parkingShiftsSaved)
         return parkingShiftDomainArray
     }
 
-    public func finishParkingShift(shift: ParkingShiftPayment) async throws {
-        let parkingShiftsSaved = try coreDataManager.getFetchById(shift.getParkingShift().getId())
-        guard let parkingShiftCore = try translator.fromDomainToCoreUpdate(coreDataManager, shift, parkingShiftsSaved) else {
-            throw InfrastructureErrors.ErrorUpdatingParking()}
-        print(parkingShiftCore)
-        try await saveData(of: parkingShiftCore)
+    public func finishParkingShift(shift: ParkingShiftPayment) throws {
+        let parkingShiftsSaved = try dataBaseManager.getFetchById(shift.getParkingShift().getId())
+        let parkingShiftPayment = try translator.fromDomainToDataBaseEntity(shift)
+        guard let shift = parkingShiftsSaved.first else {
+            throw InfrastructureErrors.ErrorUpdatingParking()
+        }
+        try dataBaseManager.updateObject(shift, forThis: parkingShiftPayment)
     }
 
     public func isThereAVehicleWithActiveParkingShift(plate: String) throws -> Bool {
         let pakingsSaved = try getFetchActiveParkingShifts()
-        return pakingsSaved.first(where: {$0.vehicle?.plate == plate}) != nil
+        return pakingsSaved.first(where: {$0.plate == plate}) != nil
     }
 
-    public func getFetchActiveParkingShifts() throws -> [ParkingShiftCoreEntity] {
-        let parkingShiftsSaved = try coreDataManager.getFetchCurrentParking()
+    public func getFetchActiveParkingShifts() throws -> [ParkingShiftDataBaseEntity] {
+        let parkingShiftsSaved = try dataBaseManager.getFetchCurrentParking()
         return parkingShiftsSaved
     }
 
-    private func fetchParkingShift(withPlate plate: String) throws -> [ParkingShiftCoreEntity] {
-        let parkingShiftsSaved = try coreDataManager.getFetchCurrentParking()
-        let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.vehicle?.plate?.contains(plate) ?? false})
+    private func fetchParkingShift(withPlate plate: String) throws -> [ParkingShiftDataBaseEntity] {
+        let parkingShiftsSaved = try dataBaseManager.getFetchCurrentParking()
+        let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.plate?.contains(plate) ?? false})
         return parkingSavedWithSamePlate
     }
 
-    private func fetchFinalizedParkingShift(withPlate plate: String) throws -> [ParkingShiftCoreEntity] {
-        let parkingShiftsSaved = try coreDataManager.getFetchHistoricalParking()
-        let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.vehicle?.plate?.contains(plate) ?? false})
+    private func fetchFinalizedParkingShift(withPlate plate: String) throws -> [ParkingShiftDataBaseEntity] {
+        let parkingShiftsSaved = try dataBaseManager.getFetchHistoricalParking()
+        let parkingSavedWithSamePlate = parkingShiftsSaved.filter({$0.plate?.contains(plate) ?? false})
         return parkingSavedWithSamePlate
     }
 }

@@ -22,15 +22,15 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(viewConfiguration.getView())
-        viewConfiguration.searchVehiclesButton.addTarget(self, action: #selector(searchByPlate(_:)), for: .touchUpInside)
-        viewConfiguration.backButton.addTarget(self, action: #selector(comeBack(_:)), for: .touchUpInside)
+        viewConfiguration.setSelectorSearchVehiclesButton(#selector(searchByPlate(_:)))
+        viewConfiguration.setSelectorBackButton(#selector(comeBack(_:)))
         configureListButton()
-        viewConfiguration.table.delegate = self
-        viewConfiguration.table.dataSource = self
+        viewConfiguration.getTableView().delegate = self
+        viewConfiguration.getTableView().dataSource = self
         VehicleTypeElements().allLogTableCell.forEach { cellType in
-            viewConfiguration.table.register(cellType, forCellReuseIdentifier: cellType.debugDescription())
+            viewConfiguration.getTableView().register(cellType, forCellReuseIdentifier: cellType.debugDescription())
         }
-        viewConfiguration.plateTextfield.delegate = self
+        viewConfiguration.getPlateTextfield().delegate = self
         presenter?.loadData(withThisType: currentType)
     }
     
@@ -65,7 +65,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     // MARK: Action button
     @objc func searchByPlate(_ sender: UIButton) {
-        presenter?.searchBy(plate: viewConfiguration.plateTextfield.text ?? "", withThisType: currentType)
+        presenter?.searchBy(plate: viewConfiguration.getPlateTextfield().text ?? "", withThisType: currentType)
     }
 
     @objc func comeBack(_ sender: UIButton) {
@@ -76,19 +76,19 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
 
     func refreshTable(with data: [VehicleVisible]) {
         vehicles = data
-        viewConfiguration.table.reloadData()
+        viewConfiguration.getTableView().reloadData()
     }
 
     // MARK: Vehicle menu
 
     func configureListButton() {
-        viewConfiguration.vehiclesListButton.configureVehicleListButton(handler: { [self] vehicleType in
+        viewConfiguration.getVehiclesListButton().configureVehicleListButton(handler: { [self] vehicleType in
             actionItemVehicleType(with: vehicleType)
         })
     }
 
     func actionItemVehicleType(with vehicleType: VehicleTypeElements) {
-        viewConfiguration.vehiclesListButton.setTitle("  \(vehicleType.getType())", for: .normal)
+        viewConfiguration.getVehiclesListButton().setTitle("  \(vehicleType.getType())", for: .normal)
         currentType = vehicleType
         presenter?.loadData(withThisType: currentType)
     }

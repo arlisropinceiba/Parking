@@ -69,8 +69,8 @@ public class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
     public override func fromDomainToVisibleEntity(
         _ parkingDomainEntityArray: [ParkingShift]) throws -> [VehicleVisible] {
         var motorcycleParkingShiftArray: [VehicleVisible] = []
-        for itemCore in parkingDomainEntityArray {
-            if let itemDomain = try fromDomainToVisibleEntity(itemCore) {
+        for itemDataBase in parkingDomainEntityArray {
+            if let itemDomain = try fromDomainToVisibleEntity(itemDataBase) {
                 motorcycleParkingShiftArray.append(itemDomain)
             }
         }
@@ -80,8 +80,8 @@ public class MotorcycleVisibleTranslator: VehicleVisibleTranslator {
     public override func fromDomainToVisibleEntity(
         _ paymentDomainEntityArray: [ParkingShiftPayment]) throws -> [VehicleVisible] {
         var motorcycleParkingShiftArray: [VehicleVisible] = []
-        for itemCore in paymentDomainEntityArray {
-            if let itemDomain = try fromDomainToVisibleEntity(itemCore) {
+        for itemDataBase in paymentDomainEntityArray {
+            if let itemDomain = try fromDomainToVisibleEntity(itemDataBase) {
                 motorcycleParkingShiftArray.append(itemDomain)
             }
         }

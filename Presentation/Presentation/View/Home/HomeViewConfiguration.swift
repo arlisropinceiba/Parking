@@ -144,6 +144,7 @@ class HomeViewConfiguration: UIView, ViewConfiguration {
     func setView() {
 
         // MARK: Main Stack
+        self.frame = CGRect(x: 0, y: 47, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 47)
         self.backgroundColor = .systemBackground
         self.addSubview(mainStack)
         mainStack.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true

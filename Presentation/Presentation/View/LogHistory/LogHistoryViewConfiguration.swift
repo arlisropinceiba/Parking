@@ -11,7 +11,7 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
 
     // MARK: ELements
 
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20)
@@ -19,21 +19,21 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         label.text = "Historial"
         return label
     }()
-    
-    var line: UIView = {
+
+    private var line: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.systemGray
         return view
     }()
-    
-    var blank: UIView = {
+
+    private var blank: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    var mainStack: UIStackView = {
+
+    private var mainStack: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.axis = .vertical
@@ -42,8 +42,8 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    var titleButtonStack: UIStackView = {
+
+    private var titleButtonStack: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.axis = .horizontal
@@ -52,8 +52,8 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    var titleStack: UIStackView = {
+
+    private var titleStack: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.axis = .horizontal
@@ -62,8 +62,8 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    var finderStack: UIStackView = {
+
+    private var finderStack: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .fill
         stackView.axis = .horizontal
@@ -72,8 +72,8 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    var vehiclesListButton: UIButton = {
+
+    private var vehiclesListButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.custom) as UIButton
         button.setImage(UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
         button.setTitle("  Carros", for: .normal)
@@ -81,24 +81,24 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    var backButton: UIButton = {
+
+    private var backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
         button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.fill"), for: .normal)
         return button
     }()
-    
-    var searchVehiclesButton: UIButton = {
+
+    private var searchVehiclesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         return button
     }()
-    
-    var plateTextfield: UITextField = {
+
+    private var plateTextfield: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.borderStyle = .roundedRect
@@ -106,17 +106,18 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         field.accessibilityIdentifier = "PlateFinder"
         return field
     }()
-    
-    var table: UITableView = UITableView()
-    
+
+    private var table: UITableView = UITableView()
+
     func getView() -> UIView {
         setView()
         return self
     }
-    
+
     func setView() {
 
         // MARK: Main Stack
+        self.frame = CGRect(x: 0, y: 47, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 47)
         self.addSubview(mainStack)
         self.backgroundColor = .systemBackground
         mainStack.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
@@ -170,5 +171,33 @@ class LogHistoryViewConfiguration: UIView, ViewConfiguration {
         table.topAnchor.constraint(equalTo: line.bottomAnchor, constant: 0).isActive = true
         table.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         table.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+    }
+
+    func setSelectorSearchVehiclesButton(_ selector: Selector) {
+        searchVehiclesButton.addTarget(self, action: selector, for: .touchUpInside)
+    }
+
+    func setSelectorBackButton(_ selector: Selector) {
+        backButton.addTarget(self, action: selector, for: .touchUpInside)
+    }
+
+    func getSearchVehiclesButton() -> UIButton {
+        return searchVehiclesButton
+    }
+
+    func getBackButton() -> UIButton {
+        return searchVehiclesButton
+    }
+
+    func getVehiclesListButton() -> UIButton {
+        return vehiclesListButton
+    }
+
+    func getPlateTextfield() -> UITextField {
+        return plateTextfield
+    }
+
+    func getTableView() -> UITableView {
+        return table
     }
 }

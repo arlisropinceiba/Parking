@@ -10,6 +10,10 @@ def podRealmSwift
   pod 'RealmSwift'
 end
 
+def podSwinject
+  pod 'Swinject'
+end
+
 # ----------------- Presentation -----------------
 target 'Presentation' do
   xcodeproj 'Presentation/Presentation.xcodeproj'
@@ -26,12 +30,14 @@ target 'Infrastructure' do
   xcodeproj 'Infrastructure/Infrastructure.xcodeproj'
   # Pods for Infrastructure
   podRealmSwift
+  podSwinject
 end
 
 # ----------------- Domain -----------------
 target 'Domain' do
   xcodeproj 'Domain/Domain.xcodeproj'
   # Pods for Domain
+  podSwinject
   target 'DomainTests' do
     inherit! :search_paths
     # Pods for testing
