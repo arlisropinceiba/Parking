@@ -10,8 +10,8 @@ import RealmSwift
 
 public class ParkingDataBaseRepository: ParkingShiftRepository {
 
-    var dataBaseManager = DataBaseManager()
-    var translator: VehicleParkingShiftTranslator = VehicleParkingShiftTranslator()
+    private var dataBaseManager = DataBaseManager()
+    private var translator: VehicleParkingShiftTranslator = VehicleParkingShiftTranslator()
 
     init (translator: VehicleParkingShiftTranslator) {
         self.translator = translator
@@ -30,7 +30,7 @@ public class ParkingDataBaseRepository: ParkingShiftRepository {
     }
 
     public func getFinalizedParkingShifts() throws -> [ParkingShiftPayment] {
-        let parkingShiftsSaved = try dataBaseManager.getFetchHistoricalParking()
+        let parkingShiftsSaved: [ParkingShiftDataBaseEntity] = try dataBaseManager.getFetchHistoricalParking()
         let parkingShiftDomainArray: [ParkingShiftPayment] = try translator.fromDataBaseToDomainEntity(parkingShiftsSaved)
         return parkingShiftDomainArray
     }

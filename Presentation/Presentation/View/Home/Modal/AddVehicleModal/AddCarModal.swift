@@ -17,16 +17,16 @@ class AddCarModal: UIViewController, UITextFieldDelegate, AddVehicleModal {
         plateTextfield.delegate = self
     }
 
-    @IBAction func close(_ sender: UIButton) {
+    @objc func close(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func add(_ sender: UIButton) {
+    @objc func add(_ sender: UIButton) {
         let plate = plateTextfield.text
         returnValues(plate: plate ?? "")
     }
 
-    @IBAction func addWithRandomValues(_ sender: UIButton) {
+    @objc func addWithRandomValues(_ sender: UIButton) {
         let plate: String = randomString(withLength: 3) + randomNumber(withLength: 3)
         returnValues(plate: plate)
     }

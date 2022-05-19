@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3C351281-3AED-46BB-8AB7-739C2266391A"
+            uuid = "B1F50AF4-C0B0-4031-9F6F-82FDE1030B1A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Presentation/Presentation/View/LogHistory/LogHistoryView.swift"
+            filePath = "Presentation/Presentation/View/Home/Modal/AddVehicleModal/AddMotorcycleModal.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "comeBack(_:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "addWithRandomValues(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

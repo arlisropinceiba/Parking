@@ -16,6 +16,7 @@ pipeline {
     stage('Compile') {
       steps {
         echo "------------>Compile<------------"
+        sh 'pod install'
         sh 'xcodebuild -scheme Presentation clean build CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED="NO"'
       }
     } 

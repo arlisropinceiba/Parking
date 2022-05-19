@@ -43,3 +43,4 @@ extension LogHistoryPresenter: LogHistoryPresenterProtocol {
 
 extension LogHistoryPresenter: LogHistoryInteractorOutputProtocol {
 }
+

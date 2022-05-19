@@ -27,7 +27,7 @@ class LogHistoryView: BaseController, UITableViewDelegate, UITableViewDataSource
         configureListButton()
         viewConfiguration.getTableView().delegate = self
         viewConfiguration.getTableView().dataSource = self
-        VehicleTypeElements().allLogTableCell.forEach { cellType in
+        CarElements().getAllLogTableCell().forEach { cellType in
             viewConfiguration.getTableView().register(cellType, forCellReuseIdentifier: cellType.debugDescription())
         }
         viewConfiguration.getPlateTextfield().delegate = self

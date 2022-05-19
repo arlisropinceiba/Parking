@@ -28,6 +28,8 @@
 		1C180CA727E3F3360011CE6F /* MotorcyclePaymentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C180CA627E3F3360011CE6F /* MotorcyclePaymentModal.swift */; };
 		1C180CA927E3F3620011CE6F /* CarPaymentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C180CA827E3F3620011CE6F /* CarPaymentModal.swift */; };
 		1C180CAB27E3FACB0011CE6F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C180CAA27E3FACB0011CE6F /* String.swift */; };
+		1C1D7BA4280F1290006187CE /* CarElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D7BA3280F1290006187CE /* CarElements.swift */; };
+		1C1D7BA6280F12AD006187CE /* MotorcycleElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D7BA5280F12AD006187CE /* MotorcycleElements.swift */; };
 		1C2ADB9527E13B8500492106 /* AddCarModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9327E13B8500492106 /* AddCarModal.swift */; };
 		1C2ADB9827E13E3900492106 /* AddVehicleModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */; };
 		1C2E212227BD1A6900BCBBFE /* VehicleVisibleTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */; };
@@ -110,6 +112,8 @@
 		1C180CA627E3F3360011CE6F /* MotorcyclePaymentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcyclePaymentModal.swift; sourceTree = "<group>"; };
 		1C180CA827E3F3620011CE6F /* CarPaymentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPaymentModal.swift; sourceTree = "<group>"; };
 		1C180CAA27E3FACB0011CE6F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1C1D7BA3280F1290006187CE /* CarElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarElements.swift; sourceTree = "<group>"; };
+		1C1D7BA5280F12AD006187CE /* MotorcycleElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorcycleElements.swift; sourceTree = "<group>"; };
 		1C2ADB9327E13B8500492106 /* AddCarModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCarModal.swift; sourceTree = "<group>"; };
 		1C2ADB9727E13E3900492106 /* AddVehicleModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleModal.swift; sourceTree = "<group>"; };
 		1C2E211F27BD1A6900BCBBFE /* VehicleVisibleTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleVisibleTranslator.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				1C17331727BCBC0600B3350F /* VehicleTypeElements.swift */,
+				1C1D7BA3280F1290006187CE /* CarElements.swift */,
+				1C1D7BA5280F12AD006187CE /* MotorcycleElements.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -691,7 +697,9 @@
 				1C2E213627BDAB1400BCBBFE /* LogHistoryPresenter.swift in Sources */,
 				1C2E213927BDAB1400BCBBFE /* LogHistoryView.swift in Sources */,
 				1C0EB67227E4D1C300EE7B29 /* CarLogItemTableViewCell.swift in Sources */,
+				1C1D7BA6280F12AD006187CE /* MotorcycleElements.swift in Sources */,
 				1C2E213827BDAB1400BCBBFE /* LogHistoryInteractor.swift in Sources */,
+				1C1D7BA4280F1290006187CE /* CarElements.swift in Sources */,
 				1C1732E627BC831C00B3350F /* Car.swift in Sources */,
 				1C0C69D427BE6FC200CF288E /* PaymentModal.swift in Sources */,
 				1C180CAB27E3FACB0011CE6F /* String.swift in Sources */,
